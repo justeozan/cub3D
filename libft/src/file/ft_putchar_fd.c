@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/17 14:57:10 by ozasahin         ###   ########.fr       */
+/*   Created: 2023/11/17 09:21:01 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/02/13 16:55:34 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int ac, char **av)
+#include "../../libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-	
-	if (!check(ac, av))
-		return (EXIT_FAILURE);
-	
-	
-	return (0);
+	write(fd, &c, 1);
 }

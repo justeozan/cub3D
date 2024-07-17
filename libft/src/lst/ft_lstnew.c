@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/17 14:57:10 by ozasahin         ###   ########.fr       */
+/*   Created: 2023/11/18 16:44:55 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/02/13 16:57:18 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int ac, char **av)
+#include "../../libft.h"
+
+t_list	*ft_lstnew(void *content)
 {
-	
-	if (!check(ac, av))
-		return (EXIT_FAILURE);
-	
-	
-	return (0);
+	t_list	*new_list;
+
+	new_list = malloc(sizeof(t_list));
+	if (new_list == NULL)
+		return (NULL);
+	new_list->content = content;
+	new_list->next = NULL;
+	return (new_list);
 }

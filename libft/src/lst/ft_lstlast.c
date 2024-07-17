@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/17 14:57:10 by ozasahin         ###   ########.fr       */
+/*   Created: 2023/11/20 14:37:59 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/02/13 16:57:11 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int ac, char **av)
+#include "../../libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	
-	if (!check(ac, av))
-		return (EXIT_FAILURE);
-	
-	
-	return (0);
+	t_list	*ptr;
+
+	ptr = lst;
+	if (ptr == NULL)
+		return (NULL);
+	while (ptr->next != NULL)
+	{
+		ptr = ptr->next;
+	}
+	return (ptr);
 }

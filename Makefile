@@ -6,7 +6,7 @@
 #    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 11:56:01 by ozasahin          #+#    #+#              #
-#    Updated: 2024/06/03 11:57:04 by ozasahin         ###   ########.fr        #
+#    Updated: 2024/07/17 14:40:01 by ozasahin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,10 +69,10 @@ re:		fclean all
 clear:
 	clear
 
-ARG := $(shell norminette | grep Error: | wc -l)
+ARG := $(shell norminette src libft | grep Error: | wc -l)
 
 norm:
-	@if norminette | grep -v OK; then \
+	@if norminette src libft | grep -v OK; then \
 		echo "$(COLOR_RED)$(ARG) norm violations found$(COLOR_RESET)"; \
 	else \
 		echo "$(COLOR_GREEN)All OK!"; \

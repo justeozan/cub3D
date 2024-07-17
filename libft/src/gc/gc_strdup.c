@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   gc_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/17 14:57:10 by ozasahin         ###   ########.fr       */
+/*   Created: 2024/04/29 15:12:33 by avialle-          #+#    #+#             */
+/*   Updated: 2024/05/16 13:41:09 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int ac, char **av)
+#include "../../libft.h"
+
+char	*gc_strdup(const char *str, int gc_id)
 {
-	
-	if (!check(ac, av))
-		return (EXIT_FAILURE);
-	
-	
-	return (0);
+	char	*result;
+	size_t	length;
+
+	length = ft_strlen(str);
+	result = (char *)gc_malloc((length + 1) * sizeof(char), gc_id);
+	if (!result)
+		return (NULL);
+	length = 0;
+	while (str[length] != '\0')
+	{
+		result[length] = str[length];
+		length++;
+	}
+	result[length] = '\0';
+	return (result);
 }

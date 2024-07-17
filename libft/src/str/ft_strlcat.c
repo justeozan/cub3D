@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/17 14:57:10 by ozasahin         ###   ########.fr       */
+/*   Created: 2023/11/07 11:01:46 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/02/13 16:58:37 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int ac, char **av)
+#include "../../libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	
-	if (!check(ac, av))
-		return (EXIT_FAILURE);
-	
-	
-	return (0);
+	size_t	dl;
+	size_t	sl;
+	size_t	i;
+
+	dl = 0;
+	sl = 0;
+	i = 0;
+	while (dst[dl] != '\0' && dl < size)
+		dl++;
+	while (src[sl] != '\0')
+		sl++;
+	if (size == 0 || dl == size)
+		return (size + sl);
+	while (src[i] != '\0' && dl + i < size - 1)
+	{
+		dst[dl + i] = src[i];
+		i++;
+	}
+	dst[dl + i] = '\0';
+	return (dl + sl);
 }

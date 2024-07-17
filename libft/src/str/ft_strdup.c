@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/17 14:57:10 by ozasahin         ###   ########.fr       */
+/*   Created: 2023/11/15 23:07:49 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/02/13 16:58:24 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int ac, char **av)
+#include "../../libft.h"
+
+char	*ft_strdup(const char *str)
 {
-	
-	if (!check(ac, av))
-		return (EXIT_FAILURE);
-	
-	
-	return (0);
+	char	*result;
+	size_t	l;
+
+	l = ft_strlen(str);
+	result = (char *)malloc((l + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	l = 0;
+	while (str[l] != '\0')
+	{
+		result[l] = str[l];
+		l++;
+	}
+	result[l] = '\0';
+	return (result);
 }

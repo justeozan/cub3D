@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   gc_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/17 14:57:10 by ozasahin         ###   ########.fr       */
+/*   Created: 2024/04/29 15:12:43 by avialle-          #+#    #+#             */
+/*   Updated: 2024/05/16 13:41:09 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int ac, char **av)
+#include "../../libft.h"
+
+char	*gc_strndup(char *buffer, int len, int gc_id)
 {
-	
-	if (!check(ac, av))
-		return (EXIT_FAILURE);
-	
-	
-	return (0);
+	char	*new;
+	int		i;
+
+	i = 0;
+	while (buffer[i] && i < len)
+		i++;
+	new = gc_malloc((i + 1) * sizeof(char), gc_id);
+	if (!new)
+		NULL;
+	i = 0;
+	while (buffer[i] && i < len)
+	{
+		new[i] = buffer[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }
