@@ -5,7 +5,11 @@ bool	check_map(char	*file)
 	
 }
 
-bool	check_args(char	**args)
+bool	check_args(int ac, char	**args)
 {
-	if ()
+	if (ac != )
+	if (!ft_strnstr(args[1], ".cub", 4))
+		return (false);
+	if (open(args[1]))
+
 }
