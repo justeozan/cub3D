@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
+#    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 16:43:33 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/24 15:56:27 by ozasahin         ###   ########.fr        #
+#    Updated: 2024/07/24 15:48:16 by avialle-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,14 @@ SRCS	=	\
 			\
 			gc/gc_add.c\
 			gc/gc_calloc.c\
-			gc/gc_ptr.c\
 			gc/gc_clear.c\
 			gc/gc_del_one.c\
 			gc/gc_itoa.c\
 			gc/gc_lstmap.c\
 			gc/gc_lstnew.c\
 			gc/gc_malloc.c\
+			gc/gc_ptr.c\
+			gc/gc_realloc.c\
 			gc/gc_split.c\
 			gc/gc_strcut.c\
 			gc/gc_strdup.c\
@@ -88,7 +89,6 @@ SRCS	=	\
 			str/ft_strmapi.c\
 			str/ft_strncmp.c\
 			str/ft_strnstr.c\
-			str/ft_strnstrs.c\
 			str/ft_strrchr.c\
 			str/ft_strtrim.c\
 			str/ft_substr.c\

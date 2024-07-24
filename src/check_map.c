@@ -1,49 +1,5 @@
 #include "../includes/cub3D.h"
 
-static void	check_one_texture(char **file, char *direction, int len_dir)
-{
-	int		i;
-	int		j;
-	char	*texture;
-	int		fd_texture;
-
-	i = -1;
-	j = 0;
-	while (file[++i])
-	{
-		while (file[i][j] == ' ')
-			j++;
-		if (ft_strnstr(file[i], direction, len_dir))
-		{
-			while (file[i][j] == ' ')
-				j++;
-			texture = gc_strdup(&file[i][j], TMP);
-			fd_texture = open(texture, O_RDONLY);
-			if (fd_texture < 1 || !ft_strnstr(&file[i][j], ".xpm", len_dir))
-				ft_exit(ERR_TEXTURE, EXIT_FAILURE);
-		}
-	}
-}
-
-static bool	check_textures(char **file)
-{
-	check_one_texture(file, "SO ", 3);
-	check_one_texture(file, "WE ", 3);
-	check_one_texture(file, "EA ", 3);
-	check_one_texture(file, "F ", 2);
-	check_one_texture(file, "C ", 2);
-}
-
-static bool	check_args(int ac, char	**args)
-{
-	if (ac != 2)
-		return (false);
-	
-	if (!ft_strnstr2(args[1], ".cub", 4))
-		return (false);
-	return (true);
-}
-
 static char **get_file(int fd)
 {
 	char	**file;
@@ -63,15 +19,71 @@ static char **get_file(int fd)
 		if (i >= capacity - 1)
 		{
 			capacity *= 2;
-			tmp = realloc(file, sizeof(char *) * capacity);
+			tmp = gc_realloc(file, capacity / 2, sizeof(char *) * capacity, TMP);
 			if (!tmp)
-				return (free_2d(tmp), NULL);
+				return (ft_exit(ERR_MALLOC, EXIT_FAILURE), NULL);
 			file = tmp;
 		}
 		file[i] = get_next_line(fd);
 	}
 	return (file);
 }
+
+static void	check_one_texture(char **file, char *direction)
+{
+	int		i;
+	int		j;
+	char	*texture;
+	int		fd_texture;
+
+	i = -1;
+	while (file[++i])
+	{
+		j = 0;
+		while (file[i][j] == ' ')
+			j++;
+		if (ft_strnstr(file[i], direction, 3))
+		{
+			j = 3;
+			while (file[i][j] == ' ')
+				j++;
+			texture = gc_strdup(&file[i][j], TMP);
+			ft_printf("j = %d, texture = %s\n", j, texture);
+			fd_texture = open(texture, O_RDONLY);
+			if (fd_texture < 1 || !ft_strnstr(&file[i][j], ".xpm", 3))
+				ft_exit(ERR_TEXTURE, EXIT_FAILURE);
+		}
+	}
+}
+
+static void	check_textures(char **file)
+{
+	// if (ft_strnstrs(file, "NO ") != 1
+	// 	|| ft_strnstrs(file, "SO ") != 1
+	// 	|| ft_strnstrs(file, "WE ") != 1
+	// 	|| ft_strnstrs(file, "EA ") != 1)
+	// 	ft_exit(ERR_TEXTURE, EXIT_FAILURE);
+	check_one_texture(file, "NO ");
+	check_one_texture(file, "SO ");
+	check_one_texture(file, "WE ");
+	check_one_texture(file, "EA ");
+}
+
+// static bool	check_colors(char **file)
+// {
+	
+// }
+
+static bool	check_args(int ac, char	**args)
+{
+	if (ac != 2)
+		return (false);
+	
+	if (!ft_strnstr2(args[1], ".cub", 4))
+		return (false);
+	return (true);
+}
+
 
 bool	check_map(int ac, char	**args)
 {
@@ -82,10 +94,11 @@ bool	check_map(int ac, char	**args)
 	fd = open(args[1], O_RDONLY);
 	if (fd < 1)
 		return (ft_exit(ERR_FILE, EXIT_FAILURE), false);
-	file = getfile(fd);
+	file = get_file(fd);
 	close(fd);
 	check_textures(file);
-	check_colors(file);
+	// check_color(file, "F ");
+	// check_color(file, "C ");
 	return (true);
 }
 

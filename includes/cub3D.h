@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:10:14 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/24 15:02:08 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:49:22 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define ERR_MALLOC "Error: Memory allocation failed with malloc.\n"
 # define ERR_ARGS "Error: args format: ./cub3D <map_name.cub>"
 # define ERR_FILE "Error: bad fd"
-# define ERR_TEXTURE "Error: texture(s) file(s) missing or bad format"
+# define ERR_TEXTURE "Error: texture(s) file(s) missing or has bad format"
 
 /*=== Structures ===*/
 enum e_gc_id
@@ -46,7 +46,7 @@ typedef struct s_matrix
 {
 	int	x;
 	int	y;
-	int	z;
+	int	wall;
 	int	xproj;
 	int	yproj;
 	int	zproj;
