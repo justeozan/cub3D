@@ -1,7 +1,7 @@
-NO ../textures/test/north.xpm
-SO ../textures/test/south.xpm
-WE ../textures/test/west.xpm
-EA ../textures/test/east.xpm
+NO sprites/test/north.xpm
+SO sprites/test/south.xpm
+WE sprites/test/west.xpm
+EA sprites/test/east.xpm
 
 C 200,200,200
 
