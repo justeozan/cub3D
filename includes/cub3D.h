@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:10:14 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/17 14:54:55 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/07/24 11:33:49 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 
 /*=== Includes ===*/
 
-#include "unistd.h"
-#include "stdbool.h"
+#include <unistd.h>
+#include <stdbool.h>
+#include <fcntl.h>
+#include <stdio.h>
 #include "../libft/libft.h"
 
 /*=== Color ===*/
 
-# define RED	"\e[0;31m"
-# define WHITE	"\x1b[37;1m"
-# define RESET	"\x1b[0m"
-# define GREEN	"\e[0;32m"
+# define RESET	"\033[0m"
+# define RED	"\033[0;31m"
+# define WHITE	"\033[37m"
+# define GREEN	"\033[32m"
 
 /*=== Error messages ===*/
 
@@ -32,5 +34,11 @@
 
 /*=== Structures ===*/
 /*=== Fonctions ===*/
+// check_map.c
+bool	check_map(int ac, char	**args);
+
+// error.c
+void	print_error_msg(char *str);
+void	ft_exit(char *str, int error_code);
 
 #endif

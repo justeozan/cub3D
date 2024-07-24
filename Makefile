@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
+#    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 11:56:01 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/17 14:40:01 by ozasahin         ###   ########.fr        #
+#    Updated: 2024/07/24 11:39:18 by avialle-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,16 @@ NAME	=	cub3D
 
 SRC		=		\
 				src/main.c\
+				src/check_map.c\
+				src/error.c
 
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 
 # Controls
 CC			=	cc
-CFLAGS		=	-Werror -Wall -Wextra -g
-INCLUDES	=	-Iinclude
+CFLAGS		=	-Werror -Wall -Wextra -g3
+LDFLAGS			=	-Llibft -lft -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+INCLUDES	=	-Iincludes
 # LINKS		=
 RM			=	rm -rf
 
@@ -42,11 +45,11 @@ MESSAGE_DONE2		=	$(MESSAGE_OK) cub3D compiled.
 MESSAGE_CLEAN		=	$(COLOR_PURPLE)Cleaning up...$(COLOR_RESET)
 MESSAGE_CLEAN_DONE	=	$(COLOR_PURPLE)Cleanup completed.$(COLOR_RESET)
 
-all:		$(NAME)
+all:		force $(NAME)
 
 m:			clear $(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) libft/libft.a
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) -o $(NAME)
 	@echo "$(MESSAGE_DONE2)"
 
@@ -55,6 +58,10 @@ obj/%.o:	src/%.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "$(MESSAGE_CLEAR)"
+
+force:
+		@make -C libft/ -s
+		@make -C minilibx-linux/ -s
 
 clean:
 	@echo "$(MESSAGE_CLEAN)\c"
