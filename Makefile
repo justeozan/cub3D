@@ -6,7 +6,7 @@
 #    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 11:56:01 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/24 11:39:18 by avialle-         ###   ########.fr        #
+#    Updated: 2024/07/24 11:57:10 by avialle-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 # Controls
 CC			=	cc
 CFLAGS		=	-Werror -Wall -Wextra -g3
-LDFLAGS			=	-Llibft -lft -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
-INCLUDES	=	-Iincludes
+LDFLAGS		=	-Llibft -lft -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+INCLUDES	=	-Iincludes -Icub3D -Ilibft
 # LINKS		=
 RM			=	rm -rf
 
@@ -53,7 +53,7 @@ $(NAME):	$(OBJ) libft/libft.a
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) -o $(NAME)
 	@echo "$(MESSAGE_DONE2)"
 
-obj/%.o:	src/%.c
+obj/%.o:	src/%.c include/cub3D.h Makefile libft/libft.h libft/libft.a
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -66,10 +66,14 @@ force:
 clean:
 	@echo "$(MESSAGE_CLEAN)\c"
 	@$(RM) obj
+	@make clean -C libft -s
+	@make clean -C minilibx-linux -s
 	@echo "$(MESSAGE_CLEAN_DONE)"
 
 fclean:		clean
 	@$(RM) $(NAME)
+	@make fclean -C libft -s
+	@make clean -C minilibx-linux -s
 
 re:		fclean all
 
