@@ -44,6 +44,35 @@ static bool	check_args(int ac, char	**args)
 	return (true);
 }
 
+static char **get_file(int fd)
+{
+	char	**file;
+	char	**tmp;
+	int		capacity;
+	int		i;
+	
+	capacity = 10;
+	file = gc_malloc(sizeof(char *) * capacity, TMP);
+	if (!file)
+		return (NULL);
+	i = 0;
+	file[i] = get_next_line(fd);
+	while (file[i])
+	{
+		i++;
+		if (i >= capacity - 1)
+		{
+			capacity *= 2;
+			tmp = realloc(file, sizeof(char *) * capacity);
+			if (!tmp)
+				return (free_2d(tmp), NULL);
+			file = tmp;
+		}
+		file[i] = get_next_line(fd);
+	}
+	return (file);
+}
+
 bool	check_map(int ac, char	**args)
 {
 	int		fd;

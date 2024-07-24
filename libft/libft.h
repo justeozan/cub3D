@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:21:30 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/24 14:37:15 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:25:39 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ char	*get_next_line(int fd);
 size_t	ft_strlen_gnl(char *str);
 char	*str_init(char *s);
 char	*buffer_init(int id, t_id *buffer_memory);
+char	**get_file(int fd);
+
 
 /*-------------is-------------*/
 
