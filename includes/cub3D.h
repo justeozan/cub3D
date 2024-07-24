@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:10:14 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/24 15:49:22 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/24 22:10:30 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ bool	check_map(int ac, char	**args);
 // error.c
 void	print_error_msg(char *str);
 void	ft_exit(char *str, int error_code);
+bool	parse(int ac, char	**args);
 
 #endif

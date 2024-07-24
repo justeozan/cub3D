@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
+#    By: sei <sei@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 11:56:01 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/24 12:13:30 by avialle-         ###   ########.fr        #
+#    Updated: 2024/07/24 22:51:29 by sei              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME	=	cub3D
 
 SRC		=		\
 				src/main.c\
-				src/check_map.c\
+				src/parsing/parsing.c\
 				src/error.c
 
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
@@ -25,8 +25,7 @@ OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 CC			=	cc
 CFLAGS		=	-Werror -Wall -Wextra -g3
 LDFLAGS		=	-Llibft -lft -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
-INCLUDES	=	-Iincludes -Icub3D -Ilibft
-# LINKS		=
+INCLUDES	=	-Iincludes -Ilibft
 RM			=	rm -rf
 
 # Colors
@@ -56,7 +55,7 @@ $(NAME):	$(OBJ) libft/libft.a
 obj/%.o:	src/%.c includes/cub3D.h Makefile libft/libft.h libft/libft.a
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -c $< -o $@
 	@echo "$(MESSAGE_CLEAR)"
 
 force:

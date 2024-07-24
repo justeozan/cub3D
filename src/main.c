@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/24 15:33:53 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/24 22:00:32 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	if (check_map(ac, av))
+	if (parse(ac, av))
 		return (1);
 	return (0);
 }
