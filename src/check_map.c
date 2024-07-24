@@ -5,13 +5,16 @@ static bool	check_one_texture(char *file, char *direction)
 	int	fd;
 	
 	fd = open(file, O_RDONLY);
-
+	(void)*direction; //!
 	close(fd);
+	return 0; //!
 }
 
 static bool	check_textures(char *file)
 {
 	if (!check_one_texture(file, "NO"))
+		return 0; //!
+	return 1; //!
 }
 
 static bool	check_args(int ac, char	**args)
@@ -22,6 +25,35 @@ static bool	check_args(int ac, char	**args)
 	if (!ft_strnstr(args[1], ".cub", 4))
 		return (false);
 	return (true);
+}
+
+static char **get_file(int fd)
+{
+	char	**file;
+	char	**tmp;
+	int		capacity;
+	int		i;
+	
+	capacity = 10;
+	file = gc_malloc(sizeof(char *) * capacity, TMP);
+	if (!file)
+		return (NULL);
+	i = 0;
+	file[i] = get_next_line(fd);
+	while (file[i])
+	{
+		i++;
+		if (i >= capacity - 1)
+		{
+			capacity *= 2;
+			tmp = realloc(file, sizeof(char *) * capacity);
+			if (!tmp)
+				return (free_2d(tmp), NULL);
+			file = tmp;
+		}
+		file[i] = get_next_line(fd);
+	}
+	return (file);
 }
 
 bool	check_map(int ac, char	**args)

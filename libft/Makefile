@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
+#    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 16:43:33 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/24 12:01:43 by avialle-         ###   ########.fr        #
+#    Updated: 2024/07/24 14:47:21 by ozasahin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS	=	\
 			\
 			gnl/get_next_line_utils.c\
 			gnl/get_next_line.c\
+			gnl/get_file.c\
 			\
 			is/ft_isalnum.c\
 			is/ft_isalpha.c\
