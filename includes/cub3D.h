@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:10:14 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/24 11:33:49 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:07:43 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,32 @@
 /*=== Error messages ===*/
 
 # define ERR_MALLOC "Error: Memory allocation failed with malloc.\n"
+# define ERR_ARGS "Error: args format: ./cub3D <map_name.cub>"
+# define ERR_FILE "Error: bad fd"
+# define ERR_TEXTURE "Error: texture(s) file(s) missing or bad format"
 
 /*=== Structures ===*/
+
+typedef struct s_matrix
+{
+	int	x;
+	int	y;
+	int	z;
+	int	xproj;
+	int	yproj;
+	int	zproj;
+}	t_matrix;
+
+typedef struct s_data
+{
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*f;
+	char		*c;
+	t_matrix	*matrix;
+}	t_data;
 /*=== Fonctions ===*/
 // check_map.c
 bool	check_map(int ac, char	**args);

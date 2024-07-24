@@ -6,7 +6,7 @@
 #    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 11:56:01 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/24 11:57:10 by avialle-         ###   ########.fr        #
+#    Updated: 2024/07/24 12:13:30 by avialle-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,10 +50,10 @@ all:		force $(NAME)
 m:			clear $(NAME)
 
 $(NAME):	$(OBJ) libft/libft.a
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LDFLAGS) -o $(NAME)
 	@echo "$(MESSAGE_DONE2)"
 
-obj/%.o:	src/%.c include/cub3D.h Makefile libft/libft.h libft/libft.a
+obj/%.o:	src/%.c includes/cub3D.h Makefile libft/libft.h libft/libft.a
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

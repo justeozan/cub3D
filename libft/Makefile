@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
+#    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 16:43:33 by ozasahin          #+#    #+#              #
-#    Updated: 2024/05/16 13:53:08 by ozasahin         ###   ########.fr        #
+#    Updated: 2024/07/24 12:01:43 by avialle-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,8 +98,8 @@ SRCS_DIR	=	$(addprefix src/, $(SRCS))
 OBJS		=	$(addprefix obj/, $(SRCS:.c=.o))
 
 # Controls
-CC			=	cc -g3
-CFLAGS		=	-Wall -Wextra -Werror
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror -g3
 INCLUDES	=	-Iinclude -Ilibft
 LINKS		=	-Llibft -lft -L/usr/lib
 RM			=	rm -rf
