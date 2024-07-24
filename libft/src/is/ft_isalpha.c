@@ -6,12 +6,16 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:28:18 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/02/13 16:56:22 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:04:13 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
+/**
+ * @brief a-z, A-Z
+ * @return “true” if it's an alpha 
+*/
 int	ft_isalpha(int c)
 {
 	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
