@@ -6,7 +6,7 @@
 #    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 16:43:33 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/24 14:47:21 by ozasahin         ###   ########.fr        #
+#    Updated: 2024/07/24 15:56:27 by ozasahin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS	=	\
 			\
 			gc/gc_add.c\
 			gc/gc_calloc.c\
+			gc/gc_ptr.c\
 			gc/gc_clear.c\
 			gc/gc_del_one.c\
 			gc/gc_itoa.c\
@@ -45,7 +46,6 @@ SRCS	=	\
 			\
 			gnl/get_next_line_utils.c\
 			gnl/get_next_line.c\
-			gnl/get_file.c\
 			\
 			is/ft_isalnum.c\
 			is/ft_isalpha.c\
@@ -88,6 +88,7 @@ SRCS	=	\
 			str/ft_strmapi.c\
 			str/ft_strncmp.c\
 			str/ft_strnstr.c\
+			str/ft_strnstrs.c\
 			str/ft_strrchr.c\
 			str/ft_strtrim.c\
 			str/ft_substr.c\
