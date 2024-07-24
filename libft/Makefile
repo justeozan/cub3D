@@ -6,7 +6,7 @@
 #    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 16:43:33 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/24 15:48:16 by avialle-         ###   ########.fr        #
+#    Updated: 2024/07/24 16:12:42 by avialle-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,7 @@ SRCS	=	\
 			str/ft_strmapi.c\
 			str/ft_strncmp.c\
 			str/ft_strnstr.c\
+			str/ft_strnstrs.c\
 			str/ft_strrchr.c\
 			str/ft_strtrim.c\
 			str/ft_substr.c\
