@@ -185,6 +185,11 @@ static char **get_file(int fd)
 	return (delete_whitespaces(file));
 }
 
+void	parse_textures(char **file)
+{
+	
+}
+
 bool	parse(int ac, char	**args)
 {
 	int		fd;
@@ -202,9 +207,7 @@ bool	parse(int ac, char	**args)
 	// for (int i = 0; file[i]; i++)
 	// 	ft_printf("%s", file[i]);
 	
-	
-
-	// check_textures(file);
+	parse_textures(file);
 	// check_color(file, "F ");
 	// check_color(file, "C ");
 	return (true);
