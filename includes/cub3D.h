@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:10:14 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/24 14:07:43 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:02:08 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,12 @@
 # define ERR_TEXTURE "Error: texture(s) file(s) missing or bad format"
 
 /*=== Structures ===*/
-
+enum e_gc_id
+{
+	DATA,
+	MATRIX,
+	TMP
+};
 typedef struct s_matrix
 {
 	int	x;
