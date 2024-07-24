@@ -29,44 +29,42 @@ static char **get_file(int fd)
 	return (file);
 }
 
-static void	check_one_texture(char **file, char *direction)
-{
-	int		i;
-	int		j;
-	char	*texture;
-	int		fd_texture;
+// static void	check_one_texture(char **file, char *direction)
+// {
+// 	int		i;
+// 	int		j;
+// 	char	*texture;
+// 	int		fd_texture;
 
-	i = -1;
-	while (file[++i])
-	{
-		j = 0;
-		while (file[i][j] == ' ')
-			j++;
-		if (ft_strnstr(file[i], direction, 3))
-		{
-			j = 3;
-			while (file[i][j] == ' ')
-				j++;
-			texture = gc_strdup(&file[i][j], TMP);
-			ft_printf("j = %d, texture = %s\n", j, texture);
-			fd_texture = open(texture, O_RDONLY);
-			if (fd_texture < 1 || !ft_strnstr(&file[i][j], ".xpm", 3))
-				ft_exit(ERR_TEXTURE, EXIT_FAILURE);
-		}
-	}
-}
+// 	i = -1;
+// 	while (file[++i])
+// 	{
+// 		j = 0;
+// 		while (file[i][j] == ' ')
+// 			j++;
+// 		if (ft_strnstr(file[i], direction, 3))
+// 		{
+// 			j += 3;
+// 			while (file[i][j] == ' ')
+// 				j++;
+// 			texture = gc_strdup(&file[i][j], TMP);
+// 			fd_texture = open(texture, O_RDONLY);
+// 			ft_printf("fd = %d, j = %d, texture = %s\n", fd_texture, j, texture);
+// 			if (fd_texture < 1 || !ft_strnstr2(&file[i][j], ".xpm", 4))
+// 				ft_exit(ERR_TEXTURE, EXIT_FAILURE);
+// 		}
+// 	}
+// }
 
 static void	check_textures(char **file)
 {
-	// if (ft_strnstrs(file, "NO ") != 1
-	// 	|| ft_strnstrs(file, "SO ") != 1
-	// 	|| ft_strnstrs(file, "WE ") != 1
-	// 	|| ft_strnstrs(file, "EA ") != 1)
-	// 	ft_exit(ERR_TEXTURE, EXIT_FAILURE);
-	check_one_texture(file, "NO ");
-	check_one_texture(file, "SO ");
-	check_one_texture(file, "WE ");
-	check_one_texture(file, "EA ");
+	int	i;
+	if (!ft_strnstrs(file, "NO ", 3) || !ft_strnstrs(file, "SO ", 3)
+		|| !ft_strnstrs(file, "WE ", 3) || !ft_strnstrs(file, "EA ", 3))
+		ft_exit(ERR_TEXTURE, EXIT_FAILURE);
+	i = 0;
+	while (file[i])
+		check_one_texture(file, "NO ");
 }
 
 // static bool	check_colors(char **file)
