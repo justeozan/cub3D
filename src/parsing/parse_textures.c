@@ -21,8 +21,10 @@ void	check_file(char *file)
 	int	fd;
 
 	fd = open(file, O_RDONLY);
+	ft_printf("fd = %d\n", fd);
 	if (fd < 1)
 		ft_exit(ERR_FILE, EXIT_FAILURE);
+	close(fd);
 }
 
 void	save_texture(t_data *data, char *texture, char dir)
@@ -42,12 +44,13 @@ void	save_texture(t_data *data, char *texture, char dir)
 
 void	parse_texture(t_data *data, char *line)
 {
-	char	*texture;
 	char	dir;
 
 	check_double_texture(data, line);
 	check_xpm(line);
-	check_file(&line[3]);
 	dir = line[0];
+	ft_printf("dir = %c\n", dir);
+	ft_printf("line = %s\n", &line[3]);
+	check_file(&line[3]);
 	save_texture(data, &line[3], dir);
 }

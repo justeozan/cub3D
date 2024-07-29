@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:10:14 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/29 16:17:22 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:06:33 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_data
 	char		*f;
 	char		*c;
 	t_matrix	*matrix;
+	char		**file;
 }	t_data;
 /*=== Fonctions ===*/
 // check_map.c
@@ -79,6 +80,6 @@ void	parse_texture(t_data *data, char *line);
 // error.c
 void	print_error_msg(char *str);
 void	ft_exit(char *str, int error_code);
-bool	parse(int ac, char	**args);
+t_data	*parse(int ac, char	**args);
 
 #endif

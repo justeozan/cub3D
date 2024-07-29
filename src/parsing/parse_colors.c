@@ -58,10 +58,10 @@ static void	check_format_color(char *line, int start)
 void	parse_colors(t_data *data, char *line)
 {
 	char	**color;
-	char 	rgb[3];
+	int		rgb[3];
 	int		i;
 
-	if (data->f && line[0] == 'F' || data->c && line[0] == 'C')
+	if ((data->f && line[0] == 'F') || (data->c && line[0] == 'C'))
 		ft_exit(ERR_TEXTURE, EXIT_FAILURE);
 	check_format_color(line, 3);
 	color = gc_split(&line[3], ',', TMP);

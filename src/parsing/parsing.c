@@ -94,6 +94,14 @@ char **delete_whitespaces(char **file)
 	return (file);
 }
 
+// void	free_2d()
+// {
+// 	int	i;
+
+// 	i = 0
+// 	while ()
+// }
+
 static char **get_file(int fd)
 {
 	char	**file;
@@ -117,6 +125,7 @@ static char **get_file(int fd)
 			if (!tmp)
 				return (ft_exit(ERR_MALLOC, EXIT_FAILURE), NULL);
 			file = tmp;
+			free_2d(tmp);
 		}
 		file[i] = get_next_line(fd);
 	}
@@ -148,25 +157,25 @@ void	get_textures_and_colors(t_data *data, char **file)
 	}
 }
 
-bool	parse(int ac, char	**args)
+t_data	*parse(int ac, char	**args)
 {
 	int		fd;
-	char	**file;
+	t_data	*data;
 
 	if (!check_args(ac, args))
 		ft_exit(ERR_ARGS, EXIT_FAILURE);
 	fd = open(args[1], O_RDONLY);
 	if (fd < 1)
 		ft_exit(ERR_FILE, EXIT_FAILURE);
-	file = get_file(fd);
+	data = (t_data *)gc_calloc(sizeof(t_data), 1, DATA);
+	data->file = get_file(fd);
 	close(fd);
 	/*Affichage*/
-	for (int i = 0; file[i]; i++)
-		ft_printf("%s", file[i]);
-
-	get_texture_and_color();
+	for (int i = 0; data->file[i]; i++)
+		ft_printf("%s", data->file[i]);
+	get_textures_and_colors(data, data->file);
 
 	// check_map(file);
 	// parse_textures(file);
-	return (true);
+	return (data);
 }

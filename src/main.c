@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/29 14:16:21 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/29 16:21:21 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main(int ac, char **av)
 {
-	if (parse(ac, av))
-		return (1);
+	t_data	*data;
+
+	data = parse(ac, av);
 	return (0);
 }

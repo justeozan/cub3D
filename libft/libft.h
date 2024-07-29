@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:21:30 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/24 16:24:45 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:06:54 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdbool.h>
 # include <stddef.h>
 # include <stdarg.h>
+
 
 /* A simple structure to create a singly linked list.*/
 typedef struct s_list

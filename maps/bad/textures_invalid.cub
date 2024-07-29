@@ -1,6 +1,6 @@
-NO sprites/test/north.xpm
+NO sprites/test/north.xp
 SO sprites/test/south.xpm
-WE sprites/test/x
+WE sprites/test/xpm
 EA sprites/test/east.xpm
 
 F 20,20,20
