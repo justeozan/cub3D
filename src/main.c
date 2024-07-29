@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:53:04 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/24 22:00:32 by sei              ###   ########.fr       */
+/*   Updated: 2024/07/29 14:16:21 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,4 @@ int	main(int ac, char **av)
 	if (parse(ac, av))
 		return (1);
 	return (0);
-}
-
-void ceci_est_un_test(void)
-{
-	ft_printf("test");
 }

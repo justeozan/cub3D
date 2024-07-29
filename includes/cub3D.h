@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:10:14 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/24 22:10:30 by sei              ###   ########.fr       */
+/*   Updated: 2024/07/29 15:56:36 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ enum e_gc_id
 {
 	DATA,
 	MATRIX,
+	TEXTURE,
 	TMP
 };
 typedef struct s_matrix
