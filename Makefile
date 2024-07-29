@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sei <sei@student.42.fr>                    +#+  +:+       +#+         #
+#    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 11:56:01 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/24 22:51:29 by sei              ###   ########.fr        #
+#    Updated: 2024/07/29 11:21:00 by ozasahin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,10 +52,12 @@ $(NAME):	$(OBJ) libft/libft.a
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LDFLAGS) -o $(NAME)
 	@echo "$(MESSAGE_DONE2)"
 
-obj/%.o:	src/%.c includes/cub3D.h Makefile libft/libft.h libft/libft.a
+# includes/cub3D.h Makefile libft/libft.h libft/libft.a
+
+obj/%.o:	src/%.c
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "$(MESSAGE_CLEAR)"
 
 force:
