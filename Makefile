@@ -6,7 +6,7 @@
 #    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 11:56:01 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/29 11:21:00 by ozasahin         ###   ########.fr        #
+#    Updated: 2024/07/29 16:15:36 by ozasahin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ NAME	=	cub3D
 
 SRC		=		\
 				src/main.c\
+				src/parsing/parse_colors.c\
+				src/parsing/parse_textures.c\
 				src/parsing/parsing.c\
 				src/error.c
 

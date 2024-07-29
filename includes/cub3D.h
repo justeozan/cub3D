@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:10:14 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/29 15:56:36 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/29 16:17:22 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define ERR_ARGS "Error: args format: ./cub3D <map_name.cub>"
 # define ERR_FILE "Error: bad fd"
 # define ERR_TEXTURE "Error: texture(s) file(s) missing or has bad format"
+# define COLOR_FORMAT_ERROR "Error\nInvalid color format.\n"
 
 /*=== Structures ===*/
 enum e_gc_id
@@ -66,6 +67,14 @@ typedef struct s_data
 /*=== Fonctions ===*/
 // check_map.c
 bool	check_map(int ac, char	**args);
+
+// PARSING
+
+// parse_colors.c
+void	parse_colors(t_data *data, char *line);
+
+// error.c
+void	parse_texture(t_data *data, char *line);
 
 // error.c
 void	print_error_msg(char *str);

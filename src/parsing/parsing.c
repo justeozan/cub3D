@@ -123,8 +123,6 @@ static char **get_file(int fd)
 	return (delete_whitespaces(file));
 }
 
-
-
 static bool	check_args(int ac, char	**args)
 {
 	if (ac != 2)
@@ -135,23 +133,20 @@ static bool	check_args(int ac, char	**args)
 	return (true);
 }
 
-
-void get_texture_and_color(char **file)
+void	get_textures_and_colors(t_data *data, char **file)
 {
-	check_textures(file);
+	int i;
 
-	if (NO || SO || WE || EA)
+	i = 0;
+	while (i < 6)
 	{
-		check_sprite()
-		check_flor_and
-	}
-	else if (F || C)
-	{
-		
-
+		if (file[i][0] == 'F' || file[i][0] == 'C')
+			parse_colors(data, file[i]);
+		else if (file[i][0] == 'N' || file[i][0] == 'S' || file[i][0] == 'W' || file[i][0] == 'E')
+			parse_texture(data, file[i]);
+		i++;
 	}
 }
-
 
 bool	parse(int ac, char	**args)
 {
