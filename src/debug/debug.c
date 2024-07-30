@@ -7,8 +7,8 @@ inline void	print_data(t_data *data)
 	ft_printf("SO: %s\n", data->so);
 	ft_printf("WE: %s\n", data->we);
 	ft_printf("EA: %s\n", data->ea);
-	ft_printf("F: %s\n", data->f);
-	ft_printf("C: %s\n", data->c);
+	ft_printf("F: %d\n", data->f);
+	ft_printf("C: %d\n", data->c);
 }
 
 inline void	print_matrix(t_matrix **matrix, int height)

@@ -2,10 +2,10 @@
 
 static char *parse_line_map(char *str)
 {
-	int i;
-	int j;
-	int len;
-	char *new_line;
+	char	*new_line;
+	int		len;
+	int		i;
+	int		j;
 
 	i = -1;
 	len = 0;
@@ -24,10 +24,10 @@ static char *parse_line_map(char *str)
 
 static char *parse_line(char *str)
 {
-	int i;
-	int j;
-	int len;
-	char *new_line;
+	char	*new_line;
+	int		len;
+	int		i;
+	int		j;
 
 	i = -1;
 	len = 0;
@@ -67,9 +67,9 @@ static int	ft_isempty(char *str)
 
 static char **delete_whitespaces(char **file)
 {
+	int	line;
 	int	i;
 	int	j;
-	int	line;
 
 	i = -1;
 	line = 0;
@@ -97,27 +97,19 @@ static char **delete_whitespaces(char **file)
 char **get_file(int fd)
 {
 	char	**file;
-	char	**tmp;
-	int		capacity;
 	int		i;
-	
-	capacity = 10;
-	file = gc_malloc(sizeof(char *) * capacity, TMP);
+
+	file = gc_malloc(sizeof(char *) * 2, TMP);
 	if (!file)
-		return (NULL);
-	i = 0;
-	file[i] = (get_next_line(fd));
+		ft_exit(ERR_MALLOC, EXIT_FAILURE);
+	i = -1;
+	file[++i] = get_next_line(fd);
 	while (file[i])
 	{
 		i++;
-		if (i >= capacity - 1)
-		{
-			capacity *= 2;
-			tmp = gc_realloc(file, sizeof(char *) * (capacity / 2), sizeof(char *) * capacity, TMP);
-			if (!tmp)
-				return (ft_exit(ERR_MALLOC, EXIT_FAILURE), NULL);
-			file = tmp;
-		}
+		file = gc_realloc(file, i, sizeof(char *) * (i + 2), TMP);
+		if (!file)
+			ft_exit(ERR_MALLOC, EXIT_FAILURE);
 		file[i] = get_next_line(fd);
 	}
 	return (delete_whitespaces(file));

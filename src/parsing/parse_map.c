@@ -71,7 +71,6 @@ static void	check_syntax(char **file)
 	}
 	if (count != 1)
 		ft_exit(ERR_MAP, EXIT_FAILURE);
-
 }
 
 // static void	check_corner_wall(char *file)
@@ -148,6 +147,7 @@ static void	check_wall(int height, char **file)
 static void	check_map(t_data **data, char **file)
 {
 	check_syntax(file);
+	// print_file(&(*data)->file[6]);
 	// print_file(&(*data)->file[6]);
 	check_wall((*data)->height, file);
 

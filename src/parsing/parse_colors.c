@@ -1,20 +1,24 @@
 #include "../includes/cub3D.h"
 
-static void	save_color(t_data *data, char c, char *line)
-{
-	if (c == 'F')
-	{
-		data->f = gc_strdup(line, DATA);
-		if (!data->f)
-			ft_exit(ERR_MALLOC, EXIT_FAILURE);
-	}
-	else if (c == 'C')
-	{
-		data->c = gc_strdup(line, DATA);
-		if (!data->c)
-			ft_exit(ERR_MALLOC, EXIT_FAILURE);
-	}
-}
+// static int rgb_to_int(unsigned char r, unsigned char g, unsigned char b)
+// {
+// 	return ((r << 16) | (g << 8) | b);
+// }
+// static void	save_color(t_data *data, char c, char *line)
+// {
+// 	if (c == 'F')
+// 	{
+// 		data->f = gc_strdup(line, DATA);
+// 		if (!data->f)
+// 			ft_exit(ERR_MALLOC, EXIT_FAILURE);
+// 	}
+// 	else if (c == 'C')
+// 	{
+// 		data->c = gc_strdup(line, DATA);
+// 		if (!data->c)
+// 			ft_exit(ERR_MALLOC, EXIT_FAILURE);
+// 	}
+// }
 
 static void	check_format_color(char *line, int start)
 {
@@ -56,5 +60,10 @@ void	parse_colors(t_data *data, char *line)
 		if (rgb[i] < 0 || rgb[i] > 255)
 			ft_exit(ERR_COLOR, EXIT_FAILURE);
 	}
-	save_color(data, line[0], &line[2]);
+	// save_color(data, line[0], &line[2]);
+	ft_printf("R: %d, G: %d, B: %d\n", rgb[0], rgb[1], rgb[2]);
+	if (data->f && line[0] == 'F')
+		data->f = (rgb[0] << 16) | (rgb[1] << 8) | rgb[2];
+	else if (data->c && line[0] == 'C')
+		data->c = (rgb[0] << 16) | (rgb[1] << 8) | rgb[2];
 }

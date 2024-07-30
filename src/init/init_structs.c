@@ -16,8 +16,8 @@ void	init_structs(t_data *data, t_matrix *matrix)
 	data->so = NULL;
 	data->we = NULL;
 	data->ea = NULL;
-	data->f = NULL;
-	data->c = NULL;
+	data->f = 0;
+	data->c = 0;
 	// init_matrix(data->file, &matrix);
 	(void)matrix;
 }
