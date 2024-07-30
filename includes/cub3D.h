@@ -97,6 +97,10 @@ void	print_file(char **file);
 // parse_colors.c
 void	parse_colors(t_data *data, char *line);
 
+// parse_file.c
+char **get_file(int fd);
+
+
 // parse_map.c
 void	get_map(t_data **data, char **file);
 
