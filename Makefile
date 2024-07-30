@@ -1,14 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/03 11:56:01 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/29 16:15:36 by ozasahin         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 .DEFAULT_GOAL: $(NAME)
 
@@ -18,8 +7,10 @@ SRC		=		\
 				src/main.c\
 				src/parsing/parse_colors.c\
 				src/parsing/parse_textures.c\
+				src/debug/debug.c\
 				src/parsing/parsing.c\
-				src/error.c
+				src/error.c\
+				src/main.c
 
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 

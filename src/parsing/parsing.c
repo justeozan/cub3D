@@ -2,24 +2,88 @@
 
 
 
+// static void	check_one_texture(char **file, char *direction)
+// {
+// 	int		i;
+// 	int		j;
+// 	char	*texture;
+// 	int		fd_texture;
 
+// 	i = -1;
+// 	while (file[++i])
+// 	{
+// 		j = 0;
+// 		while (file[i][j] == ' ')
+// 			j++;
+// 		if (ft_strnstr(file[i], direction, 3))
+// 		{
+// 			j += 3;
+// 			while (file[i][j] == ' ')
+// 				j++;
+// 			texture = gc_strdup(&file[i][j], TMP);
+// 			fd_texture = open(texture, O_RDONLY);
+// 			ft_printf("fd = %d, j = %d, texture = %s\n", fd_texture, j, texture);
+// 			if (fd_texture < 1 || !ft_strnstr2(&file[i][j], ".xpm", 4))
+// 				ft_exit(ERR_TEXTURE, EXIT_FAILURE);
+// 		}
+// 	}
+// }
+
+// static void	check_textures(char **file)
+// {
+// 	int	i;
+// 	if (!ft_strnstrs(file, "NO ", 3) || !ft_strnstrs(file, "SO ", 3)
+// 		|| !ft_strnstrs(file, "WE ", 3) || !ft_strnstrs(file, "EA ", 3))
+// 		ft_exit(ERR_TEXTURE, EXIT_FAILURE);
+// 	i = 0;
+// 	while (file[i])
+// 		check_one_texture(file, "NO ");
+// }
 
 // static bool	check_colors(char **file)
 // {
 	
 // }
 
+static bool	check_args(int ac, char	**args)
+{
+	if (ac != 2)
+		return (false);
+	
+	if (!ft_strnstr2(args[1], ".cub", 4))
+		return (false);
+	return (true);
+}
 
+
+// bool	check_map(int ac, char	**args)
+// {
+// 	int		fd;
+// 	char	**file;
+// 	if (!check_args(ac, args))
+// 		ft_exit(ERR_ARGS, EXIT_FAILURE);
+// 	fd = open(args[1], O_RDONLY);
+// 	if (fd < 1)
+// 		return (ft_exit(ERR_FILE, EXIT_FAILURE), false);
+// 	file = get_file(fd);
+// 	close(fd);
+// 	check_textures(file);
+// 	// check_color(file, "F ");
+// 	// check_color(file, "C ");
+// 	return (true);
+// }
 
 // void	check_args(int ac, char	**args)
 // {
-// 	if (!check_args(ac, av))
-// 		return (print_error("args error: format: ./cub3D <map_name.cub>"), ft_exit());
-// 	if (!check_map(av[1]))
-// 		return (print_error("Map error"), ft_exit());
+	// if (!check_args(ac, av))
+	// 	return (print_error("args error: format: ./cub3D <map_name.cub>"), ft_exit());
+	// if (!check_map(av[1]))
+	// 	return (print_error("Map error"), ft_exit());
 // }
 
 // =====================================
+
+
 
 char *parse_line(char *str)
 {
@@ -33,7 +97,6 @@ char *parse_line(char *str)
 	while (str[++i] && str[i] != '\n')
 		if (str[i] != ' ' && str[i] != '\t')
 			len++;
-	// ft_printf("len = %d\n", len);
 	new_line = gc_malloc(sizeof(char) * len + 3, TMP);
 	if (!new_line)
 		return (NULL);
@@ -157,7 +220,7 @@ void	get_textures_and_colors(t_data *data, char **file)
 	}
 }
 
-t_data	*parse(int ac, char	**args)
+bool	parse(int ac, char	**args, t_data *data)
 {
 	int		fd;
 	t_data	*data;
@@ -169,13 +232,13 @@ t_data	*parse(int ac, char	**args)
 		ft_exit(ERR_FILE, EXIT_FAILURE);
 	data = (t_data *)gc_calloc(sizeof(t_data), 1, DATA);
 	data->file = get_file(fd);
+	data->file = get_file(fd);
 	close(fd);
-	/*Affichage*/
-	for (int i = 0; data->file[i]; i++)
-		ft_printf("%s", data->file[i]);
+	print_file(data->file);
 	get_textures_and_colors(data, data->file);
-
+	init_structs(data, data->matrix);
 	// check_map(file);
 	// parse_textures(file);
+	print_structs(data, data->matrix);
 	return (data);
 }

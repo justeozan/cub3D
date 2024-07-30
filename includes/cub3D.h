@@ -1,19 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 11:10:14 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/29 17:06:33 by avialle-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-/*=== Includes ===*/
+/*=================INCLUDES=================*/
 
 #include <unistd.h>
 #include <stdbool.h>
@@ -21,14 +10,14 @@
 #include <stdio.h>
 #include "../libft/libft.h"
 
-/*=== Color ===*/
+/*=================COLORS=================*/
 
 # define RESET	"\033[0m"
 # define RED	"\033[0;31m"
 # define WHITE	"\033[37m"
 # define GREEN	"\033[32m"
 
-/*=== Error messages ===*/
+/*=================ERROR MESSAGES=================*/
 
 # define ERR_MALLOC "Error: Memory allocation failed with malloc.\n"
 # define ERR_ARGS "Error: args format: ./cub3D <map_name.cub>"
@@ -36,16 +25,33 @@
 # define ERR_TEXTURE "Error: texture(s) file(s) missing or has bad format"
 # define COLOR_FORMAT_ERROR "Error\nInvalid color format.\n"
 
-/*=== Structures ===*/
-enum e_gc_id
+
+/*=================STRUCTURES=================*/
+
+/**
+ * @brief Enum for the garbage collector id
+ * @param DATA: data structure
+ * @param MATRIX: matrix structure
+ * @param TMP: temporary structure
+ * @note Start at 1.
+ */
+typedef enum e_gc_id
 {
-	DATA,
+	DATA = 1,
 	MATRIX,
 	TEXTURE,
 	TMP
-};
+}	t_gc_id;
+
+/**
+ * @brief Structure for the map of the game,
+ * @param w: width of the matrix
+ * @param h: height of the matrix
+ */
 typedef struct s_matrix
 {
+	int	w;
+	int	h;
 	int	x;
 	int	y;
 	int	wall;
@@ -54,6 +60,16 @@ typedef struct s_matrix
 	int	zproj;
 }	t_matrix;
 
+/**
+ * @brief Structure for the data of the game,
+ * @param no: path to the north texture
+ * @param so: path to the south texture
+ * @param we: path to the west texture
+ * @param ea: path to the east texture
+ * @param f: path to the floor texture
+ * @param c: path to the ceiling texture
+ * @param file: the map file (with no whitespaces)
+ */
 typedef struct s_data
 {
 	char		*no;
@@ -62,10 +78,17 @@ typedef struct s_data
 	char		*ea;
 	char		*f;
 	char		*c;
+	char		**file;
 	t_matrix	*matrix;
 	char		**file;
 }	t_data;
-/*=== Fonctions ===*/
+
+/*=================FUNTIONCS=================*/
+
+// debug.c
+void	print_structs(t_data *data, t_matrix *matrix);
+void	print_file(char **file);
+
 // check_map.c
 bool	check_map(int ac, char	**args);
 
