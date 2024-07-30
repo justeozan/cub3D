@@ -9,8 +9,6 @@ static bool	check_args(int ac, char	**args)
 	return (true);
 }
 
-
-
 void	get_textures_and_colors(t_data *data, char **file)
 {
 	int i;

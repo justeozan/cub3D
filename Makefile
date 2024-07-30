@@ -4,6 +4,10 @@
 NAME	=	cub3D
 
 SRC		=		\
+				src/debug/debug.c\
+				\
+				src/init/init_structs.c\
+				\
 				src/parsing/parse_colors.c\
 				src/parsing/parse_file.c\
 				src/parsing/parse_map.c\
@@ -11,7 +15,6 @@ SRC		=		\
 				src/parsing/parsing.c\
 				\
 				src/error.c\
-				src/main.c\
 				src/main.c
 
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
