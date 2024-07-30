@@ -23,12 +23,10 @@ inline void	print_matrix(t_matrix **matrix, int height)
 		j = 0;
 		while (j < matrix[i][j].width - 1)
 		{
-			ft_printf("x: %d\n", matrix[i][j].x);
-			ft_printf("y: %d\n", matrix[i][j].y);
-			ft_printf("wall: %d\n", matrix[i][j].wall);
-			ft_printf("player: %c\n\n", matrix[i][j].player);
+			ft_printf("x: %d, y: %d, wall: %d, player: %c\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].wall, matrix[i][j].player);
 			j++;
 		}
+		ft_printf("\n");
 		i++;
 	}
 }
