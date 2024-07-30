@@ -33,8 +33,8 @@ MESSAGE_OK			=	[\033[32mOK\033[0m]
 MESSAGE_COMPILE		=	$(COLOR_BLUE)Compiling :$(COLOR_RESET)
 MESSAGE_DONE		=	$(COLOR_GREEN)Compilation completed.$(COLOR_RESET)
 MESSAGE_DONE2		=	$(MESSAGE_OK) cub3D compiled.
-MESSAGE_CLEAN		=	$(COLOR_PURPLE)Cleaning up...$(COLOR_RESET)
-MESSAGE_CLEAN_DONE	=	$(COLOR_PURPLE)Cleanup completed.$(COLOR_RESET)
+MESSAGE_CLEAN		=	$(COLOR_PURPLE)Cub3D cleanup completed.$(COLOR_RESET)
+MESSAGE_CLEAN_MLX	=	$(COLOR_PURPLE)MLX cleanup completed.$(COLOR_RESET)
 
 all:		force $(NAME)
 
@@ -55,16 +55,15 @@ force:
 		@make -C minilibx-linux/ -s
 
 clean:
-	@echo "$(MESSAGE_CLEAN)\c"
 	@$(RM) obj
 	@make clean -C libft -s
+	@echo "$(MESSAGE_CLEAN)"
 	@make clean -C minilibx-linux -s
-	@echo "$(MESSAGE_CLEAN_DONE)"
+	@echo "$(MESSAGE_CLEAN_MLX)"
 
 fclean:		clean
 	@$(RM) $(NAME)
-	@make fclean -C libft -s
-	@make clean -C minilibx-linux -s
+	@$(RM) libft/libft.a
 
 re:		fclean all
 

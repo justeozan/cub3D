@@ -1,8 +1,0 @@
-# Les optimisations 
-
-on peut optimiser en ajoutant des "static" aux fonctions d'un meme fichier afin d'aleger le header
-
-On peut inclure une foncyion pour quel secrive une fois pour eviter les appels de fonction trop recurretes avec : "inline" devant la fonction
-tel que :
-
-inline void ft_exemple(void){}

@@ -33,7 +33,6 @@ char *parse_line(char *str)
 	while (str[++i] && str[i] != '\n')
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 			new_line[++j] = str[i];
-	// new_line[++j] = '\n';
 	new_line[++j] = '\0';
 	return (new_line);
 }
@@ -93,7 +92,7 @@ static char **get_file(int fd)
 	if (!file)
 		return (NULL);
 	i = 0;
-	file[i] = get_next_line(fd);
+	file[i] = (get_next_line(fd));
 	while (file[i])
 	{
 		i++;

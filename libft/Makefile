@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
+#    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 16:43:33 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/24 16:12:42 by avialle-         ###   ########.fr        #
+#    Updated: 2024/07/30 10:14:52 by ozasahin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,7 +120,7 @@ MESSAGE_OK			=	[\033[32mOK\033[0m]
 MESSAGE_COMPILE		=	$(COLOR_BLUE)Compiling :$(COLOR_RESET)
 MESSAGE_DONE		=	$(MESSAGE_OK) libft compiled.
 MESSAGE_CLEAN		=	$(COLOR_PURPLE)Cleaning up...$(COLOR_RESET)
-MESSAGE_CLEAN_DONE	=	$(COLOR_PURPLE)Cleanup completed.$(COLOR_RESET)
+MESSAGE_CLEAN_DONE	=	$(COLOR_PURPLE)libft cleanup completed.$(COLOR_RESET)
 
 all:		${NAME}
 
@@ -128,18 +128,13 @@ ${NAME}:	${OBJS}
 	@ar rc ${NAME} ${OBJS}
 	@echo "$(MESSAGE_DONE)"
 
-# i can add "| obj"
 obj/%.o:	src/%.c
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(CLEAR_MESSAGE)"
 
-# obj:
-# 	@mkdir -p obj
-
 clean:
-	@echo "$(MESSAGE_CLEAN)\c"
 	@${RM} obj
 	@echo "$(MESSAGE_CLEAN_DONE)"
 
