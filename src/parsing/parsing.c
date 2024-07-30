@@ -42,8 +42,8 @@ t_data	*parse(int ac, char	**args)
 	close(fd);
 	print_file(data->file);
 	get_textures_and_colors(data, data->file);
-	get_map(&data, &(data->file[6]));
 	print_data(data);
-	// print_matrix(data-<matrix);
+	get_map(&data, &(data->file[6]));
+	print_matrix(data->matrix, data->height);
 	return (data);
 }

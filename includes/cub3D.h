@@ -25,7 +25,7 @@
 # define ERR_TEXTURE "Error\nTexture(s) file(s) missing or has bad format."
 # define ERR_COLOR "Error\nInvalid color format."
 # define ERR_MAP "Error\nInvalid map format."
-
+# define ERR_DATA "Error\nColor or Texture is missing."
 
 
 /*=================STRUCTURES=================*/
@@ -52,15 +52,11 @@ typedef enum e_gc_id
  */
 typedef struct s_matrix
 {
-	int	width;
-	int	w;
-	int	h;
-	int	x;
-	int	y;
-	int	wall;
-	int	xproj;
-	int	yproj;
-	int	zproj;
+	int		width;
+	char	player;
+	int		x;
+	int		y;
+	bool	wall;
 }	t_matrix;
 
 /**
@@ -82,7 +78,7 @@ typedef struct s_data
 	char		*ea;
 	char		*f;
 	char		*c;
-	t_matrix	*matrix;
+	t_matrix	**matrix;
 	char		**file;
 }	t_data;
 
@@ -93,7 +89,7 @@ typedef struct s_data
 /*                 debug.c                 */
 
 void	print_data(t_data *data);
-void	print_matrix(t_matrix *matrix);
+void	print_matrix(t_matrix **matrix, int height);
 void	print_file(char **file);
 
 /* ________________ INIT ________________ */

@@ -11,15 +11,26 @@ inline void	print_data(t_data *data)
 	ft_printf("C: %s\n", data->c);
 }
 
-inline void	print_matrix(t_matrix *matrix)
+inline void	print_matrix(t_matrix **matrix, int height)
 {
+	int	i;
+	int	j;
+
+	i = 0;
 	ft_printf("\n-MATRIX STRUCTURE-\n");
-	ft_printf("x: %d\n", matrix->x);
-	ft_printf("y: %d\n", matrix->y);
-	ft_printf("wall: %d\n", matrix->wall);
-	ft_printf("xproj: %d\n", matrix->xproj);
-	ft_printf("yproj: %d\n", matrix->yproj);
-	ft_printf("zproj: %d\n", matrix->zproj);
+	while (i < height)
+	{
+		j = 0;
+		while (j < matrix[i][j].width - 1)
+		{
+			ft_printf("x: %d\n", matrix[i][j].x);
+			ft_printf("y: %d\n", matrix[i][j].y);
+			ft_printf("wall: %d\n", matrix[i][j].wall);
+			ft_printf("player: %c\n\n", matrix[i][j].player);
+			j++;
+		}
+		i++;
+	}
 }
 
 inline void	print_file(char **file)

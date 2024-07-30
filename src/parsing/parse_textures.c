@@ -22,7 +22,9 @@ void	check_file(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 1)
+	{
 		ft_exit(ERR_FILE, EXIT_FAILURE);
+	}
 	close(fd);
 }
 

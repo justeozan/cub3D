@@ -71,25 +71,22 @@ static char **delete_whitespaces(char **file)
 	int	j;
 	int	line;
 
-	i = 0;
+	i = -1;
 	line = 0;
-	while (file[i])
+	while (file[++i])
 	{
 		while (ft_isempty(file[i]) > 0)
 			i++;
 		if (!file[i])
 			break;
 		j = 0;
+		while (file[i][j] == ' ')
+			j++;
 		if (ft_isalpha(file[i][j]))
-		{
-			while (file[i][j] == ' ')
-				j++;
 			file[line] = gc_strdup(parse_line(&file[i][j]), TMP);
-		}
 		else
 			file[line] = gc_strdup(parse_line_map(file[i]), TMP);
 		line++;
-		i++;
 	}
 	file[line] = NULL;
 	while (file[line])
