@@ -100,7 +100,7 @@ static char **get_file(int fd)
 		if (i >= capacity - 1)
 		{
 			capacity *= 2;
-			tmp = gc_realloc(file, capacity / 2, sizeof(char *) * capacity, TMP);
+			tmp = gc_realloc(file, sizeof(char *) * (capacity / 2), sizeof(char *) * capacity, TMP);
 			if (!tmp)
 				return (ft_exit(ERR_MALLOC, EXIT_FAILURE), NULL);
 			file = tmp;
