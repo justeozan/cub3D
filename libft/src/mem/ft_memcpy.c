@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:29:25 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/30 08:32:30 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/30 12:43:09 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		d[i] = s[i];
 		i++;
 	}
-	ft_printf("la\n");
 	return (d);
 }

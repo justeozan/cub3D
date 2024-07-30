@@ -52,6 +52,7 @@ typedef enum e_gc_id
  */
 typedef struct s_matrix
 {
+	int	width;
 	int	w;
 	int	h;
 	int	x;

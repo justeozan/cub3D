@@ -29,5 +29,10 @@ inline void	print_file(char **file)
 	i = -1;
 	ft_printf("\n-FILE CONTENT-\n");
 	while (file[++i])
-		ft_printf("|%s\n", file[i]);
+	{
+		if (i < 10)
+			ft_printf("%d  |%s\n", i, file[i]);
+		else
+			ft_printf("%d |%s\n", i, file[i]);
+	}
 }

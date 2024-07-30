@@ -44,7 +44,7 @@ void	parse_colors(t_data *data, char *line)
 	if ((data->f && line[0] == 'F') || (data->c && line[0] == 'C'))
 		ft_exit(ERR_TEXTURE, EXIT_FAILURE);
 	check_format_color(line, 3);
-	color = gc_split(&line[3], ',', TMP);
+	color = gc_split(&line[2], ',', TMP);
 	if (!color)
 		ft_exit(ERR_MALLOC, EXIT_FAILURE);
 	i = -1;
@@ -56,5 +56,5 @@ void	parse_colors(t_data *data, char *line)
 		if (rgb[i] < 0 || rgb[i] > 255)
 			ft_exit(ERR_COLOR, EXIT_FAILURE);
 	}
-	save_color(data, line[0], &line[3]);
+	save_color(data, line[0], &line[2]);
 }

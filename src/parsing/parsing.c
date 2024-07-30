@@ -41,7 +41,6 @@ t_data	*parse(int ac, char	**args)
 	data->file = get_file(fd);
 	close(fd);
 	print_file(data->file);
-	ft_printf("la\n");
 	get_textures_and_colors(data, data->file);
 	get_map(&data, &(data->file[6]));
 	print_data(data);
