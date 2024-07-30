@@ -4,7 +4,6 @@ static bool	check_args(int ac, char	**args)
 {
 	if (ac != 2)
 		return (false);
-	
 	if (!ft_strnstr2(args[1], ".cub", 4))
 		return (false);
 	return (true);
@@ -30,8 +29,8 @@ void	get_textures_and_colors(t_data *data, char **file)
 
 t_data	*parse(int ac, char	**args)
 {
-	int		fd;
 	t_data	*data;
+	int		fd;
 
 	if (!check_args(ac, args))
 		ft_exit(ERR_ARGS, EXIT_FAILURE);
@@ -44,6 +43,7 @@ t_data	*parse(int ac, char	**args)
 	data->file = get_file(fd);
 	close(fd);
 	print_file(data->file);
+	ft_printf("la\n");
 	get_textures_and_colors(data, data->file);
 	get_map(&data, &(data->file[6]));
 	print_data(data);

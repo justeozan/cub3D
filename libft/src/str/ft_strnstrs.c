@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstrs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:09:37 by avialle-          #+#    #+#             */
-/*   Updated: 2024/07/24 16:56:58 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/30 10:53:54 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,3 @@ bool	ft_strnstrs(char **s1, char *s2, size_t len)
 		return (false);
 	return (true);
 }
-

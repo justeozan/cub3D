@@ -1,25 +1,5 @@
 #include "../includes/cub3D.h"
 
-// static bool	is_int_overflow(char *str_nbr)
-// {
-// 	int		sign;
-// 	size_t	str_len;
-
-// 	str_len = ft_strlen(str_nbr);
-// 	if (str_nbr[0] == '-')
-// 		sign = -1;
-// 	else
-// 		sign = 1;
-// 	if ((sign < 0 && str_len > 11) || (sign > 0 && str_len > 10))
-// 		return (true);
-// 	else if ((sign < 0 && str_len < 11) || (sign > 0 && str_len < 10))
-// 		return (false);
-// 	if ((sign < 0 && ft_strcmp(str_nbr, "-2147483648") > 0)
-// 		|| (sign > 0 && ft_strcmp(str_nbr, "2147483647") > 0))
-// 		return (true);
-// 	return (false);
-// }
-
 static void	save_color(t_data *data, char c, char *line)
 {
 	if (c == 'F')
@@ -72,8 +52,6 @@ void	parse_colors(t_data *data, char *line)
 	{
 		if (!color[i])
 			ft_exit(ERR_COLOR, EXIT_FAILURE);
-		// if (is_int_overflow(color[i]))
-		// 	ft_exit(ERR_COLOR, EXIT_FAILURE);
 		rgb[i] = ft_atoi(color[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
 			ft_exit(ERR_COLOR, EXIT_FAILURE);

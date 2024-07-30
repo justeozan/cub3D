@@ -85,29 +85,59 @@ typedef struct s_data
 	char		**file;
 }	t_data;
 
-/*=================FUNTIONCS=================*/
+/*=================FUNCTIONS=================*/
 
-// debug.c
+/* ________________ DEBUG ________________ */
+
+/*                 debug.c                 */
+
 void	print_data(t_data *data);
 void	print_matrix(t_matrix *matrix);
 void	print_file(char **file);
 
-// PARSING
+/* ________________ INIT ________________ */
 
-// parse_colors.c
+
+/* _______________ PARSING _______________ */
+
+/**
+ * @file	---- parse_colors.c ----
+ * @brief	Parse the colors of the map file
+*/
 void	parse_colors(t_data *data, char *line);
 
-// parse_file.c
-char **get_file(int fd);
+/**
+ * @file	---- parse_map.c ----
+ * @brief	Parse the map of the map file
+*/
+char	**get_file(int fd);
 
-
-// parse_map.c
+/**
+ * @file	---- parse_map.c ----
+ * @brief	Parse the map of the map file
+*/
 void	get_map(t_data **data, char **file);
 
-// error.c
+/**
+ * @file	---- parse_file.c ----
+ * @brief	Parse the map file
+*/
+char	**get_file(int fd);
+
+/**
+ * @file	---- parse_textures.c ----
+ * @brief	Parse the textures of the map file
+*/
 void	parse_texture(t_data *data, char *line);
 
-// error.c
+/**
+ * @file	---- parsing.c ----
+ * @brief	Parse the map file
+*/
+t_data	*parse(int ac, char	**args);
+
+/*             error.c             */
+
 void	print_error_msg(char *str);
 void	ft_exit(char *str, int error_code);
 t_data	*parse(int ac, char	**args);

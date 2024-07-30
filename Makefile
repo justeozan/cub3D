@@ -8,9 +8,10 @@ SRC		=		\
 				src/parsing/parse_file.c\
 				src/parsing/parse_map.c\
 				src/parsing/parse_textures.c\
-				src/debug/debug.c\
 				src/parsing/parsing.c\
+				\
 				src/error.c\
+				src/main.c\
 				src/main.c
 
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))

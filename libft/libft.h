@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:21:30 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/07/29 17:06:54 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/07/30 10:53:24 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdbool.h>
 # include <stddef.h>
 # include <stdarg.h>
-
 
 /* A simple structure to create a singly linked list.*/
 typedef struct s_list
@@ -109,7 +108,6 @@ size_t	ft_strlen_gnl(char *str);
 char	*str_init(char *s);
 char	*buffer_init(int id, t_id *buffer_memory);
 
-
 /*-------------is-------------*/
 
 int		ft_isalpha(int c);
@@ -154,8 +152,8 @@ void	print_unbr_fd(int fd, unsigned int nbr, size_t *len);
 void	print_char_fd(int fd, char c, size_t *len);
 void	print_str_fd(int fd, char *s, size_t *len);
 void	print_flag_fd(int fd, va_list args, char *str, size_t *len);
-/* The printf_fd function is like printf, but it outputs the formatted text to a 
-given file descriptor instead of the standard output.*/
+/* The printf_fd function is like printf, but it outputs the formatted
+text to a given file descriptor instead of the standard output.*/
 int		ft_printf_fd(int fd, const char *str, ...);
 
 void	ft_print_str(char *s, size_t *octet);

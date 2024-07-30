@@ -79,9 +79,9 @@ bool	check_arround(char **file, int i, int j)
 	((file[i][j + 1] != '0' && file[i][j + 1] != '1') || (file[i][j - 1] != '0' && file[i][j - 1] != '1') || (file[i + 1][j] != '0' && file[i + 1][j] != '1') || (file[i - 1][j] != '0' && file[i - 1][j] != '1') ))
 	{
 		ft_printf("i = %d, j = %d\n", i, j);
-		ft_exit(ERR_MAP, EXIT_FAILURE);
+		return (true);
 	}
-	return (true);
+	return (false);
 }
 
 void	check_wall(int height, char **file)
