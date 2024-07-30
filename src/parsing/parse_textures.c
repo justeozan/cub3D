@@ -12,7 +12,7 @@ void	check_xpm(char *line)
 	int	len;
 
 	len = ft_strlen(line);
-	if (!ft_strnstr(line, ".xpm\n", 5))
+	if (!ft_strnstr2(line, ".xpm", 4))
 		ft_exit(ERR_TEXTURE, EXIT_FAILURE);
 }
 
@@ -49,8 +49,6 @@ void	parse_texture(t_data *data, char *line)
 	check_double_texture(data, line);
 	check_xpm(line);
 	dir = line[0];
-	ft_printf("dir = %c\n", dir);
-	ft_printf("line = %s\n", &line[3]);
 	check_file(&line[3]);
 	save_texture(data, &line[3], dir);
 }

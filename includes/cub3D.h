@@ -19,11 +19,12 @@
 
 /*=================ERROR MESSAGES=================*/
 
-# define ERR_MALLOC "Error: Memory allocation failed with malloc.\n"
-# define ERR_ARGS "Error: args format: ./cub3D <map_name.cub>"
-# define ERR_FILE "Error: bad fd"
-# define ERR_TEXTURE "Error: texture(s) file(s) missing or has bad format"
-# define COLOR_FORMAT_ERROR "Error\nInvalid color format.\n"
+# define ERR_MALLOC "Error: Memory allocation failed with malloc."
+# define ERR_ARGS "Error: args format: ./cub3D <map_name.cub>."
+# define ERR_FILE "Error: bad fd."
+# define ERR_TEXTURE "Error: texture(s) file(s) missing or has bad format."
+# define COLOR_FORMAT_ERROR "Error: Invalid color format."
+
 
 
 /*=================STRUCTURES=================*/
@@ -78,7 +79,6 @@ typedef struct s_data
 	char		*ea;
 	char		*f;
 	char		*c;
-	char		**file;
 	t_matrix	*matrix;
 	char		**file;
 }	t_data;

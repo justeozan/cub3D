@@ -25,5 +25,5 @@ inline void	print_file(char **file)
 	i = -1;
 	ft_printf("\n-FILE CONTENT-\n");
 	while (file[++i])
-		ft_printf("|%s", file[i]);
+		ft_printf("|%s\n", file[i]);
 }

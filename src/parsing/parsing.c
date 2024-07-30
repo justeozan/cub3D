@@ -33,7 +33,7 @@ char *parse_line(char *str)
 	while (str[++i] && str[i] != '\n')
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 			new_line[++j] = str[i];
-	new_line[++j] = '\n';
+	// new_line[++j] = '\n';
 	new_line[++j] = '\0';
 	return (new_line);
 }
@@ -125,7 +125,7 @@ void	get_textures_and_colors(t_data *data, char **file)
 	}
 }
 
-bool	parse(int ac, char	**args, t_data *data)
+t_data	*parse(int ac, char	**args)
 {
 	int		fd;
 	t_data	*data;
@@ -136,12 +136,12 @@ bool	parse(int ac, char	**args, t_data *data)
 	if (fd < 1)
 		ft_exit(ERR_FILE, EXIT_FAILURE);
 	data = (t_data *)gc_calloc(sizeof(t_data), 1, DATA);
-	data->file = get_file(fd);
+	if (!data)
+		ft_exit(ERR_MALLOC, EXIT_FAILURE);
 	data->file = get_file(fd);
 	close(fd);
 	print_file(data->file);
 	get_textures_and_colors(data, data->file);
-	init_structs(data, data->matrix);
 	// check_map(file);
 	// parse_textures(file);
 	print_structs(data, data->matrix);

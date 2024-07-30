@@ -9,8 +9,7 @@ SRC		=		\
 				src/parsing/parse_textures.c\
 				src/debug/debug.c\
 				src/parsing/parsing.c\
-				src/error.c\
-				src/main.c
+				src/error.c
 
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 
@@ -45,9 +44,7 @@ $(NAME):	$(OBJ) libft/libft.a
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LDFLAGS) -o $(NAME)
 	@echo "$(MESSAGE_DONE2)"
 
-# includes/cub3D.h Makefile libft/libft.h libft/libft.a
-
-obj/%.o:	src/%.c
+obj/%.o:	src/%.c includes/cub3D.h Makefile libft/libft.h libft/libft.a
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
