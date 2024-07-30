@@ -1,5 +1,27 @@
 #include "../includes/cub3D.h"
 
+static char *parse_line_map(char *str)
+{
+	int i;
+	int j;
+	int len;
+	char *new_line;
+
+	i = -1;
+	len = 0;
+	while (str[++i] && str[i] != '\n')
+			len++;
+	new_line = gc_malloc(sizeof(char) * len + 1, TMP);
+	if (!new_line)
+		return (NULL);
+	i = -1;
+	j = -1;
+	while (str[++i] && str[i] != '\n')
+		new_line[++j] = str[i];
+	new_line[++j] = '\0';
+	return (new_line);
+}
+
 static char *parse_line(char *str)
 {
 	int i;
@@ -58,9 +80,14 @@ static char **delete_whitespaces(char **file)
 		if (!file[i])
 			break;
 		j = 0;
-		while (file[i][j] == ' ')
-			j++;
-		file[line] = gc_strdup(parse_line(&file[i][j]), TMP);
+		if (ft_isalpha(file[i][j]))
+		{
+			while (file[i][j] == ' ')
+				j++;
+			file[line] = gc_strdup(parse_line(&file[i][j]), TMP);
+		}
+		else
+			file[line] = gc_strdup(parse_line_map(file[i]), TMP);
 		line++;
 		i++;
 	}
