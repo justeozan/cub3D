@@ -1,6 +1,6 @@
 #include "../../includes/cub3D.h"
 
-inline void	print_structs(t_data *data, t_matrix *matrix)
+inline void	print_data(t_data *data)
 {
 	ft_printf("\n-DATA STRUCTURE-\n");
 	ft_printf("NO: %s\n", data->no);
@@ -9,6 +9,10 @@ inline void	print_structs(t_data *data, t_matrix *matrix)
 	ft_printf("EA: %s\n", data->ea);
 	ft_printf("F: %s\n", data->f);
 	ft_printf("C: %s\n", data->c);
+}
+
+inline void	print_matrix(t_matrix *matrix)
+{
 	ft_printf("\n-MATRIX STRUCTURE-\n");
 	ft_printf("x: %d\n", matrix->x);
 	ft_printf("y: %d\n", matrix->y);

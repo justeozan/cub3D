@@ -118,7 +118,8 @@ void	get_textures_and_colors(t_data *data, char **file)
 	{
 		if (file[i][0] == 'F' || file[i][0] == 'C')
 			parse_colors(data, file[i]);
-		else if (file[i][0] == 'N' || file[i][0] == 'S' || file[i][0] == 'W' || file[i][0] == 'E')
+		else if (file[i][0] == 'N' || file[i][0] == 'S'
+			|| file[i][0] == 'W' || file[i][0] == 'E')
 			parse_texture(data, file[i]);
 		i++;
 	}
@@ -141,8 +142,8 @@ t_data	*parse(int ac, char	**args)
 	close(fd);
 	print_file(data->file);
 	get_textures_and_colors(data, data->file);
-	// check_map(file);
-	// parse_textures(file);
-	print_structs(data, data->matrix);
+	get_map(&data, &(data->file[6]));
+	print_data(data);
+	// print_matrix(data-<matrix);
 	return (data);
 }

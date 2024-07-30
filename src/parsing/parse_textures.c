@@ -21,7 +21,6 @@ void	check_file(char *file)
 	int	fd;
 
 	fd = open(file, O_RDONLY);
-	ft_printf("fd = %d\n", fd);
 	if (fd < 1)
 		ft_exit(ERR_FILE, EXIT_FAILURE);
 	close(fd);

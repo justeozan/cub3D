@@ -1,0 +1,17 @@
+NO sprites/test/north.xpm
+SO sprites/test/south.xpm
+WE sprites/test/west.xpm
+EA sprites/test/east.xpm
+
+F 20,20,20
+C 200,200,200
+
+11111
+1S001
+11001
+10u01
+10001
+10001
+10001
+10001
+11111

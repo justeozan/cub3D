@@ -6,6 +6,7 @@ NAME	=	cub3D
 SRC		=		\
 				src/main.c\
 				src/parsing/parse_colors.c\
+				src/parsing/parse_map.c\
 				src/parsing/parse_textures.c\
 				src/debug/debug.c\
 				src/parsing/parsing.c\

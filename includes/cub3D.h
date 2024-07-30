@@ -19,11 +19,12 @@
 
 /*=================ERROR MESSAGES=================*/
 
-# define ERR_MALLOC "Error: Memory allocation failed with malloc."
-# define ERR_ARGS "Error: args format: ./cub3D <map_name.cub>."
-# define ERR_FILE "Error: bad fd."
-# define ERR_TEXTURE "Error: texture(s) file(s) missing or has bad format."
-# define COLOR_FORMAT_ERROR "Error: Invalid color format."
+# define ERR_MALLOC "Error\nMemory allocation failed."
+# define ERR_ARGS "Error\nWrong args format: ./cub3D <map_name.cub>."
+# define ERR_FILE "Error\nBad fd."
+# define ERR_TEXTURE "Error\nTexture(s) file(s) missing or has bad format."
+# define ERR_COLOR "Error\nInvalid color format."
+# define ERR_MAP "Error\nInvalid map format."
 
 
 
@@ -73,6 +74,7 @@ typedef struct s_matrix
  */
 typedef struct s_data
 {
+	int			height;
 	char		*no;
 	char		*so;
 	char		*we;
@@ -86,16 +88,17 @@ typedef struct s_data
 /*=================FUNTIONCS=================*/
 
 // debug.c
-void	print_structs(t_data *data, t_matrix *matrix);
+void	print_data(t_data *data);
+void	print_matrix(t_matrix *matrix);
 void	print_file(char **file);
-
-// check_map.c
-bool	check_map(int ac, char	**args);
 
 // PARSING
 
 // parse_colors.c
 void	parse_colors(t_data *data, char *line);
+
+// parse_map.c
+void	get_map(t_data **data, char **file);
 
 // error.c
 void	parse_texture(t_data *data, char *line);

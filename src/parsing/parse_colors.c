@@ -46,13 +46,13 @@ static void	check_format_color(char *line, int start)
 	while (line[i])
 	{
 		if (line[i] != ',' && !ft_isdigit(line[i]))
-			ft_exit(COLOR_FORMAT_ERROR, EXIT_FAILURE);
+			ft_exit(ERR_COLOR, EXIT_FAILURE);
 		else if (line[i] == ',')
 			nbr_comma++;
 		i++;
 	}
 	if (nbr_comma != 2)
-		ft_exit(COLOR_FORMAT_ERROR, EXIT_FAILURE);
+		ft_exit(ERR_COLOR, EXIT_FAILURE);
 }
 
 void	parse_colors(t_data *data, char *line)
@@ -71,12 +71,12 @@ void	parse_colors(t_data *data, char *line)
 	while (++i < 3)
 	{
 		if (!color[i])
-			ft_exit(COLOR_FORMAT_ERROR, EXIT_FAILURE);
+			ft_exit(ERR_COLOR, EXIT_FAILURE);
 		// if (is_int_overflow(color[i]))
-		// 	ft_exit(COLOR_FORMAT_ERROR, EXIT_FAILURE);
+		// 	ft_exit(ERR_COLOR, EXIT_FAILURE);
 		rgb[i] = ft_atoi(color[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
-			ft_exit(COLOR_FORMAT_ERROR, EXIT_FAILURE);
+			ft_exit(ERR_COLOR, EXIT_FAILURE);
 	}
 	save_color(data, line[0], &line[3]);
 }
