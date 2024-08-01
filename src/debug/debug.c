@@ -16,18 +16,17 @@ inline void	print_matrix(t_matrix **matrix, int height)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = -1;
 	ft_printf("\n-MATRIX STRUCTURE-\n");
-	while (i < height)
+	while (++i < height)
 	{
 		j = 0;
-		while (j < matrix[i][j].width - 1)
+		while (j < matrix[i][j].width)
 		{
 			ft_printf("x: %d, y: %d, wall: %d, player: %c\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].wall, matrix[i][j].player);
 			j++;
 		}
 		ft_printf("\n");
-		i++;
 	}
 }
 

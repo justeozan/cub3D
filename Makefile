@@ -12,6 +12,7 @@ SRC		=		\
 				src/parsing/parse_file.c\
 				src/parsing/parse_map.c\
 				src/parsing/parse_textures.c\
+				src/parsing/parse_utils.c\
 				src/parsing/parsing.c\
 				\
 				src/error.c\

@@ -22,7 +22,8 @@
 # define ERR_MALLOC "Error\nMemory allocation failed."
 # define ERR_ARGS "Error\nWrong args format: ./cub3D <map_name.cub>."
 # define ERR_FILE "Error\nBad fd."
-# define ERR_TEXTURE "Error\nTexture(s) file(s) missing or has bad format."
+# define ERR_FILE_EMPTY "Error\nFile is empty."
+# define ERR_SPRITES "Error\nTexture(s) file(s) missing or has bad format."
 # define ERR_COLOR "Error\nInvalid color format."
 # define ERR_MAP "Error\nInvalid map format."
 # define ERR_DATA "Error\nColor or Texture is missing."
@@ -41,7 +42,7 @@ typedef enum e_gc_id
 {
 	DATA = 1,
 	MATRIX,
-	TEXTURE,
+	SPRITES,
 	TMP
 }	t_gc_id;
 
@@ -103,9 +104,10 @@ void	print_file(char **file);
 */
 void	parse_colors(t_data *data, char *line);
 
+
 /**
- * @file	---- parse_map.c ----
- * @brief	Parse the map of the map file
+ * @file	---- parse_file.c ----
+ * @brief	Parse the map file
 */
 char	**get_file(int fd);
 
@@ -116,16 +118,16 @@ char	**get_file(int fd);
 void	get_map(t_data **data, char **file);
 
 /**
- * @file	---- parse_file.c ----
- * @brief	Parse the map file
-*/
-char	**get_file(int fd);
-
-/**
  * @file	---- parse_textures.c ----
  * @brief	Parse the textures of the map file
 */
 void	parse_texture(t_data *data, char *line);
+
+/**
+ * @file	---- parse_utils.c ----
+ * @brief	Parse the textures of the map file
+*/
+int	count_line(char **file);
 
 /**
  * @file	---- parsing.c ----

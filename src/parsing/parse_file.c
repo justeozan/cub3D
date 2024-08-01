@@ -1,6 +1,6 @@
 #include "../includes/cub3D.h"
 
-static char *parse_line_map(char *str)
+static char	*parse_line_map(char *str)
 {
 	char	*new_line;
 	int		len;
@@ -10,7 +10,7 @@ static char *parse_line_map(char *str)
 	i = -1;
 	len = 0;
 	while (str[++i] && str[i] != '\n')
-			len++;
+		len++;
 	new_line = gc_malloc(sizeof(char) * len + 1, TMP);
 	if (!new_line)
 		return (NULL);
@@ -22,7 +22,7 @@ static char *parse_line_map(char *str)
 	return (new_line);
 }
 
-static char *parse_line(char *str)
+static char	*parse_line(char *str)
 {
 	char	*new_line;
 	int		len;
@@ -65,7 +65,7 @@ static int	ft_isempty(char *str)
 	return (1);
 }
 
-static char **delete_whitespaces(char **file)
+static char	**delete_whitespaces(char **file)
 {
 	int	line;
 	int	i;
@@ -78,7 +78,7 @@ static char **delete_whitespaces(char **file)
 		while (ft_isempty(file[i]) > 0)
 			i++;
 		if (!file[i])
-			break;
+			break ;
 		j = 0;
 		while (file[i][j] == ' ')
 			j++;
@@ -94,7 +94,7 @@ static char **delete_whitespaces(char **file)
 	return (file);
 }
 
-char **get_file(int fd)
+char	**get_file(int fd)
 {
 	char	**file;
 	int		i;
@@ -104,10 +104,12 @@ char **get_file(int fd)
 		ft_exit(ERR_MALLOC, EXIT_FAILURE);
 	i = -1;
 	file[++i] = get_next_line(fd);
+	if (!file[i])
+		ft_exit(ERR_FILE_EMPTY, EXIT_FAILURE);
 	while (file[i])
 	{
 		i++;
-		file = gc_realloc(file, i, sizeof(char *) * (i + 2), TMP);
+		file = gc_realloc(file, i, sizeof(char *) * (i + 1), TMP);
 		if (!file)
 			ft_exit(ERR_MALLOC, EXIT_FAILURE);
 		file[i] = get_next_line(fd);

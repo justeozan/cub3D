@@ -11,6 +11,6 @@ void	ft_exit(char *str, int error_code)
 	gc_clear(TMP, free);
 	gc_clear(DATA, free);
 	gc_clear(MATRIX, free);
-	gc_clear(TEXTURE, free);
+	gc_clear(SPRITES, free);
 	exit(error_code);
 }

@@ -20,20 +20,19 @@
 // 	}
 // }
 
-static void	check_format_color(char *line, int start)
+static void	check_format_color(char *line)
 {
 	int	i;
 	int	nbr_comma;
 
 	nbr_comma = 0;
-	i = start;
-	while (line[i])
+	i = -1;
+	while (line[++i])
 	{
 		if (line[i] != ',' && !ft_isdigit(line[i]))
 			ft_exit(ERR_COLOR, EXIT_FAILURE);
 		else if (line[i] == ',')
 			nbr_comma++;
-		i++;
 	}
 	if (nbr_comma != 2)
 		ft_exit(ERR_COLOR, EXIT_FAILURE);
@@ -46,8 +45,8 @@ void	parse_colors(t_data *data, char *line)
 	int		i;
 
 	if ((data->f && line[0] == 'F') || (data->c && line[0] == 'C'))
-		ft_exit(ERR_TEXTURE, EXIT_FAILURE);
-	check_format_color(line, 3);
+		ft_exit(ERR_SPRITES, EXIT_FAILURE);
+	check_format_color(&line[2]);
 	color = gc_split(&line[2], ',', TMP);
 	if (!color)
 		ft_exit(ERR_MALLOC, EXIT_FAILURE);
@@ -60,10 +59,8 @@ void	parse_colors(t_data *data, char *line)
 		if (rgb[i] < 0 || rgb[i] > 255)
 			ft_exit(ERR_COLOR, EXIT_FAILURE);
 	}
-	// save_color(data, line[0], &line[2]);
-	ft_printf("R: %d, G: %d, B: %d\n", rgb[0], rgb[1], rgb[2]);
-	if (data->f && line[0] == 'F')
-		data->f = (rgb[0] << 16) | (rgb[1] << 8) | rgb[2];
-	else if (data->c && line[0] == 'C')
-		data->c = (rgb[0] << 16) | (rgb[1] << 8) | rgb[2];
+	if (line[0] == 'F')
+		data->f = (rgb[0] << 16) + (rgb[1] << 8) + rgb[2];
+	else if (line[0] == 'C')
+		data->c = (rgb[0] << 16) + (rgb[1] << 8) + rgb[2];
 }

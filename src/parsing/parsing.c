@@ -11,7 +11,7 @@ static bool	check_args(int ac, char	**args)
 
 void	get_textures_and_colors(t_data *data, char **file)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 6)
