@@ -41,24 +41,10 @@
 typedef enum e_gc_id
 {
 	DATA = 1,
-	MATRIX,
+	MAP,
 	SPRITES,
 	TMP
 }	t_gc_id;
-
-/**
- * @brief Structure for the map of the game,
- * @param w: width of the matrix
- * @param h: height of the matrix
- */
-// typedef struct s_matrix
-// {
-// 	int		width;
-// 	char	player;
-// 	int		x;
-// 	int		y;
-// 	bool	wall;
-// }	t_matrix;
 
 /**
  * @brief Structure for the data of the game,
@@ -73,6 +59,7 @@ typedef enum e_gc_id
 typedef struct s_data
 {
 	int			height;
+	int			width;
 	char		*no;
 	char		*so;
 	char		*we;
@@ -92,7 +79,7 @@ typedef struct s_data
 void	print_file(char **file);
 void	print_data(t_data *data);
 // void	print_matrix(t_matrix **matrix, int height);
-void	print_map(char **map);
+void	print_map(char **map, int height);
 
 /* ________________ INIT ________________ */
 
@@ -119,7 +106,7 @@ char	**get_file(int fd);
  * @file	---- parse_map.c ----
  * @brief	Parse the map of the map file
 */
-void	get_map(t_data **data, char **file);
+void	get_map(t_data *data, char **file);
 
 /**
  * @file	---- parse_textures.c ----

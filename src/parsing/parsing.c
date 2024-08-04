@@ -38,13 +38,12 @@ t_data	*parse(int ac, char	**args)
 	data = (t_data *)gc_calloc(sizeof(t_data), 1, DATA);
 	if (!data)
 		ft_exit(ERR_MALLOC, EXIT_FAILURE);
+	init_structs(data);
 	data->file = get_file(fd);
 	close(fd);
-	print_file(data->file);
 	get_data(data, data->file);
 	print_data(data);
-	get_map(&data, &(data->file[6]));
-	// print_map(data->map);
-	// print_matrix(data->matrix, data->height);
+	get_map(data, &(data->file[6]));
+	print_map(data->map, data->height);
 	return (data);
 }
