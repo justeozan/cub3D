@@ -46,7 +46,7 @@ MESSAGE_CLEAN_MLX	=	$(COLOR_PURPLE)MLX cleanup completed.$(COLOR_RESET)
 all:		force $(NAME)
 
 m:			clear $(NAME)
-	@./$(NAME) maps/good/test_whitespace.cub
+	@./$(NAME) maps/good/subject_map.cub
 # @./$(NAME) maps/good/test_whitespace.cub
 
 $(NAME):	$(OBJ) libft/libft.a

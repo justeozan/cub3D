@@ -6,7 +6,7 @@
 #    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 16:43:33 by ozasahin          #+#    #+#              #
-#    Updated: 2024/07/30 10:14:52 by ozasahin         ###   ########.fr        #
+#    Updated: 2024/08/04 14:38:16 by ozasahin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,8 @@ SRCS	=	\
 			printf/ft_printf_utils.c\
 			\
 			str/ft_split.c\
-			str/ft_strrchr.c\
+			str/ft_strcat.c\
+			str/ft_strchr.c\
 			str/ft_strdup.c\
 			str/ft_striteri.c\
 			str/ft_strjoin.c\
