@@ -11,24 +11,24 @@ inline void	print_data(t_data *data)
 	ft_printf("C: %d\n", data->c);
 }
 
-inline void	print_matrix(t_matrix **matrix, int height)
-{
-	int	i;
-	int	j;
+// inline void	print_matrix(t_matrix **matrix, int height)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = -1;
-	ft_printf("\n-MATRIX STRUCTURE-\n");
-	while (++i < height)
-	{
-		j = 0;
-		while (j < matrix[i][j].width)
-		{
-			ft_printf("x: %d, y: %d, wall: %d, player: %c\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].wall, matrix[i][j].player);
-			j++;
-		}
-		ft_printf("\n");
-	}
-}
+// 	i = -1;
+// 	ft_printf("\n-MATRIX STRUCTURE-\n");
+// 	while (++i < height)
+// 	{
+// 		j = 0;
+// 		while (j < matrix[i][j].width)
+// 		{
+// 			ft_printf("x: %d, y: %d, wall: %d, player: %c\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].wall, matrix[i][j].player);
+// 			j++;
+// 		}
+// 		ft_printf("\n");
+// 	}
+// }
 
 inline void	print_file(char **file)
 {
@@ -42,5 +42,20 @@ inline void	print_file(char **file)
 			ft_printf("%d  |%s\n", i, file[i]);
 		else
 			ft_printf("%d |%s\n", i, file[i]);
+	}
+}
+
+inline void	print_map(char **map)
+{
+	int	i;
+
+	i = -1;
+	ft_printf("\n-MAP CONTENT-\n");
+	while (map[++i])
+	{
+		if (i < 10)
+			ft_printf("%d  |%s\n", i, map[i]);
+		else
+			ft_printf("%d |%s\n", i, map[i]);
 	}
 }

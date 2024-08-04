@@ -9,7 +9,7 @@ static bool	check_args(int ac, char	**args)
 	return (true);
 }
 
-void	get_textures_and_colors(t_data *data, char **file)
+static void	get_data(t_data *data, char **file)
 {
 	int	i;
 
@@ -41,9 +41,10 @@ t_data	*parse(int ac, char	**args)
 	data->file = get_file(fd);
 	close(fd);
 	print_file(data->file);
-	get_textures_and_colors(data, data->file);
+	get_data(data, data->file);
 	print_data(data);
 	get_map(&data, &(data->file[6]));
-	print_matrix(data->matrix, data->height);
+	// print_map(data->map);
+	// print_matrix(data->matrix, data->height);
 	return (data);
 }
