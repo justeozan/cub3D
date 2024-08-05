@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 14:14:52 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/04 16:31:45 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/05 08:24:56 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,44 +82,6 @@
 // 	return (nb_player == 1);
 // }
 
-static bool line_is_good(char *l, int width, int *nb_player)
-{
-	int	j;
-
-	j = -1;
-	while (++j < width)
-	{
-		while (j < width && (l[j] == ' ' || l[j] == '1'))
-			j++;
-		if (j == width || !l[j])
-			break ;
-		// if (l[j] != '1')
-		// 	return (ft_printf("error 1, j = %d, c = %c\n", j, l[j]), false);
-		// while (l[j] == '1')
-		// 	j++;
-		if (l[j - 1] == '1' && ft_strchr("0NSWE", l[j]) != NULL)
-		{
-			while (l[j] && ft_strchr("0NSWE", l[j]) != NULL)
-			{
-				ft_printf("c = %c, strchr = %s, bool = %d\n", l[j], ft_strchr("0NSWE", l[j]), ft_strchr("0NSWE", l[j]) != NULL);
-				if (ft_strchr("NSWE", l[j]) != NULL)
-				{
-					(*nb_player)++;
-					ft_printf("nb_player = %d\n", *nb_player);
-				}
-				j++;
-			}
-			if (l[j] && l[j] == ' ')
-				return (ft_printf("error 2, j = %d, c = %c, c-1 = %c\n", j, l[j], l[j-1]), false);
-			// while (j < width && l[j] == '1')
-			// 	j++;
-		}
-		else
-			return (ft_printf("error 1, j = %d, c = %c, c-1 = %c\n", j, l[j], l[j-1]), false);
-	}
-	return (*nb_player <= 1);
-}
-
 static bool	check_map(char **map, int height, int width)
 {
 	int i;
@@ -151,48 +113,4 @@ static bool	check_map(char **map, int height, int width)
 	// if (!line_is_good)
 	// 	return (false);
 	return (true);
-}
-
-void	get_size_map(t_data *data, char **file)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (file[i])
-	{
-		j = 0;
-		while (file[i][j])
-			j++;
-		if (j > data->width)
-		{
-			data->width = j;
-		}
-		i++;
-	}
-	data->height = i;
-}
-
-void	get_map(t_data *data, char **file)
-{
-	char	**map;
-	int	i;
-
-	map = NULL;
-	get_size_map(data, file);
-	map = (char **)gc_malloc(sizeof(char *) * (size_t)(data->height), MAP);
-	if (!map)
-		ft_exit(ERR_MALLOC, EXIT_FAILURE);
-	i = 0;
-	while (i < data->height)
-	{
-		map[i] = (char *)gc_malloc(sizeof(char) * (size_t)(data->width + 1), MAP);
-		if (!map[i])
-			ft_exit(ERR_MALLOC, EXIT_FAILURE);
-		ft_strlcpy(map[i], file[i], (size_t)(data->width + 1));
-		i++;
-	}
-	if (!check_map(map, data->height, data->width))
-		ft_exit(ERR_MAP, EXIT_FAILURE);
-	data->map = map;
 }

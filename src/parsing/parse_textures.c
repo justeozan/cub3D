@@ -9,9 +9,9 @@ void	check_double_texture(t_data *data, char *line)
 
 void	check_xpm(char *line)
 {
-	int	len;
+	// int	len;
 
-	len = ft_strlen(line);
+	// len = ft_strlen(line);
 	if (!ft_strnstr2(line, ".xpm", 4))
 		ft_exit(ERR_SPRITES, EXIT_FAILURE);
 }

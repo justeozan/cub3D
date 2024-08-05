@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
+/*   Updated: 2024/08/05 09:40:01 by sei              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3D.h"
 
-static bool line_is_good(char *l, int width, int *nb_player)
+static bool line_is_good(char *l, int width, int *nb_player, bool ext)
 {
 	int	j;
 
@@ -11,7 +23,7 @@ static bool line_is_good(char *l, int width, int *nb_player)
 			j++;
 		if (j == width || !l[j])
 			break ;
-		if (j != 0 && l[j - 1] == '1' && ft_strchr("0NSWE", l[j]) != NULL)
+		if (j != 0 && l[j - 1] == '1' && ft_strchr("0NSWE", l[j]) && !ext)
 		{
 			while (l[j] && ft_strchr("0NSWE", l[j]) != NULL)
 			{
@@ -28,17 +40,81 @@ static bool line_is_good(char *l, int width, int *nb_player)
 	return (*nb_player <= 1);
 }
 
+// static bool line_is_correct(t_data *data, char *l, int *nb_player)
+// {
+// 	int j;
+
+// 	j = 0;
+// 	while (j < data->width)
+// 	{
+// 		while (j < data->width && l[j] == ' ')
+// 			j++;
+// 		if (j != 0 && l[j - 1] == '1' && ft_strchr("0NSWE", l[j]) != NULL)
+// 		{
+// 			while (l[j] && ft_strchr("0NSWE", l[j]) != NULL)
+// 			{
+// 				if (ft_strchr("NSWE", l[j]) != NULL)
+// 					(*nb_player)++;
+// 				j++;
+// 			}
+// 			if (!l[j] || l[j] == ' ')
+// 				return (false);
+// 		}
+// 		else
+// 			return (false);
+// 	}
+// 	return (true);
+// }
+
+static bool check_no_hole(char **map, int height, int width)
+{
+	int i;
+	int j;
+	int tmp;
+
+	i = 1;
+	while (++i < height)
+	{
+		j = -1;
+		while (++j < width && map[i][j])
+		{
+			if (map[i][j] == ' ')
+			{
+				tmp = i;
+				while (--tmp >= 0 && map[tmp][j] == ' ') ;
+				if (tmp == -1)
+					return (true);
+				tmp = i;
+				while (++tmp < height && map[tmp][j] == ' ') ;
+				if (tmp == height)
+					return (true);
+				tmp = j;
+				while (--tmp >= 0 && map[i][tmp] == ' ') ;
+				if (tmp == -1)
+					return (true);
+				tmp = i;
+				while (map[i][++tmp] && map[i][tmp] == ' ') ;
+				if (tmp == width || !map[i][tmp])
+					return (true);
+			}
+		}
+	}
+	return (ft_printf("err, tmp = %d\n", tmp), false);
+}
+
 static bool	check_map(char **map, int height, int width)
 {
 	int i;
-	int	nb_player;
+	int	nb_p;
 	
-	nb_player = 0;
+	nb_p = 0;
 	i = -1;
 	while (++i < height)
-		if (!line_is_good(map[i], width, &nb_player))
-			return (ft_printf("nb_player = %d\nerror final at line = %d\n", nb_player, i), false);
-	if (nb_player != 1)
+		if (!line_is_good(map[i], width, &nb_p, i == 0 || i == height - 1)
+			|| !check_no_hole(map, height, width))
+			return (false);
+			// return (ft_printf("nb_player = %d\nerror final at line = %d\n", nb_p, i), false);
+	if (nb_p != 1)
 		return (false);
 	(void)width;
 	(void)height;
