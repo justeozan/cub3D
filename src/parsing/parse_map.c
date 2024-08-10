@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/05 09:40:01 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/10 12:29:18 by avg38            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static bool check_no_hole(char **map, int height, int width)
 				while (--tmp >= 0 && map[i][tmp] == ' ') ;
 				if (tmp == -1)
 					return (true);
-				tmp = i;
+				tmp = j;
 				while (map[i][++tmp] && map[i][tmp] == ' ') ;
 				if (tmp == width || !map[i][tmp])
 					return (true);

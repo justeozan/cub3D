@@ -56,10 +56,17 @@ typedef enum e_gc_id
  * @param c: path to the ceiling texture
  * @param file: the map file (with no whitespaces)
  */
+
+typedef struct s_sprites
+{
+	
+}	t_sprites;
+
 typedef struct s_data
 {
 	int			height;
 	int			width;
+	t_sprites	sprites[4];
 	char		*no;
 	char		*so;
 	char		*we;
