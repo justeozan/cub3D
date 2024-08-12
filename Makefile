@@ -6,7 +6,9 @@ NAME	=	cub3D
 SRC		=		\
 				src/debug/debug.c\
 				\
-				src/init/init_structs.c\
+				src/init/init_mlx.c\
+				src/init/init_sprites.c\
+				src/init/init_struct.c\
 				\
 				src/parsing/parse_colors.c\
 				src/parsing/parse_file.c\

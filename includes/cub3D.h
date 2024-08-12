@@ -40,11 +40,50 @@
  */
 typedef enum e_gc_id
 {
-	DATA = 1,
+	DATA = 0,
 	MAP,
 	SPRITES,
 	TMP
 }	t_gc_id;
+
+
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	int		width;
+	int		height;
+}	t_mlx;
+
+typedef struct s_img
+{
+	void	*img_ptr;
+	char	*addr;
+	int		bit_per_pixel;
+	int		len_line;
+	int		endian;
+}	t_img;
+
+typedef struct s_colors
+{
+	int	floor;
+	int	ceiling;
+}	t_colors;
+
+typedef struct s_sprites
+{
+	char	*path;
+	int		len_line;
+	int		bit_per_pixel;
+}	t_sprites;
+
+typedef struct s_map
+{
+	char	**content;
+	int		height;
+	int		width;
+}	t_map;
+
 
 /**
  * @brief Structure for the data of the game,
@@ -56,17 +95,13 @@ typedef enum e_gc_id
  * @param c: path to the ceiling texture
  * @param file: the map file (with no whitespaces)
  */
-
-typedef struct s_sprites
-{
-	
-}	t_sprites;
-
 typedef struct s_data
 {
-	int			height;
-	int			width;
+	t_mlx		mlx;
+	t_img		img;
+	t_colors	colors;
 	t_sprites	sprites[4];
+	t_map		mappy;
 	char		*no;
 	char		*so;
 	char		*we;
@@ -75,6 +110,8 @@ typedef struct s_data
 	int			c;
 	char		**file;
 	char		**map;
+	int		height;
+	int		width;
 }	t_data;
 
 /*=================FUNCTIONS=================*/
@@ -92,7 +129,9 @@ void	print_map(char **map, int height);
 
 /*                 debug.c                 */
 
-void	init_structs(t_data *data);
+t_data	*init_struct();
+void	init_mlx(t_mlx mlx);
+void	init_img(t_img img);
 
 /* _______________ PARSING _______________ */
 
@@ -131,12 +170,11 @@ int		count_line(char **file);
  * @file	---- parsing.c ----
  * @brief	Parse the map file
 */
-t_data	*parse(int ac, char	**args);
+void	parse(int ac, char	**args, t_data *data);
 
 /*             error.c             */
 
 void	print_error_msg(char *str);
 void	ft_exit(char *str, int error_code);
-t_data	*parse(int ac, char	**args);
 
 #endif

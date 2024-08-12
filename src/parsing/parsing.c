@@ -25,9 +25,8 @@ static void	get_data(t_data *data, char **file)
 	}
 }
 
-t_data	*parse(int ac, char	**args)
+void	parse(int ac, char	**args, t_data *data)
 {
-	t_data	*data;
 	int		fd;
 
 	if (!check_args(ac, args))
@@ -35,15 +34,10 @@ t_data	*parse(int ac, char	**args)
 	fd = open(args[1], O_RDONLY);
 	if (fd < 1)
 		ft_exit(ERR_FILE, EXIT_FAILURE);
-	data = (t_data *)gc_calloc(sizeof(t_data), 1, DATA);
-	if (!data)
-		ft_exit(ERR_MALLOC, EXIT_FAILURE);
-	init_structs(data);
 	data->file = get_file(fd);
 	close(fd);
 	get_data(data, data->file);
 	print_data(data);
 	get_map(data, &(data->file[6]));
 	print_map(data->map, data->height);
-	return (data);
 }
