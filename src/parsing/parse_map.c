@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/10 12:29:18 by avg38            ###   ########.fr       */
+/*   Updated: 2024/08/13 05:28:00 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,24 @@ static bool check_no_hole(char **map, int height, int width)
 	return (ft_printf("err, tmp = %d\n", tmp), false);
 }
 
+// static bool	check_map(char **map, int height, int width)
+// {
+// 	int i;
+// 	int	nb_p;
+	
+// 	nb_p = 0;
+// 	i = -1;
+// 	while (++i < height)
+// 		if (!line_is_good(map[i], width, &nb_p, i == 0 || i == height - 1)
+// 			|| !check_no_hole(map, height, width))
+// 			return (false); // return (ft_printf("nb_player = %d\nerror final at line = %d\n", nb_p, i), false);
+// 	if (nb_p != 1)
+// 		return (false);
+// 	(void)width;
+// 	(void)height;
+// 	return (true);
+// }
+
 static bool	check_map(char **map, int height, int width)
 {
 	int i;
@@ -112,16 +130,13 @@ static bool	check_map(char **map, int height, int width)
 	while (++i < height)
 		if (!line_is_good(map[i], width, &nb_p, i == 0 || i == height - 1)
 			|| !check_no_hole(map, height, width))
-			return (false);
-			// return (ft_printf("nb_player = %d\nerror final at line = %d\n", nb_p, i), false);
+			return (false); // return (ft_printf("nb_player = %d\nerror final at line = %d\n", nb_p, i), false);
 	if (nb_p != 1)
 		return (false);
-	(void)width;
-	(void)height;
 	return (true);
 }
 
-void	get_size_map(t_data *data, char **file)
+static void	get_size_map(t_data *data, char **file)
 {
 	int i;
 	int j;
@@ -132,13 +147,13 @@ void	get_size_map(t_data *data, char **file)
 		j = 0;
 		while (file[i][j])
 			j++;
-		if (j > data->width)
+		if (j > data->mappy.width)
 		{
-			data->width = j;
+			data->mappy.width = j;
 		}
 		i++;
 	}
-	data->height = i;
+	data->mappy.height = i;
 }
 
 void	get_map(t_data *data, char **file)
@@ -148,25 +163,24 @@ void	get_map(t_data *data, char **file)
 
 	if (!data->no || !data->so || !data->we || !data->ea)
 		ft_exit(ERR_SPRITES, EXIT_FAILURE);
-	if (!data->c || !data->f)
+	if (!data->colors.ceiling || !data->colors.floor)
 		ft_exit(ERR_COLOR, EXIT_FAILURE);
 	map = NULL;
 	get_size_map(data, file);
-	map = (char **)gc_malloc(sizeof(char *) * (size_t)(data->height), MAP);
+	map = (char **)gc_malloc(sizeof(char *) * (size_t)(data->mappy.height), MAP);
 	if (!map)
 		ft_exit(ERR_MALLOC, EXIT_FAILURE);
-	i = 0;
-	while (i < data->height)
+	i = -1;
+	while (++i < data->mappy.height)
 	{
-		map[i] = (char *)gc_malloc(sizeof(char) * (size_t)(data->width + 1), MAP);
+		map[i] = (char *)gc_malloc(sizeof(char) * (size_t)(data->mappy.width + 1), MAP);
 		if (!map[i])
 			ft_exit(ERR_MALLOC, EXIT_FAILURE);
-		ft_strlcpy(map[i], file[i], (size_t)(data->width + 1));
-		i++;
+		ft_strlcpy(map[i], file[i], (size_t)(data->mappy.width + 1));
 	}
-	if (!check_map(map, data->height, data->width))
+	if (!check_map(map, data->mappy.height, data->mappy.width))
 		ft_exit(ERR_MAP, EXIT_FAILURE);
-	data->map = map;
-	if (!data->map[0])
+	data->mappy.content = map;
+	if (!data->mappy.content[0])
 		ft_exit(ERR_MAP, EXIT_FAILURE);
 }
