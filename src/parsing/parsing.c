@@ -39,5 +39,7 @@ void	parse(int ac, char	**args, t_data *data)
 	get_data(data, data->file);
 	print_data(data);
 	get_map(data, &(data->file[6]));
-	print_map(data->map, data->height);
+	print_map(data->mappy.content, data->mappy.height, data->mappy.width);
+	replace_space_by_wall(data->mappy.content, data->mappy.height, data->mappy.width);
+	// print_map(data->mappy.content, data->mappy.height, data->mappy.width);
 }

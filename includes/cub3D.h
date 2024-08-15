@@ -1,4 +1,3 @@
-
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -12,21 +11,60 @@
 
 /*=================COLORS=================*/
 
-# define RESET	"\033[0m"
-# define RED	"\033[0;31m"
-# define WHITE	"\033[37m"
-# define GREEN	"\033[32m"
+# define RESET		"\033[0m"
+# define RED		"\033[0;31m"
+# define WHITE		"\033[37m"
+# define GREEN		"\033[32m"
+# define BLUE		"\033[0;34m"
+# define YELLOW		"\033[0;33m"
+# define MAGENTA	"\033[0;35m"
+# define CYAN		"\033[0;36m"
 
 /*=================ERROR MESSAGES=================*/
 
-# define ERR_MALLOC "Error\nMemory allocation failed."
-# define ERR_ARGS "Error\nWrong args format: ./cub3D <map_name.cub>."
-# define ERR_FILE "Error\nBad fd."
-# define ERR_FILE_EMPTY "Error\nFile is empty."
-# define ERR_SPRITES "Error\nTexture(s) file(s) missing or has bad format."
-# define ERR_COLOR "Error\nInvalid color format."
-# define ERR_MAP "Error\nInvalid map format."
-# define ERR_DATA "Error\nColor or Texture is missing."
+//MALLOC ERROR
+
+# define ERR_MALLOC		"Error\nMemory allocation failed."
+
+//ARGS ERRORS
+
+# define ERR_ARGS		"Error\nWrong args format: ./cub3D <map_name.cub>."
+
+//FILE ERRORS
+
+# define ERR_FILE		"Error\nBad fd."
+# define ERR_FILE_1		"Error\nFile has bad format."
+# define ERR_FILE_2		"Error\nFile is empty."
+# define ERR_FILE_3		"Error\nFile has something after the map."
+# define ERR_FILE_4		"Error\nmap in file is not in right place."
+# define ERR_FILE_5		"Error\nmap is not present in the file."
+
+//SPRITES ERRORS
+
+# define ERR_SPRITES	"Error\nTexture(s) file(s) missing or has bad format."
+# define ERR_SPRITES_2	"Error\nTexture(s) file(s) missing"
+# define ERR_SPRITES_3	"Error\nTexture(s) file(s) missing or has bad format."
+
+//COLOR ERRORS
+
+# define ERR_COLOR		"Error\nInvalid color format."
+# define ERR_COLOR_2	"Error\nColor is double."
+# define ERR_COLOR_3	"Error\nColor value is missing."
+# define ERR_COLOR_4	"Error\nColor value is not between 0-255."
+# define ERR_COLOR_5	"Error\nColor is null."
+
+//MAP ERRORS
+
+# define ERR_MAP		"Error\nInvalid map format."
+# define ERR_MAP_2		"Error\nnumber of player is not 1."
+# define ERR_MAP_3		"Error\nmap empty."
+# define ERR_MAP_4		"Error\nThe map is not closed."
+# define ERR_MAP_5		"Error\nInvalid character in the map."
+# define ERR_MAP_6		"Error\nSeveral maps in one."
+
+//DATA ERRORS
+
+# define ERR_DATA		"Error\nColor or Texture is missing."
 
 
 /*=================STRUCTURES=================*/
@@ -109,7 +147,7 @@ typedef struct s_data
 	int			f;
 	int			c;
 	char		**file;
-	char		**map;
+	// char		**map;
 	int		height;
 	int		width;
 }	t_data;
@@ -120,10 +158,11 @@ typedef struct s_data
 
 /*                 debug.c                 */
 
-void	print_file(char **file);
 void	print_data(t_data *data);
+void	print_file(char **file);
+void	print_file_without_spaces(char **file);
 // void	print_matrix(t_matrix **matrix, int height);
-void	print_map(char **map, int height);
+void	print_map(char **map, int height, int width);
 
 /* ________________ INIT ________________ */
 
@@ -141,12 +180,21 @@ t_data	*init_struct();
 */
 void	parse_colors(t_data *data, char *line);
 
+/**
+ * @file	---- parse_file_utils.c ----
+ * @brief	Check the format of the map file (order of the elements)
+*/
+void check_file_format(char **file);
 
 /**
  * @file	---- parse_file.c ----
  * @brief	Parse the map file
 */
 char	**get_file(int fd);
+
+// bool	is_complete_wall(char *line, int width);
+void	replace_space_by_wall(char **map, int height, int width);
+
 
 /**
  * @file	---- parse_map.c ----
