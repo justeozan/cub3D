@@ -6,11 +6,11 @@ int	main(int ac, char **av)
 
 	data = init_struct();
 	parse(ac, av, data);
-	init_mlx(data->mlx);
-	init_img(data->img);
-	init_sprites(data->mlx);
-	init_colors(data->mlx);
-	init_player(data->mlx);
+	// init_mlx(data->mlx);
+	// init_img(data->img);
+	// init_sprites(data->mlx);
+	// init_colors(data->mlx);
+	// init_player(data->mlx);
 	(void)data;
 	return (0);
 }

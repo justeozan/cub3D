@@ -130,8 +130,8 @@ void	print_map(char **map, int height);
 /*                 debug.c                 */
 
 t_data	*init_struct();
-void	init_mlx(t_mlx mlx);
-void	init_img(t_img img);
+// void	init_mlx(t_mlx mlx);
+// void	init_img(t_img img);
 
 /* _______________ PARSING _______________ */
 
