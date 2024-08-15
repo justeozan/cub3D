@@ -1,4 +1,3 @@
-
 .DEFAULT_GOAL: $(NAME)
 
 NAME	=	cub3D
@@ -11,6 +10,7 @@ SRC		=		\
 				src/init/init_struct.c\
 				\
 				src/parsing/parse_colors.c\
+				src/parsing/parse_file_utils.c\
 				src/parsing/parse_file.c\
 				src/parsing/parse_map_utils.c\
 				src/parsing/parse_map.c\
@@ -34,6 +34,8 @@ BAD_MAPS	=	\
 				maps/bad/forbidden.cub\
 				maps/bad/map_first.cub\
 				maps/bad/map_middle.cub\
+				maps/bad/map_missing.cub\
+				maps/bad/map_multiple_wall.cub\
 				maps/bad/map_only.cub\
 				maps/bad/map_syntax.cub\
 				maps/bad/map_too_small.cub\
@@ -51,12 +53,11 @@ BAD_MAPS	=	\
 				maps/bad/wall_hole_east.cub\
 				maps/bad/wall_hole_north.cub\
 				maps/bad/wall_hole_south.cub\
-				maps/bad/wall_hole_test.cub\
 				maps/bad/wall_hole_west.cub\
 				maps/bad/wall_none.cub
 
 GOOD_MAPS	=	\
-				maps/good/cheeze_maze.cub\
+				maps/good/cheese_maze.cub\
 				maps/good/creepy.cub\
 				maps/good/dungeon.cub\
 				maps/good/library.cub\
@@ -64,16 +65,14 @@ GOOD_MAPS	=	\
 				maps/good/sad_face.cub\
 				maps/good/square_map.cub\
 				maps/good/subject_map.cub\
-				maps/good/test_map_hole.cub\
-				maps/good/test_map.cub\
 				maps/good/test_pos_bottom.cub\
 				maps/good/test_pos_left.cub\
 				maps/good/test_pos_right.cub\
 				maps/good/test_pos_top.cub\
 				maps/good/test_textures.cub\
 				maps/good/test_whitespace.cub\
+				maps/good/wall_hole_test.cub\
 				maps/good/works.cub
-
 
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 
@@ -110,8 +109,7 @@ $(NAME):	$(OBJ) libft/libft.a
 all:		force $(NAME)
 
 m:			clear $(NAME)
-	@./$(NAME) maps/good/subject_map.cub
-
+	@./$(NAME) maps/good/subject_map.cub || echo "Makefile: Error with subject_map.cub"
 
 test_bad_maps: clear $(NAME)
 	@echo "$(COLOR_YELLOW)Testing bad maps...$(COLOR_RESET)"
@@ -170,40 +168,6 @@ test_good_maps: clear $(NAME)
 test_all_maps: test_good_maps test_bad_maps
 	@echo "\n$(COLOR_YELLOW)All maps have been tested.$(COLOR_RESET)"
 
-# mm:			clear $(NAME)
-# 	@./$(NAME) maps/bad/color_invalid_rgb.cub
-# 	@./$(NAME) maps/bad/color_missing_ceiling_rgb.cub
-# 	@./$(NAME) maps/bad/color_missing_floor_rgb.cub
-# 	@./$(NAME) maps/bad/color_missing.cub
-# 	@./$(NAME) maps/bad/color_none.cub
-# 	@./$(NAME) maps/bad/empty.cub
-# 	@./$(NAME) maps/bad/file_letter_end.cub
-# 	@./$(NAME) maps/bad/filetype_missing
-# 	@./$(NAME) maps/bad/filetype_wrong.buc
-# 	@./$(NAME) maps/bad/forbidden.cub
-# 	@./$(NAME) maps/bad/map_first.cub
-# 	@./$(NAME) maps/bad/map_middle.cub
-# 	@./$(NAME) maps/bad/map_only.cub
-# 	@./$(NAME) maps/bad/map_syntax.cub
-# 	@./$(NAME) maps/bad/map_too_small.cub
-# 	@./$(NAME) maps/bad/player_multiple.cub
-# 	@./$(NAME) maps/bad/player_none.cub
-# 	@./$(NAME) maps/bad/subject_map.cub
-# 	@./$(NAME) maps/bad/player_on_edge.cub
-# 	@./$(NAME) maps/bad/textures_dir.cub
-# 	@./$(NAME) maps/bad/textures_duplicates.cub
-# 	@./$(NAME) maps/bad/textures_forbidden.cub
-# 	@./$(NAME) maps/bad/textures_invalid.cub
-# 	@./$(NAME) maps/bad/textures_missing.cub
-# 	@./$(NAME) maps/bad/textures_none.cub
-# 	@./$(NAME) maps/bad/textures_not_xpm.cub
-# 	@./$(NAME) maps/bad/wall_hole_east.cub
-# 	@./$(NAME) maps/bad/wall_hole_north.cub
-# 	@./$(NAME) maps/bad/wall_hole_south.cub
-# 	@./$(NAME) maps/bad/wall_hole_test.cub
-# 	@./$(NAME) maps/bad/wall_hole_west.cub
-# 	@./$(NAME) maps/bad/wall_none.cub
-
 obj/%.o:	src/%.c includes/cub3D.h Makefile libft/libft.h libft/libft.a
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"
 	@mkdir -p $(@D)
@@ -240,4 +204,4 @@ norm:
 		echo "$(COLOR_GREEN)All OK!"; \
 	fi
 
-.PHONY:		all clean fclean re test_bad_maps test_good_maps test_all_maps clear norm
+.PHONY:		all clean fclean re m test_bad_maps test_good_maps test_all_maps clear norm

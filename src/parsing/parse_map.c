@@ -6,13 +6,13 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/13 05:28:00 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/15 05:37:17 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-static bool line_is_good(char *l, int width, int *nb_player, bool ext)
+static void	check_line(char *l, int width, int *nb_player, bool ext)
 {
 	int	j;
 
@@ -31,117 +31,53 @@ static bool line_is_good(char *l, int width, int *nb_player, bool ext)
 					(*nb_player)++;
 				j++;
 			}
-			if (!l[j] || l[j] == ' ')
-				return (false);
+			if (l[j] != '1')
+				ft_exit(ERR_MAP_4, EXIT_FAILURE);
 		}
 		else
+			ft_exit(ERR_MAP_5, EXIT_FAILURE);
+	}
+}
+
+static bool	is_complete_wall(char *line, int width)
+{
+	int	i;
+
+	i = -1;
+	while (++i < width)
+		if (line[i] && line[i] != '1' && line[i] != ' ')
 			return (false);
-	}
-	return (*nb_player <= 1);
+	return (true);
 }
 
-// static bool line_is_correct(t_data *data, char *l, int *nb_player)
-// {
-// 	int j;
-
-// 	j = 0;
-// 	while (j < data->width)
-// 	{
-// 		while (j < data->width && l[j] == ' ')
-// 			j++;
-// 		if (j != 0 && l[j - 1] == '1' && ft_strchr("0NSWE", l[j]) != NULL)
-// 		{
-// 			while (l[j] && ft_strchr("0NSWE", l[j]) != NULL)
-// 			{
-// 				if (ft_strchr("NSWE", l[j]) != NULL)
-// 					(*nb_player)++;
-// 				j++;
-// 			}
-// 			if (!l[j] || l[j] == ' ')
-// 				return (false);
-// 		}
-// 		else
-// 			return (false);
-// 	}
-// 	return (true);
-// }
-
-static bool check_no_hole(char **map, int height, int width)
+static void	check_map(char **map, int height, int width)
 {
-	int i;
-	int j;
-	int tmp;
-
-	i = 1;
-	while (++i < height)
-	{
-		j = -1;
-		while (++j < width && map[i][j])
-		{
-			if (map[i][j] == ' ')
-			{
-				tmp = i;
-				while (--tmp >= 0 && map[tmp][j] == ' ') ;
-				if (tmp == -1)
-					return (true);
-				tmp = i;
-				while (++tmp < height && map[tmp][j] == ' ') ;
-				if (tmp == height)
-					return (true);
-				tmp = j;
-				while (--tmp >= 0 && map[i][tmp] == ' ') ;
-				if (tmp == -1)
-					return (true);
-				tmp = j;
-				while (map[i][++tmp] && map[i][tmp] == ' ') ;
-				if (tmp == width || !map[i][tmp])
-					return (true);
-			}
-		}
-	}
-	return (ft_printf("err, tmp = %d\n", tmp), false);
-}
-
-// static bool	check_map(char **map, int height, int width)
-// {
-// 	int i;
-// 	int	nb_p;
+	int	nb_player;
+	int nb_wall;
+	int	i;
 	
-// 	nb_p = 0;
-// 	i = -1;
-// 	while (++i < height)
-// 		if (!line_is_good(map[i], width, &nb_p, i == 0 || i == height - 1)
-// 			|| !check_no_hole(map, height, width))
-// 			return (false); // return (ft_printf("nb_player = %d\nerror final at line = %d\n", nb_p, i), false);
-// 	if (nb_p != 1)
-// 		return (false);
-// 	(void)width;
-// 	(void)height;
-// 	return (true);
-// }
-
-static bool	check_map(char **map, int height, int width)
-{
-	int i;
-	int	nb_p;
-	
-	nb_p = 0;
+	nb_player = 0;
+	nb_wall = 0;
 	i = -1;
 	while (++i < height)
-		if (!line_is_good(map[i], width, &nb_p, i == 0 || i == height - 1)
-			|| !check_no_hole(map, height, width))
-			return (false); // return (ft_printf("nb_player = %d\nerror final at line = %d\n", nb_p, i), false);
-	if (nb_p != 1)
-		return (false);
-	return (true);
+	{
+		check_line(map[i], width, &nb_player, i == 0 || i == height - 1);
+		if (is_complete_wall(map[i], width))
+			nb_wall++;
+	}
+	if (nb_player != 1)
+		ft_exit(ERR_MAP_2, EXIT_FAILURE);
+	if (nb_wall != 2)
+		ft_exit(ERR_MAP_6, EXIT_FAILURE);
 }
 
 static void	get_size_map(t_data *data, char **file)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
+	// print_file_without_spaces(file);
 	while (file[i])
 	{
 		j = 0;
@@ -159,12 +95,10 @@ static void	get_size_map(t_data *data, char **file)
 void	get_map(t_data *data, char **file)
 {
 	char	**map;
-	int	i;
+	int		i;
 
 	if (!data->no || !data->so || !data->we || !data->ea)
-		ft_exit(ERR_SPRITES, EXIT_FAILURE);
-	if (!data->colors.ceiling || !data->colors.floor)
-		ft_exit(ERR_COLOR, EXIT_FAILURE);
+		ft_exit(ERR_SPRITES_2, EXIT_FAILURE);
 	map = NULL;
 	get_size_map(data, file);
 	map = (char **)gc_malloc(sizeof(char *) * (size_t)(data->mappy.height), MAP);
@@ -178,9 +112,8 @@ void	get_map(t_data *data, char **file)
 			ft_exit(ERR_MALLOC, EXIT_FAILURE);
 		ft_strlcpy(map[i], file[i], (size_t)(data->mappy.width + 1));
 	}
-	if (!check_map(map, data->mappy.height, data->mappy.width))
-		ft_exit(ERR_MAP, EXIT_FAILURE);
+	check_map(map, data->mappy.height, data->mappy.width);
 	data->mappy.content = map;
 	if (!data->mappy.content[0])
-		ft_exit(ERR_MAP, EXIT_FAILURE);
+		ft_exit(ERR_MAP_3, EXIT_FAILURE);
 }

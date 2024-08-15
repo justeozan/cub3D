@@ -26,7 +26,7 @@ void	parse_colors(t_data *data, char *line)
 
 	if ((data->colors.floor && line[0] == 'F')
 			|| (data->colors.ceiling && line[0] == 'C'))
-		ft_exit(ERR_SPRITES, EXIT_FAILURE);
+		ft_exit(ERR_COLOR_2, EXIT_FAILURE);
 	check_format_color(&line[2]);
 	color = gc_split(&line[2], ',', TMP);
 	if (!color)
@@ -35,7 +35,7 @@ void	parse_colors(t_data *data, char *line)
 	while (++i < 3)
 	{
 		if (!color[i])
-			ft_exit(ERR_COLOR, EXIT_FAILURE);
+			ft_exit(ERR_COLOR_2, EXIT_FAILURE);
 		rgb[i] = ft_atoi(color[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
 			ft_exit(ERR_COLOR, EXIT_FAILURE);
