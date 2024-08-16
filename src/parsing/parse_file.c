@@ -107,20 +107,19 @@ char	**get_file(int fd)
 
 	file = gc_malloc(sizeof(char *) * 2, TMP);
 	if (!file)
-		ft_exit(ERR_MALLOC, EXIT_FAILURE);
+		ft_exit(ERR_MALLOC);
 	i = -1;
 	file[++i] = get_next_line(fd);
 	if (!file[i])
-		ft_exit(ERR_FILE_2, EXIT_FAILURE);
+		ft_exit(ERR_FILE_2);
 	while (file[i])
 	{
 		i++;
 		file = gc_realloc(file, i, sizeof(char *) * (i + 1), TMP);
 		if (!file)
-			ft_exit(ERR_MALLOC, EXIT_FAILURE);
+			ft_exit(ERR_MALLOC);
 		file[i] = get_next_line(fd);
 	}
-	// print_file(file); //! debug
 	check_file_format(file);
 	return (delete_whitespaces(file));
 }

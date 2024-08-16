@@ -14,7 +14,7 @@ SRC		=		\
 				src/parsing/parse_file.c\
 				src/parsing/parse_map_utils.c\
 				src/parsing/parse_map.c\
-				src/parsing/parse_textures.c\
+				src/parsing/parse_sprites.c\
 				src/parsing/parse_utils.c\
 				src/parsing/parsing.c\
 				\
@@ -197,7 +197,7 @@ clear:
 
 ARG := $(shell norminette src libft | grep Error: | wc -l)
 
-norm:
+norm:	clear
 	@if norminette src libft | grep -v OK; then \
 		echo "$(COLOR_RED)$(ARG) norm violations found$(COLOR_RESET)"; \
 	else \

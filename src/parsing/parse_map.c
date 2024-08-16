@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/15 05:37:17 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/16 04:29:34 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static void	check_line(char *l, int width, int *nb_player, bool ext)
 				j++;
 			}
 			if (l[j] != '1')
-				ft_exit(ERR_MAP_4, EXIT_FAILURE);
+				ft_exit(ERR_MAP_4);
 		}
 		else
-			ft_exit(ERR_MAP_5, EXIT_FAILURE);
+			ft_exit(ERR_MAP_5);
 	}
 }
 
@@ -53,9 +53,9 @@ static bool	is_complete_wall(char *line, int width)
 static void	check_map(char **map, int height, int width)
 {
 	int	nb_player;
-	int nb_wall;
+	int	nb_wall;
 	int	i;
-	
+
 	nb_player = 0;
 	nb_wall = 0;
 	i = -1;
@@ -66,9 +66,9 @@ static void	check_map(char **map, int height, int width)
 			nb_wall++;
 	}
 	if (nb_player != 1)
-		ft_exit(ERR_MAP_2, EXIT_FAILURE);
+		ft_exit(ERR_MAP_2);
 	if (nb_wall != 2)
-		ft_exit(ERR_MAP_6, EXIT_FAILURE);
+		ft_exit(ERR_MAP_6);
 }
 
 static void	get_size_map(t_data *data, char **file)
@@ -77,7 +77,6 @@ static void	get_size_map(t_data *data, char **file)
 	int	j;
 
 	i = 0;
-	// print_file_without_spaces(file);
 	while (file[i])
 	{
 		j = 0;
@@ -97,23 +96,25 @@ void	get_map(t_data *data, char **file)
 	char	**map;
 	int		i;
 
-	if (!data->no || !data->so || !data->we || !data->ea)
-		ft_exit(ERR_SPRITES_2, EXIT_FAILURE);
+	// if (!data->no || !data->so || !data->we || !data->ea)
+	// 	ft_exit(ERR_SPRITES_2);
 	map = NULL;
 	get_size_map(data, file);
-	map = (char **)gc_malloc(sizeof(char *) * (size_t)(data->mappy.height), MAP);
+	map = (char **)gc_malloc(sizeof(char *)
+			* (size_t)(data->mappy.height), MAP);
 	if (!map)
-		ft_exit(ERR_MALLOC, EXIT_FAILURE);
+		ft_exit(ERR_MALLOC);
 	i = -1;
 	while (++i < data->mappy.height)
 	{
-		map[i] = (char *)gc_malloc(sizeof(char) * (size_t)(data->mappy.width + 1), MAP);
+		map[i] = (char *)gc_malloc(sizeof(char)
+				*(size_t)(data->mappy.width + 1), MAP);
 		if (!map[i])
-			ft_exit(ERR_MALLOC, EXIT_FAILURE);
+			ft_exit(ERR_MALLOC);
 		ft_strlcpy(map[i], file[i], (size_t)(data->mappy.width + 1));
 	}
 	check_map(map, data->mappy.height, data->mappy.width);
 	data->mappy.content = map;
 	if (!data->mappy.content[0])
-		ft_exit(ERR_MAP_3, EXIT_FAILURE);
+		ft_exit(ERR_MAP_3);
 }

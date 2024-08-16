@@ -1,12 +1,24 @@
 #include "../includes/cub3D.h"
 
-static bool	check_args(int ac, char	**args)
+static void check_presence_colors(t_data *data)
 {
-	if (ac != 2)
-		return (false);
-	if (!ft_strnstr2(args[1], ".cub", 4))
-		return (false);
-	return (true);
+	if (data->colors.floor == -1)
+		ft_exit(ERR_COLOR_F);
+	if (data->colors.ceiling == -1)
+		ft_exit(ERR_COLOR_C);
+}
+
+static void check_presence_sprites(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (!data->sprites[i].path)
+			ft_exit(ERR_SPRITES_2);
+		i++;
+	}
 }
 
 static void	get_data(t_data *data, char **file)
@@ -20,26 +32,26 @@ static void	get_data(t_data *data, char **file)
 			parse_colors(data, file[i]);
 		else if (file[i][0] == 'N' || file[i][0] == 'S'
 			|| file[i][0] == 'W' || file[i][0] == 'E')
-			parse_texture(data, file[i]);
+			parse_sprites(data, file[i]);
 		i++;
 	}
+	check_presence_colors(data);
+	check_presence_sprites(data);
 }
 
-void	parse(int ac, char	**args, t_data *data)
+void	parse(char	**av, t_data *data)
 {
 	int		fd;
 
-	if (!check_args(ac, args))
-		ft_exit(ERR_ARGS, EXIT_FAILURE);
-	fd = open(args[1], O_RDONLY);
+	fd = open(av[1], O_RDONLY);
 	if (fd < 1)
-		ft_exit(ERR_FILE, EXIT_FAILURE);
+		ft_exit(ERR_FILE);
 	data->file = get_file(fd);
 	close(fd);
 	get_data(data, data->file);
-	print_data(data);
 	get_map(data, &(data->file[6]));
-	print_map(data->mappy.content, data->mappy.height, data->mappy.width);
-	replace_space_by_wall(data->mappy.content, data->mappy.height, data->mappy.width);
-	// print_map(data->mappy.content, data->mappy.height, data->mappy.width);
+	replace_space_by_wall(data->mappy.content,
+		data->mappy.height, data->mappy.width);
+	print_data(data);
+	print_map(data->mappy.content, data->mappy.height);
 }
