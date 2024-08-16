@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	init_mlx(&data->mlx);
 	init_image(&data->img, data->mlx);
 	init_sprites(data, &data->mlx);
-	// init_player(data->mappy.content, data->player);
+	init_player(data->mappy.content, data->player);
 	(void)data;
 	return (0);
 }

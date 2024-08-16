@@ -137,6 +137,67 @@ typedef enum e_cardinal
 	EAST
 }	t_cardinal;
 
+typedef struct s_fvector
+{
+	float	x;
+	float	y;
+}	t_fvector;
+
+typedef struct s_dvector
+{
+	double	x;
+	double	y;
+}	t_dvector;
+
+typedef struct s_ivector
+{
+	int	x;
+	int	y;
+}	t_ivector;
+
+/**
+ * @brief Structure for the colors of the floor and ceiling of the game
+ * @param floor: int contain (r * 256 * 256) + (g * 256) + b
+ * @param ceiling: int contain (r * 256 * 256) + (g * 256) + b
+*/
+typedef struct s_colors
+{
+	int	floor;
+	int	ceiling;
+}	t_colors;
+
+/**
+ * @brief Structure for the sprites data
+ * @param path: path to the sprite texture
+ * @param len_line: length of the line
+ * @param bit_per_pixel: ?
+*/
+typedef struct s_sprites
+{
+	t_cardinal	point;
+	void		*reference;
+	char		*path;
+	char		*addr;
+	int 		x;
+	int			y;
+	int			len_line;
+	int			bit_per_pixel;
+	int			endian;
+}	t_sprites;
+
+/**
+ * @brief Structure for the map data
+ * @param content: the map
+ * @param height: height of the map
+ * @param width: width of the map
+*/
+typedef struct s_map
+{
+	char	**content;
+	int		height;
+	int		width;
+}	t_map;
+
 /**
  * @brief Structure for the mlx data
  * @param mlx_ptr: mlx pointer
@@ -170,48 +231,13 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
-/**
- * @brief Structure for the colors of the floor and ceiling of the game
- * @param floor: int contain (r * 256 * 256) + (g * 256) + b
- * @param ceiling: int contain (r * 256 * 256) + (g * 256) + b
-*/
-typedef struct s_colors
+typedef struct s_player
 {
-	int	floor;
-	int	ceiling;
-}	t_colors;
-
-/**
- * @brief Structure for the sprites data
- * @param path: path to the sprite texture
- * @param len_line: length of the line
- * @param bit_per_pixel: ?
-*/
-typedef struct s_sprites
-{
-	t_cardinal	point;
-	char		*path;
-	void		*reference;
-	char		*addr;
-	int 		x;
-	int			y;
-	int			len_line;
-	int			bit_per_pixel;
-	int			endian;
-}	t_sprites;
-
-/**
- * @brief Structure for the map data
- * @param content: the map
- * @param height: height of the map
- * @param width: width of the map
-*/
-typedef struct s_map
-{
-	char	**content;
-	int		height;
-	int		width;
-}	t_map;
+	t_cardinal	dir;
+	t_dvector	pos;
+	t_dvector	plane;
+	t_dvector	movement;
+} t_player;
 
 /**
  * @brief Structure for the data of the game,
@@ -225,11 +251,12 @@ typedef struct s_map
  */
 typedef struct s_data
 {
-	t_mlx		mlx;
-	t_image		img;
 	t_colors	colors;
 	t_sprites	sprites[4];
 	t_map		mappy;
+	t_mlx		mlx;
+	t_image		img;
+	t_player	player;
 	char		**file;
 }	t_data;
 
