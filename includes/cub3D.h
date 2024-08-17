@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 05:06:41 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/17 22:43:24 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -393,8 +393,8 @@ void	init_sprites(t_data *data, t_mlx *mlx);
 /*           Key handler           */
 /*---------------------------------*/
 
-int		key_press(int keycode, t_data *data);
-int		key_release(int keycode, t_data *data);
+void	key_press(int keycode, t_data *data);
+void	key_release(int keycode, t_data *data);
 
 
 /*---------------------------------*/

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 04:07:11 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/17 22:48:19 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 static char	*parse_line_map(char *str)
 {

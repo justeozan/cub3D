@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:15:40 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 05:12:28 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/17 22:36:09 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // TODO - Add comments
 
-int	key_press(int keycode, t_data *data)
+void	key_press(int keycode, t_data *data)
 {
 	if (keycode == XK_w)
 		data->keys.w = 1;
@@ -32,7 +32,7 @@ int	key_press(int keycode, t_data *data)
 		close_program();
 }
 
-int	key_release(int keycode, t_data *data)
+void	key_release(int keycode, t_data *data)
 {
 	if (keycode == XK_w)
 		data->keys.w = 1;

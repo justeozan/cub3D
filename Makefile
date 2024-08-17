@@ -9,7 +9,7 @@ SRC		=		\
 				\
 				src/close_program/close.c\
 				\
-				src/game_loop/controller/key_handler.c\
+				src/key_handler/key_handler.c\
 				\
 				src/game_loop/frame/print_frame.c\
 				\

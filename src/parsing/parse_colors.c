@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:15 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 04:06:14 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/17 22:48:56 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 static void	check_format_color(char *line)
 {

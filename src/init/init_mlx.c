@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:24 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 00:13:59 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/17 22:46:20 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include "../../../includes/cub3D.h"
 
 void	init_image(t_image *img, t_mlx mlx)
 {

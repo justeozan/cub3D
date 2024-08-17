@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_old.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 03:04:39 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 03:07:39 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/17 22:37:33 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@
 # define ERR_FILE_1		"Error\nFile has bad format."
 # define ERR_FILE_2		"Error\nFile is empty."
 # define ERR_FILE_3		"Error\nFile has something after the map."
-# define ERR_FILE_4		"Error\nmap in file is not in right place."
-# define ERR_FILE_5		"Error\nmap is not present in the file."
+# define ERR_FILE_4		"Error\nMap in file is not in right place."
+# define ERR_FILE_5		"Error\nMap is not present in the file."
 
 //SPRITES ERRORS
 
@@ -100,8 +100,8 @@
 //MAP ERRORS
 
 # define ERR_MAP		"Error\nInvalid map format."
-# define ERR_MAP_2		"Error\nnumber of player is not 1."
-# define ERR_MAP_3		"Error\nmap empty."
+# define ERR_MAP_2		"Error\nNumber of player is not 1."
+# define ERR_MAP_3		"Error\nMap empty."
 # define ERR_MAP_4		"Error\nThe map is not closed."
 # define ERR_MAP_5		"Error\nInvalid character in the map."
 # define ERR_MAP_6		"Error\nSeveral maps in one."
