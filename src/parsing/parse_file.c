@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/08/17 04:07:11 by ozasahin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3D.h"
 
 static char	*parse_line_map(char *str)
@@ -100,6 +112,12 @@ static char	**delete_whitespaces(char **file)
 	return (file);
 }
 
+/***************************************
+ * @file	parse_file.c
+ * @brief	Parse the map file
+ * @param	fd: the file descriptor
+ * @return	The file without whitespaces, NULL if an error occured
+***************************************/
 char	**get_file(int fd)
 {
 	char	**file;

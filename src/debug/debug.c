@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 00:12:56 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/08/17 03:58:46 by ozasahin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3D.h"
 
-inline void	print_data(t_data *data)
+static void	print_data(t_data *data)
 {
 	const char	*p_names[] = {"NORTH", "SOUTH", "WEST", "EAST"};
 	int			i;
@@ -8,15 +20,16 @@ inline void	print_data(t_data *data)
 	i = -1;
 	ft_printf("\n-DATA STRUCTURE-\n");
 	while (++i < 4)
-		ft_printf(CYAN "%s" RESET " %s\n", p_names[data->sprites[i].point - 1], data->sprites[i].path);
+		ft_printf(CYAN "%s" RESET " %s\n",
+			p_names[data->sprites[i].point - 1], data->sprites[i].path);
 	ft_printf(BLUE "F:" RESET " %d (%d,%d,%d)\n", data->colors.floor,
 		(data->colors.floor >> 16) & 0xFF,
 		(data->colors.floor >> 8) & 0xFF, data->colors.floor & 0xFF);
 	ft_printf(BLUE "C:" RESET " %d (%d,%d,%d)\n", data->colors.ceiling,
 		(data->colors.ceiling >> 16) & 0xFF,
 		(data->colors.ceiling >> 8) & 0xFF, data->colors.ceiling & 0xFF);
-	ft_printf(YELLOW "h:" RESET " %d\n", data->mappy.height);
-	ft_printf(YELLOW "w:" RESET " %d\n", data->mappy.width);
+	ft_printf(YELLOW "h:" RESET " %d\n", data->map.height);
+	ft_printf(YELLOW "w:" RESET " %d\n", data->map.width);
 	ft_printf("\n");
 }
 
@@ -52,7 +65,7 @@ inline void	print_file_without_spaces(char **file)
 	ft_printf("\n");
 }
 
-inline void	print_map(char **map, int height)
+static void	print_map(char **map, int height)
 {
 	int	i;
 
@@ -68,8 +81,21 @@ inline void	print_map(char **map, int height)
 	}
 }
 
+static void	print_player_infos(t_player *player)
+{
+	ft_printf("\n-PLAYER STRUCTURE-\n");
+	ft_printf("pos: (%.2f,%.2f)\n", player->pos.x, player->pos.y);
+	ft_printf("dir: (%.2f,%.2f)\n", player->dir.x, player->dir.y);
+	ft_printf("plane: (%.2f,%.2f)\n", player->plane.x, player->plane.y);
+	ft_printf("dir_angle: %.2f\n", player->dir_angle);
+	ft_printf("movement: (%.2f,%.2f)\n", player->movement.x, player->movement.y);
+	ft_printf("cardinal: %d\n", player->cardinal);
+	ft_printf("\n");
+}
+
 inline void	print_all_infos(t_data *data)
 {
 	print_data(data);
-	print_map(data->mappy.content, data->mappy.height);
+	print_map(data->map.content, data->map.height);
+	print_player_infos(&data->player);
 }

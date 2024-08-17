@@ -1,6 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 00:10:52 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/08/17 04:08:23 by ozasahin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3D.h"
 
-static void check_presence_colors(t_data *data)
+/***************************************
+ * @brief Check if the colors are present in the file
+***************************************/
+static void	check_presence_colors(t_data *data)
 {
 	if (data->colors.floor == -1)
 		ft_exit(ERR_COLOR_F);
@@ -8,9 +23,13 @@ static void check_presence_colors(t_data *data)
 		ft_exit(ERR_COLOR_C);
 }
 
-static void check_presence_sprites(t_data *data)
+/***************************************
+ * @brief Check if the sprites are present in the file
+ * @param data THe struct that contains the sprites
+***************************************/
+static void	check_presence_sprites(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
@@ -21,6 +40,12 @@ static void check_presence_sprites(t_data *data)
 	}
 }
 
+/***************************************
+ * @brief Get the data from the file, the colors and the sprites.
+ * @param data The struct that contains the data
+ * @param file The file that contains the data
+ * @note Get the colors and the sprites from the without withespaces file.
+***************************************/
 static void	get_data(t_data *data, char **file)
 {
 	int	i;
@@ -39,6 +64,9 @@ static void	get_data(t_data *data, char **file)
 	check_presence_sprites(data);
 }
 
+/***************************************
+ * @brief	Parse the map file
+***************************************/
 void	parse(char	**av, t_data *data)
 {
 	int		fd;
@@ -50,8 +78,8 @@ void	parse(char	**av, t_data *data)
 	close(fd);
 	get_data(data, data->file);
 	get_map(data, &(data->file[6]));
-	replace_space_by_wall(data->mappy.content,
-		data->mappy.height, data->mappy.width);
-	print_data(data);
-	print_map(data->mappy.content, data->mappy.height);
+	replace_space_by_wall(data->map.content,
+		data->map.height, data->map.width);
+	// print_data(data);
+	// print_map(data->map.content, data->map.height);
 }

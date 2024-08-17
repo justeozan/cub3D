@@ -1,5 +1,5 @@
-// TODO - add new files in game_loop directory
-// TODO - add a rule to compile cub3d in UHD or HD
+# TODO - add new files in game_loop directory
+# TODO - add a rule to compile cub3d in UHD or HD
 
 .DEFAULT_GOAL: $(NAME)
 
@@ -8,9 +8,23 @@ NAME	=	cub3D
 SRC		=		\
 				src/debug/debug.c\
 				\
+				src/close_program/close.c\
+				\
+				src/game_loop/controller/key_handler.c\
+				\
+				src/game_loop/frame/print_frame.c\
+				\
+				src/game_loop/player/init_player.c\
+				src/game_loop/player/player_modifs.c\
+				src/game_loop/player/player_utils.c\
+				\
+				src/game_loop/ray_casting/game_loop.c\
+				\
 				src/init/init_mlx.c\
 				src/init/init_sprites.c\
 				src/init/init_struct.c\
+				\
+				src/key_handler/key_handler.c\
 				\
 				src/parsing/parse_colors.c\
 				src/parsing/parse_file_utils.c\
@@ -21,7 +35,6 @@ SRC		=		\
 				src/parsing/parse_utils.c\
 				src/parsing/parsing.c\
 				\
-				src/error.c\
 				src/main.c
 
 BAD_MAPS	=	\
@@ -198,10 +211,10 @@ re:			fclean all
 clear:
 	clear
 
-ARG := $(shell norminette src libft | grep Error: | wc -l)
+ARG := $(shell norminette src libft includes | grep Error: | wc -l)
 
 norm:	clear
-	@if norminette src libft | grep -v OK; then \
+	@if norminette src libft includes | grep -v OK; then \
 		echo "$(COLOR_RED)$(ARG) norm violations found$(COLOR_RESET)"; \
 	else \
 		echo "$(COLOR_GREEN)All OK!"; \

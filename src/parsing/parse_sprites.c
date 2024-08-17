@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_sprites.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 00:10:57 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/08/17 04:07:54 by ozasahin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3D.h"
 
 static void	check_extension(char *line)
@@ -20,7 +32,7 @@ static void	check_file(char *file)
 
 void	save_sprite_path(t_data *data, char *texture, t_cardinal point)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (data->sprites[++i].path)
@@ -37,6 +49,12 @@ void	save_sprite_path(t_data *data, char *texture, t_cardinal point)
 	data->sprites[i].point = point;
 }
 
+/***************************************
+ * @file	parse_textures.c
+ * @brief	Parse the textures of the map file
+ * @param	data: the structure that contains all the data of the game
+ * @param	line: the line where the textures are
+***************************************/
 void	parse_sprites(t_data *data, char *line)
 {
 	t_cardinal	point;

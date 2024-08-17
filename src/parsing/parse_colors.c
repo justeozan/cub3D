@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_colors.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 00:11:15 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/08/17 04:06:14 by ozasahin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3D.h"
 
 static void	check_format_color(char *line)
@@ -18,6 +30,14 @@ static void	check_format_color(char *line)
 		ft_exit(ERR_COLOR);
 }
 
+/***************************************
+ * @file	parse_colors.c
+ * @brief	Parse the colors of the map file
+ * @param	data: the structure that contains all the data of the game
+ * @param	line: the line where the colors are
+ * @note	The color's lines are in the format "F 255,255,255"
+ * 			or "C 255,255,255"
+***************************************/
 void	parse_colors(t_data *data, char *line)
 {
 	char	**color;

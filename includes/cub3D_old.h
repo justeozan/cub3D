@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3D_old.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 05:06:41 by ozasahin         ###   ########.fr       */
+/*   Created: 2024/08/17 03:04:39 by ozasahin          #+#    #+#             */
+/*   Updated: 2024/08/17 03:07:39 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_OLD_H
+# define CUB3D_OLD_H
 
-/*===========================================*/
-/*             TABLE OF CONTENTS             */
-/*===========================================*/
+/*=================TABLE OF CONTENTS=================*/
 
 /*
 1. INCLUDES
@@ -30,33 +28,25 @@
    3.7 DATA ERRORS
    3.8 INIT ERRORS
 4. VALUES
-5. ENUM
-6. STRUCTURES
-7. FUNCTIONS
-   6.1 CLOSE PROGRAM
-   6.2 DEBUG
-   6.3 GAME LOOP
-   6.4 INIT
-   6.5 KEY HANDLER
-   6.6 PARSING
+5. STRUCTURES
+6. FUNCTIONS
+   6.1 DEBUG
+   6.2 INIT
+   6.3 PARSING
+   6.4 ERROR HANDLING
 */
 
-/*===========================================*/
-/*                 INCLUDES                  */
-/*===========================================*/
+/*=================INCLUDES=================*/
 
-# include <fcntl.h>
-# include <math.h>
-# include <stdbool.h>
-# include <stdio.h>
 # include <unistd.h>
+# include <stdbool.h>
+# include <fcntl.h>
+# include <stdio.h>
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
 
-/*===========================================*/
-/*                  COLORS                   */
-/*===========================================*/
+/*=================COLORS=================*/
 
 # define RESET		"\033[0m"
 # define RED		"\033[0;31m"
@@ -67,9 +57,7 @@
 # define MAGENTA	"\033[0;35m"
 # define CYAN		"\033[0;36m"
 
-/*===========================================*/
-/*              ERROR MESSAGES               */
-/*===========================================*/
+/*=================ERROR MESSAGES=================*/
 
 //MALLOC ERROR
 
@@ -97,7 +85,7 @@
 # define ERR_SPRITES_3	"Error\nSprite with bad extension."
 # define ERR_SPRITES_4	"Error\nSaving sprites failed."
 # define ERR_SPRITES_5	"Error\nMultiple Same Cardinal point in file."
-# define ERR_SPRITES_6	"Error\nSprite has a bad Cardinal point: <NO.SO.WE.EA>."
+# define ERR_SPRITES_6	"Error\nSprite has a bad Cardinal point. <NO.SO.WE.EA>."
 
 //COLOR ERRORS
 
@@ -133,11 +121,15 @@
 # define ERR_INIT_6		"Error\nPlayer position don't finded."
 # define ERR_INIT_7		"Error\nPlayer direction don't finded."
 
-/*===========================================*/
-/*                  VALUES                   */
-/*===========================================*/
+/*===================VALUES===================*/
 
+# ifndef PI
 #  define PI	3.14159265358979323846
+# endif
+
+# ifndef FOV
+#  define FOV	60
+# endif
 
 # ifndef SCREEN_WIDTH
 #  define SCREEN_WIDTH	3840
@@ -147,28 +139,14 @@
 #  define SCREEN_HEIGHT	2160
 # endif
 
-// # ifndef FOV
-// #  define FOV	60
-// # endif
-
-# ifndef PLANE_FOV
-#  define PLANE_FOV 0.649408
-# endif
-
-# ifndef PLAYER_STEP_SIZE
-#  define PLAYER_STEP_SIZE 0.050
-# endif
-
-/*===========================================*/
-/*                   ENUM                    */
-/*===========================================*/
+/*=================STRUCTURES=================*/
 
 /***************************************
- * @brief	Enum for the garbage collector id
- * @param	DATA: data structure
- * @param	MATRIX: matrix structure
- * @param	TMP: temporary structure
- * @note	Start at 1.
+ * @brief Enum for the garbage collector id
+ * @param DATA: data structure
+ * @param MATRIX: matrix structure
+ * @param TMP: temporary structure
+ * @note Start at 1.
  ***************************************/
 typedef enum e_gc_id
 {
@@ -185,10 +163,6 @@ typedef enum e_cardinal
 	WEST,
 	EAST
 }	t_cardinal;
-
-/*===========================================*/
-/*                STRUCTURES                 */
-/*===========================================*/
 
 typedef struct s_fvector
 {
@@ -209,9 +183,9 @@ typedef struct s_ivector
 }	t_ivector;
 
 /***************************************
- * @brief	Structure for the colors of the floor and ceiling of the game
- * @param	floor: int contain (r * 256 * 256) + (g * 256) + b
- * @param	ceiling: int contain (r * 256 * 256) + (g * 256) + b
+ * @brief Structure for the colors of the floor and ceiling of the game
+ * @param floor: int contain (r * 256 * 256) + (g * 256) + b
+ * @param ceiling: int contain (r * 256 * 256) + (g * 256) + b
 ***************************************/
 typedef struct s_colors
 {
@@ -220,10 +194,10 @@ typedef struct s_colors
 }	t_colors;
 
 /***************************************
- * @brief	Structure for the sprites data
- * @param	path: path to the sprite texture
- * @param	len_line: length of the line
- * @param	bit_per_pixel: ?
+ * @brief Structure for the sprites data
+ * @param path: path to the sprite texture
+ * @param len_line: length of the line
+ * @param bit_per_pixel: ?
 ***************************************/
 typedef struct s_sprites
 {
@@ -239,10 +213,10 @@ typedef struct s_sprites
 }	t_sprites;
 
 /***************************************
- * @brief	Structure for the map data
- * @param	content: the map
- * @param	height: height of the map
- * @param	width: width of the map
+ * @brief Structure for the map data
+ * @param content: the map
+ * @param height: height of the map
+ * @param width: width of the map
 ***************************************/
 typedef struct s_map
 {
@@ -252,12 +226,12 @@ typedef struct s_map
 }	t_map;
 
 /***************************************
- * @brief	Structure for the mlx data
- * @param	mlx_ptr: mlx pointer
- * @param	win_ptr: window pointer
- * @param	width: width of the window
- * @param	height: height of the window
- * @note	The width and height are the resolution of the window
+ * @brief Structure for the mlx data
+ * @param mlx_ptr: mlx pointer
+ * @param win_ptr: window pointer
+ * @param width: width of the window
+ * @param height: height of the window
+ * @note The width and height are the resolution of the window
 ***************************************/
 typedef struct s_mlx
 {
@@ -268,12 +242,12 @@ typedef struct s_mlx
 }	t_mlx;
 
 /***************************************
- * @brief	Structure for the image data
- * @param	img_ptr: image pointer
- * @param	addr: address of the image, the first pixel of image array
- * @param	bit_per_pixel: bit per pixel
- * @param	len_line: length of the line
- * @param	endian: endian, means the order of the bytes
+ * @brief Structure for the image data
+ * @param img_ptr: image pointer
+ * @param addr: address of the image, the first pixel of image array
+ * @param bit_per_pixel: bit per pixel
+ * @param len_line: length of the line
+ * @param endian: endian, means the order of the bytes
 ***************************************/
 typedef struct s_image
 {
@@ -285,51 +259,31 @@ typedef struct s_image
 }	t_image;
 
 /***************************************
- * @brief	Structure for the player data
- * @param	dir: the direction of the player
- * @param	pos: the position of the player
- * @param	plane: ?
- * @param	movement: ?
- * @note	all the values are in double, for better precision.
+ * @brief Structure for the player data
+ * @param dir: the direction of the player
+ * @param pos: the position of the player
+ * @param plane: ?
+ * @param movement: ?
+ * @note all the values are in double, for better precision.
 ***************************************/
 typedef struct s_player
 {
 	double		dir_angle;
-	t_cardinal	cardinal;
-	t_dvector	dir;
+	t_cardinal	dir;
 	t_dvector	pos;
 	t_dvector	plane;
 	t_dvector	movement;
 }	t_player;
 
 /***************************************
- * @brief	Structure for the keys data
- * @param	w: key W
- * @param	a: key A
- * @param	s: key S
- * @param	d: key D
- * @param	left: key left
- * @param	right: key right
-***************************************/
-typedef struct s_keys
-{
-	int	w;
-	int	a;
-	int	s;
-	int	d;
-	int	left;
-	int	right;
-}	t_keys;
-
-/***************************************
- * @brief	Structure for the data of the game,
- * @param	no: path to the north texture
- * @param	so: path to the south texture
- * @param	we: path to the west texture
- * @param	ea: path to the east texture
- * @param	f: path to the floor texture
- * @param	c: path to the ceiling texture
- * @param	file: the map file (with no whitespaces)
+ * @brief Structure for the data of the game,
+ * @param no: path to the north texture
+ * @param so: path to the south texture
+ * @param we: path to the west texture
+ * @param ea: path to the east texture
+ * @param f: path to the floor texture
+ * @param c: path to the ceiling texture
+ * @param file: the map file (with no whitespaces)
  ***************************************/
 typedef struct s_data
 {
@@ -339,75 +293,110 @@ typedef struct s_data
 	t_mlx		mlx;
 	t_image		img;
 	t_player	player;
-	t_keys		keys;
 	char		**file;
 }	t_data;
 
-/*===========================================*/
-/*                 FUNCTIONS                 */
-/*===========================================*/
+/*=================FUNCTIONS=================*/
 
-/*---------------------------------*/
-/*              Debug              */
-/*---------------------------------*/
+/* ________________ DEBUG ________________ */
 
+/*                 debug.c                 */
+
+void	print_data(t_data *data);
 void	print_file(char **file);
 void	print_file_without_spaces(char **file);
+void	print_map(char **map, int height);
 void	print_all_infos(t_data *data);
 
-/*---------------------------------*/
-/*          Close program          */
-/*---------------------------------*/
+/* ________________ INIT ________________ */
 
-void	ft_exit(char *str);
-void	close_program(void);
+/*                 init_mlx.c                 */
 
-/*---------------------------------*/
-/*         game_loop/frame         */
-/*---------------------------------*/
-
-/*---------------------------------*/
-/*         game_loop/player        */
-/*---------------------------------*/
-
-void	init_player(t_data *data, t_player *player);
-double	to_rad(int degree);
-void	process_player_dir(t_player *player);
-void	process_player_plane(t_player *player);
-void	process_player_movement(t_player *player);
-
-/*---------------------------------*/
-/*      game_loop/ray_casting      */
-/*---------------------------------*/
-
-/*---------------------------------*/
-/*               Init              */
-/*---------------------------------*/
-
-void	init_image(t_image *img, t_mlx mlx);
-void	init_mlx(t_mlx *mlx);
 t_data	*init_struct(void);
+
+/*                 init_mlx.c                 */
+
 void	init_sprites(t_data *data, t_mlx *mlx);
 
-/*---------------------------------*/
-/*           Key handler           */
-/*---------------------------------*/
+/*                 init_mlx.c                 */
 
-int		key_press(int keycode, t_data *data);
-int		key_release(int keycode, t_data *data);
+void	init_mlx(t_mlx *mlx);
+void	init_image(t_image *img, t_mlx mlx);
 
+/* _______________ PARSING _______________ */
 
-/*---------------------------------*/
-/*              Parsing            */
-/*---------------------------------*/
-
+/***************************************
+ * @file	---- parse_colors.c ----
+ * @brief	Parse the colors of the map file
+ * @param	data: the structure that contains all the data of the game
+ * @param	line: the line where the colors are
+ * @note	The color's lines are in the format "F 255,255,255"
+ * 			or "C 255,255,255"
+***************************************/
 void	parse_colors(t_data *data, char *line);
+
+/***************************************
+ * @file	---- parse_file_utils.c ----
+ * @brief	Check the format of the map file (order of the elements)
+ * @param	file: the entire file
+ * @note	The order of the elements in the file must be:Four textures,
+ * 			Two color, Map
+***************************************/
 void	check_file_format(char **file);
+
+/***************************************
+ * @file	---- parse_file.c ----
+ * @brief	Parse the map file
+ * @param	fd: the file descriptor
+ * @return	The file without whitespaces, NULL if an error occured
+***************************************/
 char	**get_file(int fd);
+
+/***************************************
+ * @file	---- parse_map_utils.c ----
+ * @brief	replace all the spaces in the map by walls
+ * @param	map: the map checked
+ * @param	height: the height of the map, means number of lines (start at 1)
+ * @param	width: the width of the map, means number of characters in a
+ * 			line (start at 1)
+***************************************/
 void	replace_space_by_wall(char **map, int height, int width);
+
+/***************************************
+ * @file	---- parse_map.c ----
+ * @brief	Parse the map of the map in file we received
+ * @param	data: the structure that contains all the data of the game
+ * @param	file: the file without whitespaces (!)
+ * @note	Here we check if the map is valid, if there is only one player,
+ * 			if the map is closed, etc.
+***************************************/
 void	get_map(t_data *data, char **file);
+
+/***************************************
+ * @file	---- parse_textures.c ----
+ * @brief	Parse the textures of the map file
+ * @param	data: the structure that contains all the data of the game
+ * @param	line: the line where the textures are
+***************************************/
 void	parse_sprites(t_data *data, char *line);
-void	parse(char	**av, t_data *data);
+
+/***************************************
+ * @file	---- parse_utils.c ----
+ * @brief	Parse the textures of the map file
+ * @param	file: the file without whitespaces
+***************************************/
 // int		count_line(char **file);
 
-#endif /* CUBE3D_H */
+/***************************************
+ * parsing.c ----
+ * @brief	Parse the map file
+***************************************/
+void	parse(char	**av, t_data *data);
+
+/*             error.c             */
+
+void	print_error_msg(char *str);
+// void	ft_exit(char *str, int error_code);
+void	ft_exit(char *str);
+
+#endif /* CUB3D_OLD_H */

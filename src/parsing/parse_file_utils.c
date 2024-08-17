@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 00:18:45 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/16 04:29:10 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/17 04:06:57 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ static void	handle_map_line(char **file, int *i, int *value)
 	(*value)++;
 }
 
+/***************************************
+ * @brief	Check the format of the map file (order of the elements)
+ * @param	file: the entire file
+ * @note	The order of the elements in the file must be: Four textures,
+ * 			Two color, and Map
+***************************************/
 void	check_file_format(char **file)
 {
 	int	value;

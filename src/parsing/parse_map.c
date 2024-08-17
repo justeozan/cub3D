@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/16 04:29:34 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/17 04:07:29 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,23 @@ static void	get_size_map(t_data *data, char **file)
 		j = 0;
 		while (file[i][j])
 			j++;
-		if (j > data->mappy.width)
+		if (j > data->map.width)
 		{
-			data->mappy.width = j;
+			data->map.width = j;
 		}
 		i++;
 	}
-	data->mappy.height = i;
+	data->map.height = i;
 }
 
+/***************************************
+ * @file	parse_map.c
+ * @brief	Parse the map of the map in file we received
+ * @param	data: the structure that contains all the data of the game
+ * @param	file: the file without whitespaces (!)
+ * @note	Here we check if the map is valid, if there is only one player,
+ * 			if the map is closed, etc.
+***************************************/
 void	get_map(t_data *data, char **file)
 {
 	char	**map;
@@ -101,20 +109,20 @@ void	get_map(t_data *data, char **file)
 	map = NULL;
 	get_size_map(data, file);
 	map = (char **)gc_malloc(sizeof(char *)
-			* (size_t)(data->mappy.height), MAP);
+			* (size_t)(data->map.height), MAP);
 	if (!map)
 		ft_exit(ERR_MALLOC);
 	i = -1;
-	while (++i < data->mappy.height)
+	while (++i < data->map.height)
 	{
 		map[i] = (char *)gc_malloc(sizeof(char)
-				*(size_t)(data->mappy.width + 1), MAP);
+				*(size_t)(data->map.width + 1), MAP);
 		if (!map[i])
 			ft_exit(ERR_MALLOC);
-		ft_strlcpy(map[i], file[i], (size_t)(data->mappy.width + 1));
+		ft_strlcpy(map[i], file[i], (size_t)(data->map.width + 1));
 	}
-	check_map(map, data->mappy.height, data->mappy.width);
-	data->mappy.content = map;
-	if (!data->mappy.content[0])
+	check_map(map, data->map.height, data->map.width);
+	data->map.content = map;
+	if (!data->map.content[0])
 		ft_exit(ERR_MAP_3);
 }
