@@ -1,4 +1,3 @@
-# TODO - add new files in game_loop directory
 # TODO - add a rule to compile cub3d in UHD or HD
 
 .DEFAULT_GOAL: $(NAME)
