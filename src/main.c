@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:47 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 04:16:57 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/20 21:50:27 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int ac, char **av)
 	init_sprites(data, &data->mlx);
 	init_player(data, &data->player);
 	print_all_infos(data);
+	// ft_printf("la\n");
 	game_event_loop(data);
 	return (0);
 }

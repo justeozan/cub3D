@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 04:13:34 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/20 05:48:11 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/20 21:54:20 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void	game_event_loop(t_data *data)
 	mlx_hook(data->mlx.win_ptr, 3, 1L << 1, key_release, data);
 	mlx_hook(data->mlx.win_ptr, 17, 1L << 17, close_program, data);
 	mlx_loop_hook(data->mlx.mlx_ptr, game_loop, (void *)data);
+	ft_printf("la, mlx_ptr: %p\n", data->mlx.mlx_ptr);
 	mlx_loop(data->mlx.mlx_ptr);
 }
