@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:12:56 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 03:58:46 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/20 04:23:01 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_data(t_data *data)
 	ft_printf("\n-DATA STRUCTURE-\n");
 	while (++i < 4)
 		ft_printf(CYAN "%s" RESET " %s\n",
-			p_names[data->sprites[i].point - 1], data->sprites[i].path);
+			p_names[data->sprites[i].cardinal - 1], data->sprites[i].path);
 	ft_printf(BLUE "F:" RESET " %d (%d,%d,%d)\n", data->colors.floor,
 		(data->colors.floor >> 16) & 0xFF,
 		(data->colors.floor >> 8) & 0xFF, data->colors.floor & 0xFF);

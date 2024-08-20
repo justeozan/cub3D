@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 22:43:24 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/20 05:49:05 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,10 @@
 #  define PLAYER_STEP_SIZE 0.050
 # endif
 
+# ifndef PLAYER_ROT_SPEED
+#  define PLAYER_ROT_SPEED	0.042
+# endif
+
 /*===========================================*/
 /*                   ENUM                    */
 /*===========================================*/
@@ -175,6 +179,7 @@ typedef enum e_gc_id
 	DATA = 0,
 	MAP,
 	SPRITES,
+	MLX,
 	TMP
 }	t_gc_id;
 
@@ -208,6 +213,32 @@ typedef struct s_ivector
 	int	y;
 }	t_ivector;
 
+typedef struct s_ray
+{
+	t_ivector	map_pos;
+	t_ivector	step_direction;
+	t_dvector	true_pos;
+	t_dvector	dir;
+	t_dvector	delta_dist;
+	t_dvector	side_dist;
+} t_ray;
+
+typedef struct s_dda
+{
+	double		dist;
+	t_cardinal	cardinal;
+} t_dda;
+
+typedef struct s_pixel_column
+{
+	int		x_sprite;
+	int		y_sprite;
+	int		y_start;
+	int		y_end;
+	int		height;
+	int		color;
+}	t_pixel_column;
+
 /***************************************
  * @brief	Structure for the colors of the floor and ceiling of the game
  * @param	floor: int contain (r * 256 * 256) + (g * 256) + b
@@ -227,15 +258,16 @@ typedef struct s_colors
 ***************************************/
 typedef struct s_sprites
 {
-	t_cardinal	point;
-	void		*reference;
-	char		*path;
-	char		*addr;
-	int			x;
-	int			y;
-	int			len_line;
-	int			bit_per_pixel;
-	int			endian;
+	t_cardinal		cardinal;
+	void			*reference;
+	unsigned char	*pixels;
+	char			*path;
+	char			*addr;
+	int				x;
+	int				y;
+	int				len_line;
+	int				bit_per_pixel;
+	int				endian;
 }	t_sprites;
 
 /***************************************
@@ -340,7 +372,7 @@ typedef struct s_data
 	t_image		img;
 	t_player	player;
 	t_keys		keys;
-	char		**file;
+	// char		**file; //REVIEW - CHeck if needed.
 }	t_data;
 
 /*===========================================*/
@@ -360,17 +392,21 @@ void	print_all_infos(t_data *data);
 /*---------------------------------*/
 
 void	ft_exit(char *str);
-void	close_program(void);
+int		close_program(void);
 
 /*---------------------------------*/
 /*         game_loop/frame         */
 /*---------------------------------*/
+
+void	draw_floor_ceiling(t_data *data, t_image img);
+void	print_col(t_data *data, t_dda *wall_ray, t_ray *ray, int x);
 
 /*---------------------------------*/
 /*         game_loop/player        */
 /*---------------------------------*/
 
 void	init_player(t_data *data, t_player *player);
+void	modif_player(t_data *data);
 double	to_rad(int degree);
 void	process_player_dir(t_player *player);
 void	process_player_plane(t_player *player);
@@ -379,6 +415,18 @@ void	process_player_movement(t_player *player);
 /*---------------------------------*/
 /*      game_loop/ray_casting      */
 /*---------------------------------*/
+
+void	init_ray(t_ray *ray, t_player player, double camera_x);
+void	init_ray_dda(t_ray *r);
+void	init_wall_dda(t_map *map, t_ray *ray, t_dda *wall_ray);
+
+/*---------------------------------*/
+/*             game_loop           */
+/*---------------------------------*/
+
+void	ray_casting(t_data *data);
+int		game_loop(t_data *data);
+void	game_event_loop(t_data *data);
 
 /*---------------------------------*/
 /*               Init              */
@@ -393,8 +441,8 @@ void	init_sprites(t_data *data, t_mlx *mlx);
 /*           Key handler           */
 /*---------------------------------*/
 
-void	key_press(int keycode, t_data *data);
-void	key_release(int keycode, t_data *data);
+int	key_press(int keycode, t_data *data);
+int	key_release(int keycode, t_data *data);
 
 
 /*---------------------------------*/

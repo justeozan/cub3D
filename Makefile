@@ -5,19 +5,17 @@
 NAME	=	cub3D
 
 SRC		=		\
-				src/debug/debug.c\
-				\
 				src/close_program/close.c\
 				\
-				src/key_handler/key_handler.c\
+				src/debug/debug.c\
 				\
 				src/game_loop/frame/print_frame.c\
-				\
 				src/game_loop/player/init_player.c\
 				src/game_loop/player/player_modifs.c\
 				src/game_loop/player/player_utils.c\
-				\
-				src/game_loop/ray_casting/game_loop.c\
+				src/game_loop/ray_casting/dda_ray_config.c\
+				src/game_loop/ray_casting/dda_wall_config.c\
+				src/game_loop/game_loop.c\
 				\
 				src/init/init_mlx.c\
 				src/init/init_sprites.c\

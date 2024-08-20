@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:52 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 22:48:00 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/19 23:55:20 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 ***************************************/
 static void	check_presence_colors(t_data *data)
 {
-	if (data->colors.floor == -1)
+	if (data->colors.floor == -1) // FIXME - Initialize to -1 then.
 		ft_exit(ERR_COLOR_F);
-	if (data->colors.ceiling == -1)
+	if (data->colors.ceiling == -1) // FIXME - Initialize to -1 then.
 		ft_exit(ERR_COLOR_C);
 }
 
@@ -70,14 +70,15 @@ static void	get_data(t_data *data, char **file)
 void	parse(char	**av, t_data *data)
 {
 	int		fd;
+	char	**file; //REVIEW - Check if all is correct.
 
 	fd = open(av[1], O_RDONLY);
 	if (fd < 1)
 		ft_exit(ERR_FILE);
-	data->file = get_file(fd);
+	file = get_file(fd);
 	close(fd);
-	get_data(data, data->file);
-	get_map(data, &(data->file[6]));
+	get_data(data, file);
+	get_map(data, &file[6]);
 	replace_space_by_wall(data->map.content,
 		data->map.height, data->map.width);
 	// print_data(data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:43 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 04:20:07 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/20 05:46:20 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_exit(char *str)
 
 	id = -1;
 	print_error_msg(str);
-	while (++id < TMP)
+	while (++id <= TMP)
 		gc_clear(id, free);
 	exit(EXIT_FAILURE);
 }
@@ -53,12 +53,12 @@ void	ft_exit(char *str)
  * 			And print no message.
  * 			Example: close_program();
 ***************************************/
-void	close_program(void)
+int	close_program(void)
 {
 	t_gc_id	id;
 
 	id = -1;
-	while (++id < TMP)
+	while (++id <= TMP)
 		gc_clear(id, free);
-	exit(EXIT_SUCCESS);
+	return (exit(EXIT_SUCCESS), 0);
 }

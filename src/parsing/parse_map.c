@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/17 04:07:29 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/20 00:12:19 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	check_line(char *l, int width, int *nb_player, bool ext)
 			break ;
 		if (j != 0 && l[j - 1] == '1' && ft_strchr("0NSWE", l[j]) && !ext)
 		{
-			while (l[j] && ft_strchr("0NSWE", l[j]) != NULL)
+			while (l[j] && ft_strchr("0NSWE", l[j])) // REVIEW - I had retired 
 			{
-				if (ft_strchr("NSWE", l[j]) != NULL)
+				if (ft_strchr("NSWE", l[j]))
 					(*nb_player)++;
 				j++;
 			}
@@ -67,7 +67,7 @@ static void	check_map(char **map, int height, int width)
 	}
 	if (nb_player != 1)
 		ft_exit(ERR_MAP_2);
-	if (nb_wall != 2)
+	if (nb_wall != 2) //REVIEW - Maybe useless.
 		ft_exit(ERR_MAP_6);
 }
 
@@ -83,9 +83,7 @@ static void	get_size_map(t_data *data, char **file)
 		while (file[i][j])
 			j++;
 		if (j > data->map.width)
-		{
 			data->map.width = j;
-		}
 		i++;
 	}
 	data->map.height = i;
@@ -104,8 +102,6 @@ void	get_map(t_data *data, char **file)
 	char	**map;
 	int		i;
 
-	// if (!data->no || !data->so || !data->we || !data->ea)
-	// 	ft_exit(ERR_SPRITES_2);
 	map = NULL;
 	get_size_map(data, file);
 	map = (char **)gc_malloc(sizeof(char *)
@@ -121,7 +117,7 @@ void	get_map(t_data *data, char **file)
 			ft_exit(ERR_MALLOC);
 		ft_strlcpy(map[i], file[i], (size_t)(data->map.width + 1));
 	}
-	check_map(map, data->map.height, data->map.width);
+	check_map(map, data->map.height, data->map.width); //FIXME - Where i check around a 0 ??
 	data->map.content = map;
 	if (!data->map.content[0])
 		ft_exit(ERR_MAP_3);

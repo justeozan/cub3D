@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:16:03 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 04:11:47 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/20 05:51:52 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ static void	adjust_player_pos_to_near_walls(char **map_p, t_player *player)
 {
 	if (map_p[(int)player->pos.y - 1][(int)player->pos.x])
 		player->pos.y += 0.5;
-	else if (map_p[(int)player->pos.y + 1][(int)player->pos.x])
+	if (map_p[(int)player->pos.y + 1][(int)player->pos.x])
 		player->pos.y -= 0.5;
-	else if (map_p[(int)player->pos.y][(int)player->pos.x - 1])
+	if (map_p[(int)player->pos.y][(int)player->pos.x - 1])
 		player->pos.x += 0.5;
-	else if (map_p[(int)player->pos.y][(int)player->pos.x + 1])
+	if (map_p[(int)player->pos.y][(int)player->pos.x + 1])
 		player->pos.x -= 0.5;
 }
 
