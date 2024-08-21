@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:15:50 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 04:26:55 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/21 05:41:42 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,48 @@ void	draw_floor_ceiling(t_data *data, t_image img)
 	}
 }
 
+// void	print_col(t_data *data, t_dda *wall_ray, t_ray *ray, int x)
+// {
+// 	t_pixel_column	col;
+// 	t_sprites		sprite;
+// 	int				i;
+
+// 	// sprite = NULL;
+// 	sprite_to_display(data, &sprite, wall_ray->cardinal);
+// 	get_sprite_x(ray, wall_ray, &sprite, &col.x_sprite);
+// 	col.height = (int)(SCREEN_HEIGHT / wall_ray->dist);
+// 	col.y_start = (SCREEN_HEIGHT - col.height) / 2;
+// 	col.y_end = col.y_start + col.height;
+// 	i = col.y_start;
+// 	while (i < col.y_end)
+// 	{
+// 		col.y_sprite = ((i - col.y_start) * sprite.y) / col.height;
+// 		col.color = *((int *)(sprite.addr + col.y_sprite * sprite.len_line + col.x_sprite * (sprite.bit_per_pixel / 8)));
+// 		put_pixel(data->img, x, i, col.color);
+// 		i++;
+// 	}
+// }
+
 void	print_col(t_data *data, t_dda *wall_ray, t_ray *ray, int x)
 {
 	t_pixel_column	col;
 	t_sprites		sprite;
 	int				i;
 
-	// sprite = NULL;
 	sprite_to_display(data, &sprite, wall_ray->cardinal);
 	get_sprite_x(ray, wall_ray, &sprite, &col.x_sprite);
 	col.height = (int)(SCREEN_HEIGHT / wall_ray->dist);
 	col.y_start = (SCREEN_HEIGHT - col.height) / 2;
 	col.y_end = col.y_start + col.height;
-	i = col.y_start;
-	while (i < col.y_end)
+	i = SCREEN_HEIGHT - col.y_end;
+	while (i < SCREEN_HEIGHT - col.y_start)
 	{
-		col.y_sprite = ((i - col.y_start) * sprite.y) / col.height;
-		col.color = *((int *)(sprite.addr + col.y_sprite * sprite.len_line + col.x_sprite * (sprite.bit_per_pixel / 8)));
+		col.y_sprite = ((i - (SCREEN_HEIGHT - col.y_end)) * sprite.y) / col.height;
+		if (sprite.cardinal == NORTH || sprite.cardinal == WEST)
+			col.color = *((int *)(sprite.addr + col.y_sprite * sprite.len_line + col.x_sprite * (sprite.bit_per_pixel / 8)));
+		else
+			col.color = *((int *)(sprite.addr + col.y_sprite * sprite.len_line + (sprite.x - col.x_sprite - 1) * (sprite.bit_per_pixel / 8)));
+			
 		put_pixel(data->img, x, i, col.color);
 		i++;
 	}
