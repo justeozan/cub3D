@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:12:56 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/20 04:23:01 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/21 00:24:05 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,18 @@ static void	print_map(char **map, int height)
 static void	print_player_infos(t_player *player)
 {
 	ft_printf("\n-PLAYER STRUCTURE-\n");
-	ft_printf("pos: (%.2f,%.2f)\n", player->pos.x, player->pos.y);
-	ft_printf("dir: (%.2f,%.2f)\n", player->dir.x, player->dir.y);
-	ft_printf("plane: (%.2f,%.2f)\n", player->plane.x, player->plane.y);
-	ft_printf("dir_angle: %.2f\n", player->dir_angle);
-	ft_printf("movement: (%.2f,%.2f)\n", player->movement.x, player->movement.y);
-	ft_printf("cardinal: %d\n", player->cardinal);
-	ft_printf("\n");
+	printf("pos: (%f, %f)\n", player->pos.x, player->pos.y);
+	printf("dir: (%f, %f)\n", player->dir.x, player->dir.y);
+	printf("plane: (%f, %f)\n", player->plane.x, player->plane.y);
+	printf("dir_angle: %f\n", player->dir_angle);
+	printf("movement: (%f, %f)\n", player->movement.x, player->movement.y);
+	printf("cardinal: %s\n", 
+	player->cardinal == NORTH ? "NORTH" :
+	player->cardinal == SOUTH ? "SOUTH" :
+	player->cardinal == WEST ? "WEST" :
+	player->cardinal == EAST ? "EAST" :
+	"UNKNOWN");
+	printf("\n");
 }
 
 inline void	print_all_infos(t_data *data)

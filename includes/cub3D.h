@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/20 05:49:05 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/20 23:56:05 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,9 +260,9 @@ typedef struct s_sprites
 {
 	t_cardinal		cardinal;
 	void			*reference;
-	unsigned char	*pixels;
+	// unsigned char	*pixels;
 	char			*path;
-	char			*addr;
+	unsigned char	*addr;
 	int				x;
 	int				y;
 	int				len_line;

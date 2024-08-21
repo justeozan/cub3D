@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:16:03 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/20 05:51:52 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/20 23:03:07 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ static void	get_player_pos(t_map map, t_player *player)
 ***************************************/
 static void	create_angle(t_player *player)
 {
-	if (player->cardinal == WEST)
+	if (player->cardinal == EAST)
 		player->dir_angle = to_rad(0);
 	else if (player->cardinal == SOUTH)
 		player->dir_angle = to_rad(90);
-	else if (player->cardinal == EAST)
+	else if (player->cardinal == WEST)
 		player->dir_angle = to_rad(180);
 	else if (player->cardinal == NORTH)
 		player->dir_angle = to_rad(270);
