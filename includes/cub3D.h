@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/20 23:56:05 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/21 03:05:25 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ typedef enum e_gc_id
 
 typedef enum e_cardinal
 {
-	NORTH = 1,
+	NORTH = 0,
 	SOUTH,
 	WEST,
 	EAST
