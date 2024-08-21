@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:21 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 02:17:41 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/21 02:51:10 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	new_sprites(t_sprites *sprite, t_mlx *mlx)
 {
 	sprite->reference = mlx_xpm_file_to_image(mlx->mlx_ptr,
 			sprite->path, &sprite->x, &sprite->y);
-	printf("x = %d, y = %d\n", sprite->x, sprite->y);
 	if (!sprite->reference)
 		ft_exit(ERR_INIT_4);
 	sprite->addr = (unsigned char *)mlx_get_data_addr

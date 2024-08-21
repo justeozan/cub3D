@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:47 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 00:10:35 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/21 02:55:47 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,8 @@ int	main(int ac, char **av)
 	init_mlx(&data->mlx);
 	init_image(&data->img, data->mlx);
 	init_sprites(data, &data->mlx);
-	ft_printf("old sprite addr = %p\n", data->sprites[0].addr);
-	ft_printf("old sprite addr = %d\n", data->sprites[0].cardinal);
-
 	init_player(data, &data->player);
 	print_all_infos(data);
-	// ft_printf("la\n");
 	game_event_loop(data);
 	return (0);
 }

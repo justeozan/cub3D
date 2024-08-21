@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_frame.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:15:50 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 00:35:44 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/21 02:50:22 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	put_pixel(t_image img, int col, int line, int color)
 		*((int *)(img.addr + offset)) = color;
 }
 
-static void	get_sprite_x(t_ray *ray, t_dda *wall_ray, t_sprites *sprite, int x_sprite)
+static void	get_sprite_x(t_ray *ray, t_dda *wall_ray, t_sprites *sprite, int *x_sprite)
 {
 	double	wall_hit_pos;
 
@@ -30,7 +30,7 @@ static void	get_sprite_x(t_ray *ray, t_dda *wall_ray, t_sprites *sprite, int x_s
 	else
 		wall_hit_pos = ray->true_pos.y  + wall_ray->dist * ray->dir.y;
 	wall_hit_pos -= floor(wall_hit_pos);
-	x_sprite = (int)(wall_hit_pos * (double)sprite->x);
+	*x_sprite = (int)(wall_hit_pos * (double)sprite->x);
 }
 
 static void	sprite_to_display(t_data *data, t_sprites *sprite, t_cardinal cardinal)
@@ -75,18 +75,17 @@ void	print_col(t_data *data, t_dda *wall_ray, t_ray *ray, int x)
 
 	// sprite = NULL;
 	sprite_to_display(data, &sprite, wall_ray->cardinal);
-	get_sprite_x(ray, wall_ray, &sprite, col.x_sprite);
+	get_sprite_x(ray, wall_ray, &sprite, &col.x_sprite);
 	col.height = (int)(SCREEN_HEIGHT / wall_ray->dist);
 	col.y_start = (SCREEN_HEIGHT - col.height) / 2;
 	col.y_end = col.y_start + col.height;
 	i = col.y_start;
 	while (i < col.y_end)
 	{
-		col.x_sprite = ((i - col.y_start) * sprite.y) / col.height;
+		col.y_sprite = ((i - col.y_start) * sprite.y) / col.height;
 		// printf("%d = ((%d - %d) * %d) / %d\n", col.x_sprite, i, col.y_start, sprite.y, col.height);
-		printf("col.color: %d = %p + %d * %d + %d * (%d / 8)\n", col.color, sprite.addr, col.y_sprite, sprite.len_line, col.x_sprite, sprite.bit_per_pixel);
+		// printf("col.color: %d = %p + %d * %d + %d * (%d / 8)\n", col.color, sprite.addr, col.y_sprite, sprite.len_line, col.x_sprite, sprite.bit_per_pixel);
 		col.color = *((int *)(sprite.addr + col.y_sprite * sprite.len_line + col.x_sprite * (sprite.bit_per_pixel / 8)));
-		ft_printf("la\n");
 		put_pixel(data->img, x, i, col.color);
 		i++;
 	}
