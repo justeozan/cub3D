@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 03:05:25 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/21 04:49:22 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,12 +139,16 @@
 
 #  define PI	3.14159265358979323846
 
+// 3840
 # ifndef SCREEN_WIDTH
-#  define SCREEN_WIDTH	3840
+#  define SCREEN_WIDTH	1500 
 # endif
-
+//FIXME - Do chec carreyy
+//FIXME - Plantage decalage 0,5
+//FIXME - certaines map naffiche rien
+// 2160
 # ifndef SCREEN_HEIGHT
-#  define SCREEN_HEIGHT	2160
+#  define SCREEN_HEIGHT	1500
 # endif
 
 // # ifndef FOV
@@ -156,11 +160,11 @@
 # endif
 
 # ifndef PLAYER_STEP_SIZE
-#  define PLAYER_STEP_SIZE 0.050
+#  define PLAYER_STEP_SIZE 0.150
 # endif
 
 # ifndef PLAYER_ROT_SPEED
-#  define PLAYER_ROT_SPEED	0.042
+#  define PLAYER_ROT_SPEED	0.082
 # endif
 
 /*===========================================*/
@@ -372,7 +376,6 @@ typedef struct s_data
 	t_image		img;
 	t_player	player;
 	t_keys		keys;
-	// char		**file; //REVIEW - CHeck if needed.
 }	t_data;
 
 /*===========================================*/
@@ -385,6 +388,7 @@ typedef struct s_data
 
 void	print_file(char **file);
 void	print_file_without_spaces(char **file);
+void	print_player_infos(t_player *player);
 void	print_all_infos(t_data *data);
 
 /*---------------------------------*/

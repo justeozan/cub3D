@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:15:40 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/20 05:45:20 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/21 04:28:15 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-// TODO - Add comments
 
 int	key_press(int keycode, t_data *data)
 {

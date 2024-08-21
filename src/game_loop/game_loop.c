@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 04:13:34 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 00:24:38 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/21 04:31:37 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ray_casting(t_data *data)
 {
-	t_ray		ray;	//REVIEW - Understand what this struct is
+	t_ray		ray;
 	t_player	*player;
-	t_dda		wall_ray; //REVIEW - Choose a better name for this struct
+	t_dda		wall_ray;
 	double		camera_x;
 	int			x;
 
@@ -29,7 +29,7 @@ void	ray_casting(t_data *data)
 		init_ray(&ray, *player, camera_x);
 		init_ray_dda(&ray);
 		init_wall_dda(&(data->map), &ray, &wall_ray);
-		print_col(data, &wall_ray, &ray, x);	//REVIEW - Understand what this function does
+		print_col(data, &wall_ray, &ray, x);
 		x++;
 	}
 	mlx_put_image_to_window

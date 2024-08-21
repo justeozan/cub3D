@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:15:50 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 02:50:22 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/21 04:26:55 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ void	print_col(t_data *data, t_dda *wall_ray, t_ray *ray, int x)
 	while (i < col.y_end)
 	{
 		col.y_sprite = ((i - col.y_start) * sprite.y) / col.height;
-		// printf("%d = ((%d - %d) * %d) / %d\n", col.x_sprite, i, col.y_start, sprite.y, col.height);
-		// printf("col.color: %d = %p + %d * %d + %d * (%d / 8)\n", col.color, sprite.addr, col.y_sprite, sprite.len_line, col.x_sprite, sprite.bit_per_pixel);
 		col.color = *((int *)(sprite.addr + col.y_sprite * sprite.len_line + col.x_sprite * (sprite.bit_per_pixel / 8)));
 		put_pixel(data->img, x, i, col.color);
 		i++;

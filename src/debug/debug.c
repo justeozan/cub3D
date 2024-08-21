@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:12:56 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 03:06:17 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/21 04:04:31 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	print_map(char **map, int height)
 	}
 }
 
-static void	print_player_infos(t_player *player)
+void	print_player_infos(t_player *player)
 {
 	ft_printf("\n-PLAYER STRUCTURE-\n");
 	printf("pos: (%f, %f)\n", player->pos.x, player->pos.y);

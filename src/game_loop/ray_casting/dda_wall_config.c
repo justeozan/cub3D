@@ -11,8 +11,8 @@ static void	process_wall_dist(t_ray ray, double *dist, char last_side)
 		*dist = (ray.map_pos.x - ray.true_pos.x
 				+ (1 - ray.step_direction.x) / 2) / ray.dir.x;
 	else
-		*dist = (ray.map_pos.x - ray.true_pos.x
-				+ (1 - ray.step_direction.x) / 2) / ray.dir.x;
+		*dist = (ray.map_pos.y - ray.true_pos.y
+				+ (1 - ray.step_direction.y) / 2) / ray.dir.y;
 }
 
 static void	process_wall_cardinal(t_ray ray, t_cardinal *cardinal, char last_side)

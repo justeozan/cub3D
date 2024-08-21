@@ -87,7 +87,7 @@ GOOD_MAPS	=	\
 				maps/good/wall_hole_test.cub\
 				maps/good/works.cub
 
-SUBJECT_MAP	=	maps/good/subject_map.cub
+SUBJECT_MAP	=	maps/good/test_textures.cub
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 
 # Controls
@@ -123,7 +123,7 @@ $(NAME):	$(OBJ) libft/libft.a
 all:		force $(NAME)
 
 m:			clear $(NAME)
-	@./$(NAME) maps/good/subject_map.cub || echo "$(COLOR_RED)Makefile: Error with $(SUBJECT_MAP)$(COLOR_RESET)"
+	@./$(NAME) $(SUBJECT_MAP) || echo "$(COLOR_RED)Makefile: Error with $(SUBJECT_MAP)$(COLOR_RESET)"
 
 vm:			clear $(NAME)
 	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) $(SUBJECT_MAP) || echo "$(COLOR_RED)Makefile: Error with $(SUBJECT_MAP)$(COLOR_RESET)"
