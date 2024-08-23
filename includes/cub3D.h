@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 04:49:22 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/23 23:49:57 by avg38            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,14 +141,14 @@
 
 // 3840
 # ifndef SCREEN_WIDTH
-#  define SCREEN_WIDTH	1500 
+#  define SCREEN_WIDTH	800
 # endif
 //FIXME - Do chec carreyy
 //FIXME - Plantage decalage 0,5
 //FIXME - certaines map naffiche rien
 // 2160
 # ifndef SCREEN_HEIGHT
-#  define SCREEN_HEIGHT	1500
+#  define SCREEN_HEIGHT	800
 # endif
 
 // # ifndef FOV

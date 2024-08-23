@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 22:48:19 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/24 00:11:25 by avg38            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ char	**get_file(int fd)
 	char	**file;
 	int		i;
 
-	file = gc_malloc(sizeof(char *) * 2, TMP);
+	file = gc_malloc(sizeof(char *) * 2, TMP); // REVIEW - mettre calloc a la place
 	if (!file)
 		ft_exit(ERR_MALLOC);
 	i = -1;
