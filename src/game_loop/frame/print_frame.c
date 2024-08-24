@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_frame.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:15:50 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 05:41:42 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/24 04:30:43 by avg38            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,13 @@ static void	sprite_to_display(t_data *data, t_sprites *sprite, t_cardinal cardin
 
 	i = -1;
 	while (++i < 4)
+	{
 		if (data->sprites[i].cardinal == cardinal)
+		{
 			*sprite = data->sprites[i];
+			break ;
+		}
+	}
 }
 
 void	draw_floor_ceiling(t_data *data, t_image img)
@@ -100,14 +105,14 @@ void	print_col(t_data *data, t_dda *wall_ray, t_ray *ray, int x)
 	col.height = (int)(SCREEN_HEIGHT / wall_ray->dist);
 	col.y_start = (SCREEN_HEIGHT - col.height) / 2;
 	col.y_end = col.y_start + col.height;
-	i = SCREEN_HEIGHT - col.y_end;
-	while (i < SCREEN_HEIGHT - col.y_start)
+	i = col.y_start;
+	while (i < col.y_end)
 	{
-		col.y_sprite = ((i - (SCREEN_HEIGHT - col.y_end)) * sprite.y) / col.height;
+		col.y_sprite = ((i - col.y_start) * sprite.y) / col.height;
 		if (sprite.cardinal == NORTH || sprite.cardinal == WEST)
-			col.color = *((int *)(sprite.addr + col.y_sprite * sprite.len_line + col.x_sprite * (sprite.bit_per_pixel / 8)));
-		else
 			col.color = *((int *)(sprite.addr + col.y_sprite * sprite.len_line + (sprite.x - col.x_sprite - 1) * (sprite.bit_per_pixel / 8)));
+		else
+			col.color = *((int *)(sprite.addr + col.y_sprite * sprite.len_line + col.x_sprite * (sprite.bit_per_pixel / 8)));
 			
 		put_pixel(data->img, x, i, col.color);
 		i++;

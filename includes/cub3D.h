@@ -6,7 +6,7 @@
 /*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/23 23:49:57 by avg38            ###   ########.fr       */
+/*   Updated: 2024/08/24 03:02:51 by avg38            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,9 +143,7 @@
 # ifndef SCREEN_WIDTH
 #  define SCREEN_WIDTH	800
 # endif
-//FIXME - Do chec carreyy
-//FIXME - Plantage decalage 0,5
-//FIXME - certaines map naffiche rien
+
 // 2160
 # ifndef SCREEN_HEIGHT
 #  define SCREEN_HEIGHT	800

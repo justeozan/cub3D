@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_modifs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:26:35 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 04:39:14 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/24 04:32:50 by avg38            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ static void	key_manage_wasd(t_keys *key, t_player *player, t_dvector *move_wante
 	}
 	else if (key->a == 1)
 	{
-		move_wanted->x = -player->movement.y;
-		move_wanted->y = player->movement.x;
+		move_wanted->x = player->movement.y;
+		move_wanted->y = -player->movement.x;
 	}
 	else if (key->d == 1)
 	{
-		move_wanted->x = player->movement.y;
-		move_wanted->y = -player->movement.x;
+		move_wanted->x = -player->movement.y;
+		move_wanted->y = player->movement.x;
 	}
 }
 
@@ -87,13 +87,13 @@ static void	modif_player_dir(t_keys *key, t_player *player)
 {
 	if (key->left == 1)
 	{
-		player->dir_angle += PLAYER_ROT_SPEED;
+		player->dir_angle -= PLAYER_ROT_SPEED;
 		if (player->dir_angle > 0)
 			player->dir_angle += 2 * PI;
 	}
 	if (key->right == 1)
 	{
-		player->dir_angle -= PLAYER_ROT_SPEED;
+		player->dir_angle += PLAYER_ROT_SPEED;
 		if (player->dir_angle < 0)
 			player->dir_angle -= 2 * PI;
 	}

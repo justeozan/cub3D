@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:26:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/19 23:22:42 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/24 04:28:50 by avg38            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	process_player_dir(t_player *player)
 ***************************************/
 void	process_player_plane(t_player *player)
 {
-	player->plane.x = player->dir.y * PLANE_FOV;
-	player->plane.y = -player->dir.x * PLANE_FOV;
+	player->plane.x = -player->dir.y * PLANE_FOV;
+	player->plane.y = player->dir.x * PLANE_FOV;
 }
 
 /***************************************
