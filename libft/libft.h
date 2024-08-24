@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:21:30 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/04 14:39:33 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/24 19:12:01 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,12 @@ typedef struct s_id
 	char	buffer[BUFFER_SIZE + 1];
 }	t_id;
 
-char	*extract_the_line(char *line, char *buffer, int len);
-size_t	there_is_a_line(char *str);
-int		update_gnl(char *newbuffer, char *buffer, char **line);
-char	*run_read(int fd, char *line, char *buffer);
+// char	*extract_the_line(char *line, char *buffer, int len);
+// size_t	there_is_a_line(char *str);
+// int		update_gnl(char *newbuffer, char *buffer, char **line);
+// char	*run_read(int fd, char *line, char *buffer);
 char	*get_next_line(int fd);
+char	*gc_get_next_line(int fd, int gc_id);
 size_t	ft_strlen_gnl(char *str);
 char	*str_init(char *s);
 char	*buffer_init(int id, t_id *buffer_memory);

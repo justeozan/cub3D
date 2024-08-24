@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 04:13:34 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 05:21:18 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/24 17:23:22 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	game_loop(t_data *data)
 {
 	modif_player(data);
 	ray_casting(data);
+	set_get_data(data);
 	return (0);
 }
 

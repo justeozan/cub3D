@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/24 00:11:25 by avg38            ###   ########.fr       */
+/*   Updated: 2024/08/24 19:22:17 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,8 @@ char	**get_file(int fd)
 	char	**file;
 	int		i;
 
-	file = gc_malloc(sizeof(char *) * 2, TMP); // REVIEW - mettre calloc a la place
+	// file = gc_malloc(sizeof(char *) * 2, TMP); // REVIEW - mettre calloc a la place
+	file = gc_calloc(2, sizeof(char *), TMP);
 	if (!file)
 		ft_exit(ERR_MALLOC);
 	i = -1;
@@ -137,7 +138,63 @@ char	**get_file(int fd)
 		if (!file)
 			ft_exit(ERR_MALLOC);
 		file[i] = get_next_line(fd);
+		// file[i] = gc_get_next_line(fd, MAP);
 	}
 	check_file_format(file);
 	return (delete_whitespaces(file));
 }
+
+// char **get_file(int fd) 
+// {
+// 	char **file;
+// 	char **new_file;
+// 	int i;
+
+// 	file = gc_calloc(2, sizeof(char *), TMP); // Utilisation de calloc
+// 	if (!file)
+// 		ft_exit(ERR_MALLOC);
+// 	i = 0;
+// 	file[i] = get_next_line(fd);
+// 	if (!file[i])
+// 		ft_exit(ERR_FILE_2);
+// 	while (file[i]) {
+// 		i++;
+// 		new_file = gc_realloc(file, i, sizeof(char *) * (i + 2), TMP);
+// 		if (!new_file) {
+// 			free(file); // Libère l'ancienne allocation en cas d'échec
+// 			ft_exit(ERR_MALLOC);
+// 		}
+// 		file = new_file;
+// 		file[i] = get_next_line(fd);
+// 	}
+// 	check_file_format(file);
+// 	return delete_whitespaces(file);
+// }
+
+// char	**get_file(int fd)
+// {
+// 	char	**file;
+// 	int		current_size;
+// 	int		i;
+
+// 	// file = gc_malloc(sizeof(char *) * 2, TMP); // REVIEW - mettre calloc a la place
+// 	current_size = 2;
+// 	file = gc_calloc(current_size, sizeof(char *), TMP);
+// 	if (!file)
+// 		ft_exit(ERR_MALLOC);
+// 	i = -1;
+// 	file[++i] = get_next_line(fd);
+// 	if (!file[i])
+// 		ft_exit(ERR_FILE_2);
+// 	while (file[i])
+// 	{
+// 		i++;
+// 		file = gc_realloc(file, current_size, sizeof(char *) * (i + 2), TMP);
+// 		if (!file)
+// 			ft_exit(ERR_MALLOC);
+// 		current_size++;
+// 		file[i] = get_next_line(fd);
+// 	}
+// 	check_file_format(file);
+// 	return (delete_whitespaces(file));
+// }

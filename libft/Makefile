@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+         #
+#    By: sei <sei@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 16:43:33 by ozasahin          #+#    #+#              #
-#    Updated: 2024/08/04 14:38:16 by ozasahin         ###   ########.fr        #
+#    Updated: 2024/08/24 19:00:13 by sei              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	=	\
 			gc/gc_calloc.c\
 			gc/gc_clear.c\
 			gc/gc_del_one.c\
+			gc/gc_gnl.c\
 			gc/gc_itoa.c\
 			gc/gc_lstmap.c\
 			gc/gc_lstnew.c\

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   gc_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:23:41 by justo             #+#    #+#             */
-/*   Updated: 2024/08/24 19:12:50 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/24 19:01:05 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-static char	*extract_the_line(char *line, char *buffer, int len)
+static char	*extract_the_line(char *line, char *buffer, int len, int gc_id)
 {
 	char	*new_line;
 	int		i;
 	int		j;
 
-	new_line = malloc(sizeof(char) * (len + 1 + ft_strlen_gnl(line)));
+	// new_line = malloc(sizeof(char) * (len + 1 + ft_strlen_gnl(line)));
+	new_line = gc_malloc(sizeof(char) * (len + 1 + ft_strlen_gnl(line)), gc_id);
 	if (!new_line)
 		return (free(line), NULL);
 	i = -1;
@@ -48,7 +49,7 @@ static size_t	there_is_a_line(char *str)
 	return (0);
 }
 
-static int	update_gnl(char *newbuffer, char *buffer, char **line)
+static int	update_gnl(char *newbuffer, char *buffer, char **line, int gc_id)
 {
 	int	i;
 
@@ -59,13 +60,13 @@ static int	update_gnl(char *newbuffer, char *buffer, char **line)
 		i++;
 	}
 	newbuffer[i] = '\0';
-	*line = extract_the_line(*line, newbuffer, ft_strlen_gnl(newbuffer));
+	*line = extract_the_line(*line, newbuffer, ft_strlen_gnl(newbuffer), gc_id);
 	if (!*line)
 		return (-1);
 	return (1);
 }
 
-static char	*run_read(int fd, char *line, char *buffer)
+static char	*run_read(int fd, char *line, char *buffer, int gc_id)
 {
 	int	byte_read;
 
@@ -76,7 +77,7 @@ static char	*run_read(int fd, char *line, char *buffer)
 		if (byte_read == -1)
 			break ;
 		buffer[byte_read] = 0;
-		line = extract_the_line(line, buffer, ft_strlen_gnl(buffer));
+		line = extract_the_line(line, buffer, ft_strlen_gnl(buffer), gc_id);
 		if (!line)
 			return (NULL);
 		if ((there_is_a_line(line) > 0 || byte_read == 0) && line[0] != 0)
@@ -87,7 +88,7 @@ static char	*run_read(int fd, char *line, char *buffer)
 	return (NULL);
 }
 
-char	*get_next_line(int fd)
+char	*gc_get_next_line(int fd, int gc_id)
 {
 	static t_id	buffer_memory[MAX_ID];
 	char		*line;
@@ -102,11 +103,11 @@ char	*get_next_line(int fd)
 	buffer = buffer_init(fd, buffer_memory);
 	if (!buffer)
 		return (NULL);
-	if (update_gnl(buffer, &buffer[there_is_a_line(buffer)], &line) < 0)
+	if (update_gnl(buffer, &buffer[there_is_a_line(buffer)], &line, gc_id) < 0)
 		return (free(line), NULL);
 	if (there_is_a_line(line) > 0)
 		return (line);
-	return (run_read(fd, line, buffer));
+	return (run_read(fd, line, buffer, gc_id));
 }
 
 // #include <stdio.h>

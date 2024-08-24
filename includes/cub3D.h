@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/24 03:02:51 by avg38            ###   ########.fr       */
+/*   Updated: 2024/08/24 17:24:41 by sei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,11 +158,11 @@
 # endif
 
 # ifndef PLAYER_STEP_SIZE
-#  define PLAYER_STEP_SIZE 0.150
+#  define PLAYER_STEP_SIZE 0.050
 # endif
 
 # ifndef PLAYER_ROT_SPEED
-#  define PLAYER_ROT_SPEED	0.082
+#  define PLAYER_ROT_SPEED	0.032
 # endif
 
 /*===========================================*/
@@ -460,4 +460,30 @@ void	parse_sprites(t_data *data, char *line);
 void	parse(char	**av, t_data *data);
 // int		count_line(char **file);
 
+/*---------------------------------*/
+/*               Main              */
+/*---------------------------------*/
+
+t_data	*set_get_data(t_data *data);
+
 #endif /* CUBE3D_H */
+
+
+/*
+-> Before update close_program and close all mlx pointers.
+ LEAK SUMMARY:
+definitely lost: 1,291 bytes in 28 blocks
+indirectly lost: 544 bytes in 4 blocks
+possibly lost: 0 bytes in 0 blocks
+still reachable: 92,461 bytes in 99 blocks
+suppressed: 0 bytes in 0 blocks
+-> After.
+ LEAK SUMMARY:
+LEAK SUMMARY:
+definitely lost: 643 bytes in 22 blocks
+indirectly lost: 0 bytes in 0 blocks
+possibly lost: 0 bytes in 0 blocks
+still reachable: 0 bytes in 0 blocks
+suppressed: 0 bytes in 0 blocks
+
+*/

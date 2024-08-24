@@ -1,5 +1,3 @@
-# TODO - add a rule to compile cub3d in UHD or HD
-
 .DEFAULT_GOAL: $(NAME)
 
 NAME	=	cub3D
@@ -87,7 +85,7 @@ GOOD_MAPS	=	\
 				maps/good/wall_hole_test.cub\
 				maps/good/works.cub
 
-SUBJECT_MAP	=	maps/good/test_textures.cub
+SUBJECT_MAP	=	maps/good/subject_map.cub
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 
 # Controls
