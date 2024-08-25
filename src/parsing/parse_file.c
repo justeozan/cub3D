@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/24 19:22:17 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/24 20:09:25 by avg38            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ char	**get_file(int fd)
 		if (!file)
 			ft_exit(ERR_MALLOC);
 		file[i] = get_next_line(fd);
+		printf("\n\nla\n\n");
 		// file[i] = gc_get_next_line(fd, MAP);
 	}
 	check_file_format(file);
@@ -189,11 +190,12 @@ char	**get_file(int fd)
 // 	while (file[i])
 // 	{
 // 		i++;
-// 		file = gc_realloc(file, current_size, sizeof(char *) * (i + 2), TMP);
+// 		file = gc_realloc(file, current_size, sizeof(char *) * (i + 1), TMP);
 // 		if (!file)
 // 			ft_exit(ERR_MALLOC);
 // 		current_size++;
 // 		file[i] = get_next_line(fd);
+// 		printf("\n\ni: %d\n\n", i);
 // 	}
 // 	check_file_format(file);
 // 	return (delete_whitespaces(file));

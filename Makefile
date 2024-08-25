@@ -124,7 +124,7 @@ m:			clear $(NAME)
 	@./$(NAME) $(SUBJECT_MAP) || echo "$(COLOR_RED)Makefile: Error with $(SUBJECT_MAP)$(COLOR_RESET)"
 
 vm:			clear $(NAME)
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) $(SUBJECT_MAP) || echo "$(COLOR_RED)Makefile: Error with $(SUBJECT_MAP)$(COLOR_RESET)"
+	@valgrind --leak-check=full --suppressions=mlx.supp --show-leak-kinds=all --track-origins=yes ./$(NAME) $(SUBJECT_MAP) || echo "$(COLOR_RED)Makefile: Error with $(SUBJECT_MAP)$(COLOR_RESET)"
 
 test_bad_maps: clear $(NAME)
 	@echo "$(COLOR_YELLOW)Testing bad maps...$(COLOR_RESET)"
