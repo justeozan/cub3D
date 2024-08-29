@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/29 18:02:28 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:16:13 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,14 @@ static void	get_size_map(t_data *data, char **file)
 		j = 0;
 		while (file[i][j])
 			j++;
+		if (j > 150)
+			ft_exit(ERR_MAP_9);
 		if (j > data->map.width)
 			data->map.width = j;
 		i++;
 	}
+	if (i > 150)
+		ft_exit(ERR_MAP_9);
 	data->map.height = i;
 }
 
