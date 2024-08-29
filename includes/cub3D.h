@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 15:59:14 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:03:33 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -385,7 +385,6 @@ typedef struct s_data
 /*---------------------------------*/
 
 void	print_file(char **file);
-void	print_file_without_spaces(char **file);
 void	print_player_infos(t_player *player);
 void	print_all_infos(t_data *data);
 
