@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:43 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 15:59:53 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:51:03 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	after_mlx_init(int i)
 	return (after_mlx_init);
 }
 
+/***************************************
+ * @brief	Print the error message in red color
+ * @param	str: the error message to print
+***************************************/
 static void	print_error_msg(char *str)
 {
 	ft_printf(RED"%s\n"RESET, str);
