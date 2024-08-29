@@ -6,21 +6,22 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:15:50 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 16:53:13 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:42:39 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3D.h"
 
-/**
- * @brief	Put the pixel in the screen with the color
+/***************************************
+ * @brief	We calculate the offset of the pixel in the screen and
+ * we put the color in the pixel.
  * @param	img: the image structure that contains the data of the screen
  * @param	col: the column of the pixel in the screen
  * @param	line: the line of the pixel in the screen
  * @param	color: the color of the pixel
- * @note	We calculate the offset of the pixel in the screen and we put the color in the pixel.
- * @details	We check if the pixel is in the screen, if it is we put the color in the pixel.
- */
+ * @note	We check if the pixel is in the screen,
+ * if it is we put the color in the pixel.
+***************************************/
 static void	put_pixel(t_image img, int col, int line, int color)
 {
 	int	offset;
@@ -30,17 +31,13 @@ static void	put_pixel(t_image img, int col, int line, int color)
 		*((int *)(img.addr + offset)) = color;
 }
 
-/**
- * @brief	Getting the sprite on the x column that we need to display
- * @param	ray: the structure that contains the data of the ray
- * @param	wall_ray: the structure that contains the data of the wall hit by the ray
- * @param	sprite: the structure that contains the data of the sprite
- * @param	x: the x position of the column (sprite) in the screen (x_sprite before)
- * @note	We get the sprite that we need to display, then we get the x position of the sprite
- * and we calculate the height of the sprite in the screen. Then we calculate the start and
- * end position of the sprite in the screen. And we iterate through the sprite and put the pixel
- * of the sprite in the screen.
- */
+/***************************************
+ * @brief	Getting the x position of the sprite in the screen
+ * @param	ray: the data of the ray
+ * @param	wall_ray: the data of the wall hit by the ray
+ * @param	sprite: the data of the sprite
+ * @param	x: sprite's x position of the column in the screen
+***************************************/
 static void	get_sprite_x(t_ray *ray, t_dda *wall, t_sprites *sprite, int *x)
 {
 	double	wall_hit_pos;
@@ -53,13 +50,13 @@ static void	get_sprite_x(t_ray *ray, t_dda *wall, t_sprites *sprite, int *x)
 	*x = (int)(wall_hit_pos * (double)sprite->x);
 }
 
-/**
+/***************************************
  * @brief	Getting the sprite that we need to display
  * @param	data: the structure that contains all the data of the game
- * @param	sprite: the structure that contains the data of the sprite
+ * @param	sprite: the structure of the sprites
  * @param	cardinal: the cardinal of the sprite that we need to display
- * @note	We iterate through the sprites and we get the sprite that we need to display.
- */
+ * @note	We iterate through the sprites and we get the sprite that we need.
+***************************************/
 static void	sprite_to_display(t_data *data, t_sprites *sprite, t_cardinal point)
 {
 	int	i;
@@ -75,15 +72,14 @@ static void	sprite_to_display(t_data *data, t_sprites *sprite, t_cardinal point)
 	}
 }
 
-/**
- * @brief	Draw the floor and the ceiling of the screen
+/***************************************
+ * @brief	We iterate through the screen and we put the color of the floor 
+ * and the ceiling in the screen.
  * @param	data: the structure that contains all the data of the game
  * @param	img: the image structure that contains the data of the screen
- * @note	We iterate through the screen and we put the color of the floor 
- * and the ceiling in the screen.
- * @details For the ceiling we iterate through the half of the screen and 
+ * @note	For the ceiling we iterate through the half of the screen and 
  * for the floor we iterate through the other half of the screen.
- */
+***************************************/
 void	draw_floor_ceiling(t_data *data, t_image img)
 {
 	int	i;
@@ -108,6 +104,16 @@ void	draw_floor_ceiling(t_data *data, t_image img)
 	}
 }
 
+/***************************************
+ * @brief	We get the sprite that we need to display, then we get the x position
+ * of the sprite and we calculate the height of the sprite in the screen.
+ * Then we calculate the start and end position of the sprite in the screen.
+ * And we iterate through the sprite to put the pixel in the screen.
+ * @param	data: the structure that contains all the data of the game
+ * @param	wall_ray: the data of the wall hit by the ray
+ * @param	ray: the data of the ray
+ * @param	x: the x position of the column in the screen
+***************************************/
 void	print_col(t_data *data, t_dda *wall_ray, t_ray *ray, int x)
 {
 	t_pixel_column	col;

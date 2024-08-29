@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:43 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 16:51:03 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:25:27 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	ft_exit(char *str)
 	if (after_mlx_init(0) == 4)
 		while (++id < 4)
 			if (data->sprites[id].reference)
-				mlx_destroy_image(data->mlx.mlx_ptr, data->sprites[id].reference);
+				mlx_destroy_image
+					(data->mlx.mlx_ptr, data->sprites[id].reference);
 	if (after_mlx_init(0) == 2)
 		if (data->mlx.win_ptr)
 			mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.win_ptr);

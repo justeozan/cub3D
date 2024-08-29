@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 16:03:33 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:24:26 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@
 # define ERR_MAP_4		"Error\nThe map is not closed."
 # define ERR_MAP_5		"Error\nInvalid character in the map."
 # define ERR_MAP_6		"Error\nSeveral maps in one."
+# define ERR_MAP_7		"Error\nA 0 is not surrounded by walls."
+# define ERR_MAP_8		"Error\nA bad character is in the wall"
 
 //DATA ERRORS
 
@@ -459,7 +461,6 @@ void	replace_space_by_wall(char **map, int height, int width);
 void	get_map(t_data *data, char **file);
 void	parse_sprites(t_data *data, char *line);
 void	parse(char	**av, t_data *data);
-
 
 #endif /* CUBE3D_H */
 

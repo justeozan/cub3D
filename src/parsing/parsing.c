@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:52 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 16:01:42 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:48:59 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static void	get_data(t_data *data, char **file)
 }
 
 /***************************************
- * @brief	Parse the map file
+ * @brief	Main function for parsing all the file,
+ * and handle the steps and the errors.
+ * @param	av The arguments of the program
+ * @param	data The struct that contains all the data of the game
 ***************************************/
 void	parse(char	**av, t_data *data)
 {

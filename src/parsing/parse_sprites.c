@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sprites.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:57 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 14:03:35 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:56:19 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ void	save_sprite_path(t_data *data, char *texture, t_cardinal cardinal)
 }
 
 /***************************************
- * @file	parse_textures.c
- * @brief	Parse the textures of the map file
+ * @brief	Parse the sprites from the file in four steps, 
+ * first check the extension, find the cardinal point, then check the file,
+ * and finally save the path of the sprite.
  * @param	data: the structure that contains all the data of the game
  * @param	line: the line where the textures are
 ***************************************/

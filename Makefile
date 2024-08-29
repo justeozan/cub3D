@@ -27,7 +27,6 @@ SRC		=		\
 				src/parsing/parse_map_utils.c\
 				src/parsing/parse_map.c\
 				src/parsing/parse_sprites.c\
-				src/parsing/parse_utils.c\
 				src/parsing/parsing.c\
 				\
 				src/main.c
@@ -84,7 +83,7 @@ GOOD_MAPS	=	\
 				maps/good/wall_hole_test.cub\
 				maps/good/works.cub
 
-SUBJECT_MAP	=	maps/good/wall_hole_test.cub
+SUBJECT_MAP	=	maps/good/map_multiple_wall.cub
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 
 # Controls

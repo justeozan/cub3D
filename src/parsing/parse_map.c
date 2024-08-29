@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/29 15:51:04 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:02:28 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,28 @@ static void	check_map(char **map, int height, int width)
 {
 	int	nb_player;
 	int	i;
+	int	j;
 
 	nb_player = 0;
 	i = -1;
 	while (++i < height)
 	{
 		check_line(map[i], width, &nb_player, i == 0 || i == height - 1);
+		j = -1;
+		while (map[i][++j])
+			if (map[i][j] == '0'
+					&& (map[i - 1][j] == ' ' || map[i + 1][j] == ' '))
+				ft_exit(ERR_MAP_7);
 	}
 	if (nb_player != 1)
 		ft_exit(ERR_MAP_2);
 }
 
+/***************************************
+ * @brief	Get the size of the map, the width and the height.
+ * @param	data: the structure that contains all the data of the game
+ * @param	file: the file at the map start
+ ***************************************/
 static void	get_size_map(t_data *data, char **file)
 {
 	int	i;
@@ -73,12 +84,11 @@ static void	get_size_map(t_data *data, char **file)
 }
 
 /***************************************
- * @file	parse_map.c
- * @brief	Parse the map of the map in file we received
+ * @brief	Main function to get the map,the objectif is to check if the map
+ * is valid, if there is only one player, if the map is closed, etc.
+ * And we put the map in the structure of the data.
  * @param	data: the structure that contains all the data of the game
- * @param	file: the file without whitespaces (!)
- * @note	Here we check if the map is valid, if there is only one player,
- * 			if the map is closed, etc.
+ * @param	file: the file without whitespaces (!) and at the map start
 ***************************************/
 void	get_map(t_data *data, char **file)
 {
@@ -100,7 +110,7 @@ void	get_map(t_data *data, char **file)
 			ft_exit(ERR_MALLOC);
 		ft_strlcpy(map[i], file[i], (size_t)(data->map.width + 1));
 	}
-	check_map(map, data->map.height, data->map.width); //FIXME - Where i check around a 0 ??
+	check_map(map, data->map.height, data->map.width);
 	data->map.content = map;
 	if (!data->map.content[0])
 		ft_exit(ERR_MAP_3);
