@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:43 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/24 19:19:05 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/29 11:36:41 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@ int	close_program(void)
 	t_data	*data;
 	t_gc_id	id;
 
-	id = -1;
-	while (++id <= TMP)
-		gc_clear(id, free);
 	data = set_get_data(NULL);
 	if (data->img.img_ptr)
 		mlx_destroy_image(data->mlx.mlx_ptr, data->img.img_ptr);
@@ -84,5 +81,8 @@ int	close_program(void)
 		mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.win_ptr);
 	if (data->mlx.mlx_ptr)
 		mlx_destroy_display(data->mlx.mlx_ptr);
+	id = -1;
+	while (++id <= TMP)
+		gc_clear(id, free);
 	return (exit(EXIT_SUCCESS), 0);
 }

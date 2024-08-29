@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/24 20:09:25 by avg38            ###   ########.fr       */
+/*   Updated: 2024/08/29 11:32:35 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ char	**get_file(int fd)
 		if (!file)
 			ft_exit(ERR_MALLOC);
 		file[i] = get_next_line(fd);
-		printf("\n\nla\n\n");
 		// file[i] = gc_get_next_line(fd, MAP);
 	}
 	check_file_format(file);
