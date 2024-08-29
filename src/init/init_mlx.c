@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:24 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 16:00:23 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:00:44 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	init_image(t_image *img, t_mlx mlx)
 
 void	init_mlx(t_mlx *mlx)
 {
-	mlx->mlx_ptr = NULL;
-	mlx->win_ptr = NULL;
 	mlx->mlx_ptr = mlx_init();
 	if (!mlx->mlx_ptr)
 		ft_exit(ERR_INIT_1);
