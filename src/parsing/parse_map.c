@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/29 18:16:13 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:21:02 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
+/***************************************
+ * @brief	Will check more precisely the line of the map,
+ * Count the number of player encountered, if the line follow a the only
+ * patern accepted, and if all character is permitted.
+ * @param	l: the line to check
+ * @param	width: the width of the map
+ * @param	nb_player: the number of player in the map
+ * @param	ext: if the line is the first or the last
+ ***************************************/
 static void	check_line(char *l, int width, int *nb_player, bool ext)
 {
 	int	j;
@@ -39,6 +48,15 @@ static void	check_line(char *l, int width, int *nb_player, bool ext)
 	}
 }
 
+/***************************************
+ * @brief	Will manage the check of the map with while
+ * to pass through all the map and do two checks distinctly:
+ * Do the big check in one line, Check if all 0 are surrounded at least by 1
+ * as we need different lines.
+ * @param	map: the map to check
+ * @param	height: the height of the map
+ * @param	width: the width of the map
+ ***************************************/
 static void	check_map(char **map, int height, int width)
 {
 	int	nb_player;

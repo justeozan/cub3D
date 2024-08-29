@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 17:22:09 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:18:58 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,7 @@ static char	**delete_whitespaces(char **file)
 }
 
 /***************************************
- * @file	parse_file.c
- * @brief	Parse the map file
+ * @brief	Main function to get the file, for manage the cleaning of the file and the obtaining of the latter without whitespaces
  * @param	fd: the file descriptor
  * @return	The file without whitespaces, NULL if an error occured
 ***************************************/
