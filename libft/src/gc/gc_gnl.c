@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:23:41 by justo             #+#    #+#             */
-/*   Updated: 2024/08/24 19:01:05 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/29 15:38:05 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static char	*extract_the_line(char *line, char *buffer, int len, int gc_id)
 	int		i;
 	int		j;
 
-	// new_line = malloc(sizeof(char) * (len + 1 + ft_strlen_gnl(line)));
 	new_line = gc_malloc(sizeof(char) * (len + 1 + ft_strlen_gnl(line)), gc_id);
 	if (!new_line)
 		return (free(line), NULL);

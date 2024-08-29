@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_modifs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:26:35 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/24 04:32:50 by avg38            ###   ########.fr       */
+/*   Updated: 2024/08/29 15:36:42 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	try_move(t_map *map, t_dvector *pos, double dx, double dy)
 	t_dvector	new;
 	t_ivector	map_pos;
 	t_ivector	map_pos2;
-	
+
 	new.x = pos->x + dx;
 	new.y = pos->y + dy;
 	map_pos.x = (int)(new.x + 0.3);
@@ -41,7 +41,7 @@ static bool	try_move(t_map *map, t_dvector *pos, double dx, double dy)
 	return (false);
 }
 
-static void	key_manage_wasd(t_keys *key, t_player *player, t_dvector *move_wanted)
+static void	manage_move(t_keys *key, t_player *player, t_dvector *move_wanted)
 {
 	if (key->w == 1)
 	{
@@ -69,11 +69,11 @@ static void	modif_player_pos(t_keys *key, t_player *player, t_map *map)
 {
 	t_dvector	move_wanted;
 	t_dvector	new;
-	
+
 	new.x = player->pos.x;
 	new.y = player->pos.y;
 	move_wanted = (t_dvector){0, 0};
-	key_manage_wasd(key, player, &move_wanted);
+	manage_move(key, player, &move_wanted);
 	if (!try_move(map, &new, move_wanted.x, move_wanted.y))
 	{
 		if (!try_move(map, &new, move_wanted.x, 0))

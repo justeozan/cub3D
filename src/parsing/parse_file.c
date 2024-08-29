@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 13:50:55 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:17:51 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,6 @@ static char	**delete_whitespaces(char **file)
 	return (file);
 }
 
-
-
 /***************************************
  * @file	parse_file.c
  * @brief	Parse the map file
@@ -142,59 +140,3 @@ char	**get_file(int fd, char *av)
 	check_file_format(file);
 	return (delete_whitespaces(file));
 }
-
-// char **get_file(int fd) 
-// {
-// 	char **file;
-// 	char **new_file;
-// 	int i;
-
-// 	file = gc_calloc(2, sizeof(char *), TMP); // Utilisation de calloc
-// 	if (!file)
-// 		ft_exit(ERR_MALLOC);
-// 	i = 0;
-// 	file[i] = get_next_line(fd);
-// 	if (!file[i])
-// 		ft_exit(ERR_FILE_2);
-// 	while (file[i]) {
-// 		i++;
-// 		new_file = gc_realloc(file, i, sizeof(char *) * (i + 2), TMP);
-// 		if (!new_file) {
-// 			free(file); // Libère l'ancienne allocation en cas d'échec
-// 			ft_exit(ERR_MALLOC);
-// 		}
-// 		file = new_file;
-// 		file[i] = get_next_line(fd);
-// 	}
-// 	check_file_format(file);
-// 	return delete_whitespaces(file);
-// }
-
-// char	**get_file(int fd)
-// {
-// 	char	**file;
-// 	int		current_size;
-// 	int		i;
-
-// 	// file = gc_malloc(sizeof(char *) * 2, TMP); // REVIEW - mettre calloc a la place
-// 	current_size = 2;
-// 	file = gc_calloc(current_size, sizeof(char *), TMP);
-// 	if (!file)
-// 		ft_exit(ERR_MALLOC);
-// 	i = -1;
-// 	file[++i] = get_next_line(fd);
-// 	if (!file[i])
-// 		ft_exit(ERR_FILE_2);
-// 	while (file[i])
-// 	{
-// 		i++;
-// 		file = gc_realloc(file, current_size, sizeof(char *) * (i + 1), TMP);
-// 		if (!file)
-// 			ft_exit(ERR_MALLOC);
-// 		current_size++;
-// 		file[i] = get_next_line(fd);
-// 		printf("\n\ni: %d\n\n", i);
-// 	}
-// 	check_file_format(file);
-// 	return (delete_whitespaces(file));
-// }

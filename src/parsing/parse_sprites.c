@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sprites.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:57 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 03:13:40 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 14:03:35 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ static void	check_file(char *file)
 
 void	save_sprite_path(t_data *data, char *texture, t_cardinal cardinal)
 {
-	// int	i;
-
-	// i = -1;
-	// while (data->sprites[++i].path)
-	// 	if (cardinal == data->sprites[i].cardinal)
-	// 		ft_exit(ERR_SPRITES_5);
 	if (data->sprites[cardinal].path)
 		ft_exit(ERR_SPRITES_5);
 	data->sprites[cardinal].path = gc_strdup(texture, SPRITES);
@@ -52,7 +46,6 @@ void	parse_sprites(t_data *data, char *line)
 {
 	t_cardinal	cardinal;
 
-	// check_double_texture(data, line);
 	cardinal = 0;
 	check_extension(line);
 	if (line[0] == 'N')

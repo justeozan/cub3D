@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:52 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 14:22:02 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:01:42 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-/***************************************
- * @brief Check if the colors are present in the file
-***************************************/
-static void	check_presence_colors(t_data *data)
-{
-	if (data->colors.floor == -1) // FIXME - Initialize to -1 then.
-		ft_exit(ERR_COLOR_F);
-	if (data->colors.ceiling == -1) // FIXME - Initialize to -1 then.
-		ft_exit(ERR_COLOR_C);
-}
 
 /***************************************
  * @brief Check if the sprites are present in the file
@@ -60,10 +49,8 @@ static void	get_data(t_data *data, char **file)
 			parse_sprites(data, file[i]);
 		i++;
 	}
-	check_presence_colors(data);
 	check_presence_sprites(data);
 }
-
 
 /***************************************
  * @brief	Parse the map file
@@ -71,7 +58,7 @@ static void	get_data(t_data *data, char **file)
 void	parse(char	**av, t_data *data)
 {
 	int		fd;
-	char	**file; //REVIEW - Check if all is correct.
+	char	**file;
 
 	fd = open(av[1], O_RDONLY);
 	if (fd < 1)
@@ -82,6 +69,4 @@ void	parse(char	**av, t_data *data)
 	get_map(data, &file[6]);
 	replace_space_by_wall(data->map.content,
 		data->map.height, data->map.width);
-	// print_data(data);
-	// print_map(data->map.content, data->map.height);
 }

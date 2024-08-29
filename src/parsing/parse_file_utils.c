@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 00:18:45 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 13:51:59 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 13:53:13 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	check_file_format(char **file)
 
 int	get_height_file(char *file)
 {
-	int	fd;
-	int	i;
+	int		fd;
+	int		i;
 	char	*line;
 
 	fd = open(file, O_RDONLY);

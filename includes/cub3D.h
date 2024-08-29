@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 14:56:02 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:59:14 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@
 /*                  VALUES                   */
 /*===========================================*/
 
-#  define PI	3.14159265358979323846
+# define PI	3.14159265358979323846
 
 // 3840
 # ifndef SCREEN_WIDTH
@@ -223,13 +223,13 @@ typedef struct s_ray
 	t_dvector	dir;
 	t_dvector	delta_dist;
 	t_dvector	side_dist;
-} t_ray;
+}	t_ray;
 
 typedef struct s_dda
 {
 	double		dist;
 	t_cardinal	cardinal;
-} t_dda;
+}	t_dda;
 
 typedef struct s_pixel_column
 {
@@ -445,9 +445,8 @@ void	init_sprites(t_data *data, t_mlx *mlx);
 /*           Key handler           */
 /*---------------------------------*/
 
-int	key_press(int keycode, t_data *data);
-int	key_release(int keycode, t_data *data);
-
+int		key_press(int keycode, t_data *data);
+int		key_release(int keycode, t_data *data);
 
 /*---------------------------------*/
 /*              Parsing            */
@@ -461,11 +460,9 @@ void	replace_space_by_wall(char **map, int height, int width);
 void	get_map(t_data *data, char **file);
 void	parse_sprites(t_data *data, char *line);
 void	parse(char	**av, t_data *data);
-// int		count_line(char **file);
 
 
 #endif /* CUBE3D_H */
-
 
 /*
 -> Before update close_program and close all mlx pointers.

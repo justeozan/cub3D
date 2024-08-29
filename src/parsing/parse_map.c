@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/21 04:30:38 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:51:04 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,36 +39,19 @@ static void	check_line(char *l, int width, int *nb_player, bool ext)
 	}
 }
 
-// static bool	is_complete_wall(char *line, int width)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (++i < width)
-// 		if (line[i] && line[i] != '1' && line[i] != ' ')
-// 			return (false);
-// 	return (true);
-// }
-
 static void	check_map(char **map, int height, int width)
 {
 	int	nb_player;
-	// int	nb_wall;
 	int	i;
 
 	nb_player = 0;
-	// nb_wall = 0;
 	i = -1;
 	while (++i < height)
 	{
 		check_line(map[i], width, &nb_player, i == 0 || i == height - 1);
-		// if (is_complete_wall(map[i], width))
-		// 	nb_wall++;
 	}
 	if (nb_player != 1)
 		ft_exit(ERR_MAP_2);
-	// if (nb_wall != 2) //REVIEW - Maybe useless.
-	// 	ft_exit(ERR_MAP_6);
 }
 
 static void	get_size_map(t_data *data, char **file)

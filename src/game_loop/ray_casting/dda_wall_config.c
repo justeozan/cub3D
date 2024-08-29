@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dda_wall_config.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/29 15:36:52 by avialle-          #+#    #+#             */
+/*   Updated: 2024/08/29 15:37:49 by avialle-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../includes/cub3D.h"
 
 static bool	is_wall(t_ray ray, t_map map)
@@ -15,21 +27,21 @@ static void	process_wall_dist(t_ray ray, double *dist, char last_side)
 				+ (1 - ray.step_direction.y) / 2) / ray.dir.y;
 }
 
-static void	process_wall_cardinal(t_ray ray, t_cardinal *cardinal, char last_side)
+static void	process_wall_cardinal(t_ray ray, t_cardinal *point, char last_side)
 {
 	if (last_side == 'x')
 	{
 		if (ray.dir.x > 0)
-			*cardinal = EAST;
+			*point = EAST;
 		else
-			*cardinal = WEST;
+			*point = WEST;
 	}
 	else
 	{
 		if (ray.dir.y > 0)
-			*cardinal = NORTH;
+			*point = NORTH;
 		else
-			*cardinal = SOUTH;
+			*point = SOUTH;
 	}
 }
 

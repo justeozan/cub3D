@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:24 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 14:42:15 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:00:23 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	init_image(t_image *img, t_mlx mlx)
 {
-	img->img_ptr = NULL;
-	img->addr = NULL;
-	img->img_ptr = mlx_new_image(mlx.mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT); //REVIEW - Check if gc_add is needed.
+	img->img_ptr = mlx_new_image(mlx.mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!img->img_ptr)
 		ft_exit(ERR_INIT_2);
 	after_mlx_init(3);
