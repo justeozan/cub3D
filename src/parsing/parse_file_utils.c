@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 00:18:45 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 22:48:25 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/29 13:51:59 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,33 +64,24 @@ void	check_file_format(char **file)
 		ft_exit(ERR_FILE_5);
 }
 
-// void	check_file_format(char **file)
-// {
-// 	int	value;
-// 	int	i;
-// 	int	j;
+int	get_height_file(char *file)
+{
+	int	fd;
+	int	i;
+	char	*line;
 
-// 	value = 0;
-// 	i = -1;
-// 	while (file[++i])
-// 	{
-// 		j = -1;
-// 		while (file[i][++j] == ' ')
-// 			;
-// 		if (ft_strchr("NSWEFC", file[i][j]))
-// 			value++;
-// 		while (file[i] && ft_strchr("NSWEFC", file[i][j]))
-// 			i++;
-// 		if (ft_strchr("01", file[i][j]))
-// 		{
-// 			if (value >= 3)
-// 				ft_exit(ERR_FILE_3);
-// 			else if (value == 2)
-// 				handle_map_line(file, &i, &value);
-// 			else if (value < 2)
-// 				ft_exit(ERR_FILE_4);
-// 		}
-// 	}
-// 	if (value == 6)
-// 		ft_exit(ERR_FILE_5);
-// }
+	fd = open(file, O_RDONLY);
+	if (fd < 1)
+		ft_exit(ERR_FILE);
+	i = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		i++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
+	close(fd);
+	return (i);
+}

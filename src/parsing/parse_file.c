@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 11:32:35 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 13:50:55 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,34 +112,33 @@ static char	**delete_whitespaces(char **file)
 	return (file);
 }
 
+
+
 /***************************************
  * @file	parse_file.c
  * @brief	Parse the map file
  * @param	fd: the file descriptor
  * @return	The file without whitespaces, NULL if an error occured
 ***************************************/
-char	**get_file(int fd)
+char	**get_file(int fd, char *av)
 {
 	char	**file;
 	int		i;
 
-	// file = gc_malloc(sizeof(char *) * 2, TMP); // REVIEW - mettre calloc a la place
-	file = gc_calloc(2, sizeof(char *), TMP);
+	file = gc_calloc(get_height_file(av) + 1, sizeof(char *), TMP);
 	if (!file)
 		ft_exit(ERR_MALLOC);
-	i = -1;
-	file[++i] = get_next_line(fd);
+	i = 0;
+	file[i] = get_next_line(fd);
 	if (!file[i])
 		ft_exit(ERR_FILE_2);
+	gc_add(file[i], TMP);
 	while (file[i])
 	{
-		i++;
-		file = gc_realloc(file, i, sizeof(char *) * (i + 1), TMP);
-		if (!file)
-			ft_exit(ERR_MALLOC);
-		file[i] = get_next_line(fd);
-		// file[i] = gc_get_next_line(fd, MAP);
+		file[++i] = get_next_line(fd);
+		gc_add(file[i], TMP);
 	}
+	file[i] = NULL;
 	check_file_format(file);
 	return (delete_whitespaces(file));
 }

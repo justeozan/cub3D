@@ -6,7 +6,7 @@
 /*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:52 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/19 23:55:20 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:46:26 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static void	get_data(t_data *data, char **file)
 	check_presence_sprites(data);
 }
 
+
+
 /***************************************
  * @brief	Parse the map file
 ***************************************/
@@ -75,7 +77,7 @@ void	parse(char	**av, t_data *data)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 1)
 		ft_exit(ERR_FILE);
-	file = get_file(fd);
+	file = get_file(fd, av[1]);
 	close(fd);
 	get_data(data, file);
 	get_map(data, &file[6]);

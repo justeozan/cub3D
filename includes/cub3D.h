@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/24 17:24:41 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/29 13:51:42 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -453,7 +453,8 @@ int	key_release(int keycode, t_data *data);
 
 void	parse_colors(t_data *data, char *line);
 void	check_file_format(char **file);
-char	**get_file(int fd);
+int		get_height_file(char *file);
+char	**get_file(int fd, char *av);
 void	replace_space_by_wall(char **map, int height, int width);
 void	get_map(t_data *data, char **file);
 void	parse_sprites(t_data *data, char *line);
