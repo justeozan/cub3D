@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:21 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/21 02:51:10 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/08/29 14:43:40 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	new_sprites(t_sprites *sprite, t_mlx *mlx)
 			&sprite->len_line, &sprite->endian);
 	if (!sprite->addr)
 		ft_exit(ERR_INIT_5);
+	after_mlx_init(4);
 }
 
 /***************************************

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:52 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 11:46:26 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 14:22:02 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	get_data(t_data *data, char **file)
 	check_presence_colors(data);
 	check_presence_sprites(data);
 }
-
 
 
 /***************************************

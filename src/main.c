@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:47 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/24 17:23:04 by sei              ###   ########.fr       */
+/*   Updated: 2024/08/29 14:55:24 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-t_data	*set_get_data(t_data *data)
-{
-	static t_data	*data_ptr;
-
-	if (data)
-		data_ptr = data;
-	return (data_ptr);
-}
 
 static void	check_args(int ac, char	**args)
 {

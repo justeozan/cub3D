@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 13:51:42 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 14:56:02 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -393,6 +393,8 @@ void	print_all_infos(t_data *data);
 /*          Close program          */
 /*---------------------------------*/
 
+int		after_mlx_init(int i);
+t_data	*set_get_data(t_data *data);
 void	ft_exit(char *str);
 int		close_program(void);
 
@@ -461,11 +463,6 @@ void	parse_sprites(t_data *data, char *line);
 void	parse(char	**av, t_data *data);
 // int		count_line(char **file);
 
-/*---------------------------------*/
-/*               Main              */
-/*---------------------------------*/
-
-t_data	*set_get_data(t_data *data);
 
 #endif /* CUBE3D_H */
 

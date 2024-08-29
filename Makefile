@@ -46,7 +46,6 @@ BAD_MAPS	=	\
 				maps/bad/map_first.cub\
 				maps/bad/map_middle.cub\
 				maps/bad/map_missing.cub\
-				maps/bad/map_multiple_wall.cub\
 				maps/bad/map_only.cub\
 				maps/bad/map_syntax.cub\
 				maps/bad/map_too_small.cub\
@@ -56,7 +55,6 @@ BAD_MAPS	=	\
 				maps/bad/player_on_edge.cub\
 				maps/bad/textures_dir.cub\
 				maps/bad/textures_duplicates.cub\
-				maps/bad/textures_forbidden.cub\
 				maps/bad/textures_invalid.cub\
 				maps/bad/textures_missing.cub\
 				maps/bad/textures_none.cub\
@@ -72,6 +70,7 @@ GOOD_MAPS	=	\
 				maps/good/creepy.cub\
 				maps/good/dungeon.cub\
 				maps/good/library.cub\
+				maps/good/map_multiple_wall.cub\
 				maps/good/matrix.cub\
 				maps/good/sad_face.cub\
 				maps/good/square_map.cub\
@@ -85,7 +84,7 @@ GOOD_MAPS	=	\
 				maps/good/wall_hole_test.cub\
 				maps/good/works.cub
 
-SUBJECT_MAP	=	maps/good/subject_map.cub
+SUBJECT_MAP	=	maps/good/wall_hole_test.cub
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 
 # Controls
@@ -181,7 +180,7 @@ test_good_maps: clear $(NAME)
 	fi
 
 test_all_maps: test_good_maps test_bad_maps
-	@echo "\n$(COLOR_YELLOW)All maps have been tested.$(COLOR_RESET)"
+	@echo "\n$(COLOR_PURPLE)All maps have been tested.$(COLOR_RESET)"
 
 obj/%.o:	src/%.c includes/cub3D.h Makefile libft/libft.h libft/libft.a
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"

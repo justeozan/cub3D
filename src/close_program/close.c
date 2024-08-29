@@ -3,29 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:43 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 11:36:41 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/08/29 14:55:33 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+t_data	*set_get_data(t_data *data)
+{
+	static t_data	*data_ptr;
+
+	if (data)
+		data_ptr = data;
+	return (data_ptr);
+}
+
+int	after_mlx_init(int i)
+{
+	static bool	after_mlx_init;
+
+	if (i)
+		after_mlx_init = i;
+	return (after_mlx_init);
+}
+
 static void	print_error_msg(char *str)
 {
 	ft_printf(RED"%s\n"RESET, str);
 }
-
-// void	ft_exit(char *str, int error_code)
-// {
-// 	print_error_msg(str);
-// 	gc_clear(TMP, free);
-// 	gc_clear(DATA, free);
-// 	gc_clear(MAP, free);
-// 	gc_clear(SPRITES, free);
-// 	exit(error_code);
-// }
 
 /***************************************
  * @file	error.c
@@ -42,21 +50,25 @@ void	ft_exit(char *str)
 	t_data	*data;
 	t_gc_id	id;
 
-	id = -1;
 	print_error_msg(str);
+	data = set_get_data(NULL);
+	if (after_mlx_init(0) == 3)
+		if (data->img.img_ptr)
+			mlx_destroy_image(data->mlx.mlx_ptr, data->img.img_ptr);
+	id = -1;
+	if (after_mlx_init(0) == 4)
+		while (++id < 4)
+			if (data->sprites[id].reference)
+				mlx_destroy_image(data->mlx.mlx_ptr, data->sprites[id].reference);
+	if (after_mlx_init(0) == 2)
+		if (data->mlx.win_ptr)
+			mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.win_ptr);
+	if (after_mlx_init(0) == 1)
+		if (data->mlx.mlx_ptr)
+			mlx_destroy_display(data->mlx.mlx_ptr);
+	id = -1;
 	while (++id <= TMP)
 		gc_clear(id, free);
-	data = set_get_data(NULL);
-	if (data->img.img_ptr)
-		mlx_destroy_image(data->mlx.mlx_ptr, data->img.img_ptr);
-	id = -1;
-	while (++id < 4)
-		if (data->sprites[id].reference)
-			mlx_destroy_image(data->mlx.mlx_ptr, data->sprites[id].reference);
-	if (data->mlx.win_ptr)
-		mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.win_ptr);
-	if (data->mlx.mlx_ptr)
-		mlx_destroy_display(data->mlx.mlx_ptr);
 	exit(EXIT_FAILURE);
 }
 
