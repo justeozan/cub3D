@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sei <sei@student.42.fr>                    +#+  +:+       +#+         #
+#    By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 16:43:33 by ozasahin          #+#    #+#              #
-#    Updated: 2024/08/24 19:00:13 by sei              ###   ########.fr        #
+#    Updated: 2024/08/31 17:37:23 by avialle-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,7 @@ ${NAME}:	${OBJS}
 	@ar rc ${NAME} ${OBJS}
 	@echo "$(MESSAGE_DONE)"
 
-obj/%.o:	src/%.c
+obj/%.o:	src/%.c libft.h
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@

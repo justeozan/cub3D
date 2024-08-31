@@ -1,5 +1,3 @@
-.DEFAULT_GOAL: $(NAME)
-
 NAME	=	cub3D
 
 SRC		=		\
@@ -112,19 +110,19 @@ MESSAGE_DONE_MLX	=	$(MESSAGE_OK) minilibx compiled.
 MESSAGE_CLEAN		=	$(COLOR_PURPLE)Cub3D cleanup completed.$(COLOR_RESET)
 MESSAGE_CLEAN_MLX	=	$(COLOR_PURPLE)MLX cleanup completed.$(COLOR_RESET)
 
-$(NAME):	$(OBJ) libft/libft.a
+all:	force $(NAME)
+
+$(NAME):	$(OBJ)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LDFLAGS) -o $(NAME)
 	@echo "$(MESSAGE_DONE)"
 
-all:		force $(NAME)
-
-m:			clear $(NAME)
+m:		clear all
 	@./$(NAME) $(SUBJECT_MAP) || echo "$(COLOR_RED)Makefile: Error with $(SUBJECT_MAP)$(COLOR_RESET)"
 
-vm:			clear $(NAME)
+vm:		clear all
 	@valgrind --leak-check=full --suppressions=mlx.supp --show-leak-kinds=all --track-origins=yes ./$(NAME) $(SUBJECT_MAP) || echo "$(COLOR_RED)Makefile: Error with $(SUBJECT_MAP)$(COLOR_RESET)"
 
-test_bad_maps: clear $(NAME)
+test_bad_maps: clear all
 	@echo "$(COLOR_YELLOW)Testing bad maps...$(COLOR_RESET)"
 	@failure_count=0; \
 	for map in $(BAD_MAPS); do \
@@ -151,7 +149,7 @@ test_bad_maps: clear $(NAME)
 		done; \
 	fi
 
-test_good_maps: clear $(NAME)
+test_good_maps: clear all
 	@echo "$(COLOR_YELLOW)Testing good maps...$(COLOR_RESET)"
 	@failure_count=0; \
 	for map in $(GOOD_MAPS); do \
@@ -181,12 +179,12 @@ test_good_maps: clear $(NAME)
 test_all_maps: test_good_maps test_bad_maps
 	@echo "\n$(COLOR_PURPLE)All maps have been tested.$(COLOR_RESET)"
 
-obj/%.o:	src/%.c includes/cub3D.h Makefile libft/libft.h libft/libft.a
+obj/%.o:	src/%.c includes/cub3D.h Makefile libft/libft.a
 	@echo "[...] libft... $(MESSAGE_COMPILE) $*.c\r\c"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "$(MESSAGE_CLEAR)"
-
+	
 force:
 	@make -C libft/ -s
 	@make -C minilibx-linux/ -s
@@ -217,4 +215,4 @@ norm:	clear
 		echo "$(COLOR_GREEN)All OK!"; \
 	fi
 
-.PHONY:		all clean fclean re m test_bad_maps test_good_maps test_all_maps clear norm
+.PHONY:		all clean fclean re m vm test_bad_maps test_good_maps test_all_maps clear norm force
