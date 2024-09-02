@@ -1,3 +1,5 @@
+.DEFAULT_GOAL :=	m
+
 NAME	=	cub3D
 
 SRC		=		\
@@ -81,7 +83,7 @@ GOOD_MAPS	=	\
 				maps/good/wall_hole_test.cub\
 				maps/good/works.cub
 
-SUBJECT_MAP	=	maps/good/map_multiple_wall.cub
+SUBJECT_MAP	=	maps/test.cub
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 
 # Controls

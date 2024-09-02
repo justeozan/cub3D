@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:10 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/31 18:43:12 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:39:52 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ static char	*parse_line_map(char *str)
 	return (new_line);
 }
 
+/***************************************
+ * @brief	Get the height of the file
+ * @param	av The arguments of the program
+ * @return	The height of the file
+ * @details the "i--;" is to avoid the last line of the file
+ * that change all the game of leaks...
+***************************************/
 static char	*parse_line(char *str)
 {
 	char	*new_line;
@@ -60,6 +67,7 @@ static char	*parse_line(char *str)
 	while (str[++i] && str[i] != '\n' && str[i] != ' ')
 		new_line[++j] = str[i];
 	new_line[++j] = ' ';
+	i--;
 	while (str[++i] && str[i] != '\n')
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 			new_line[++j] = str[i];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/08/31 17:26:28 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:19:12 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void	check_line(char *l, int width, int *nb_player, bool ext)
  * @param	map: the map to check
  * @param	height: the height of the map
  * @param	width: the width of the map
+ * @details I will also check around all letters, before i only checked
+ * around 0.
  ***************************************/
 static void	check_map(char **map, int height, int width)
 {
@@ -70,9 +72,12 @@ static void	check_map(char **map, int height, int width)
 		check_line(map[i], width, &nb_player, i == 0 || i == height - 1);
 		j = -1;
 		while (map[i][++j])
-			if (map[i][j] == '0'
-					&& (map[i - 1][j] == ' ' || map[i + 1][j] == ' '))
-				ft_exit(ERR_MAP_7);
+		{
+			if (ft_strchr("0NSEW", map[i][j]))
+				if (map[i - 1][j] == ' ' || map[i + 1][j] == ' '
+					|| !map[i + 1][j] || !map[i - 1][j])
+					ft_exit(ERR_MAP_7);
+		}
 	}
 	if (nb_player != 1)
 		ft_exit(ERR_MAP_2);

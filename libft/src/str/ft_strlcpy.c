@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:58:50 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/02/13 16:58:42 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:44:30 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
+	while (i < size)
+		dst[i++] = '\0';
 	return (len);
 }

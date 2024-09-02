@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 18:11:25 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:02:42 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,12 +144,12 @@
 
 // 3840
 # ifndef SCREEN_WIDTH
-#  define SCREEN_WIDTH	800
+#  define SCREEN_WIDTH	1400
 # endif
 
 // 2160
 # ifndef SCREEN_HEIGHT
-#  define SCREEN_HEIGHT	800
+#  define SCREEN_HEIGHT	1400
 # endif
 
 // # ifndef FOV
@@ -161,11 +161,11 @@
 # endif
 
 # ifndef PLAYER_STEP_SIZE
-#  define PLAYER_STEP_SIZE 0.050
+#  define PLAYER_STEP_SIZE 0.12
 # endif
 
 # ifndef PLAYER_ROT_SPEED
-#  define PLAYER_ROT_SPEED	0.032
+#  define PLAYER_ROT_SPEED	0.12
 # endif
 
 /*===========================================*/
