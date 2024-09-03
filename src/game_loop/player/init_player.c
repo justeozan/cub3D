@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avg38 <avg38@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:16:03 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/24 04:28:14 by avg38            ###   ########.fr       */
+/*   Updated: 2024/09/03 14:01:37 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ static void	get_player_pos(t_map map, t_player *player)
 ***************************************/
 static void	create_angle(t_player *player)
 {
-	if (player->cardinal == WEST)
+	if (player->cardinal == EAST)
 		player->dir_angle = to_rad(0);
 	else if (player->cardinal == SOUTH)
 		player->dir_angle = to_rad(90);
-	else if (player->cardinal == EAST)
+	else if (player->cardinal == WEST)
 		player->dir_angle = to_rad(180);
 	else if (player->cardinal == NORTH)
 		player->dir_angle = to_rad(270);

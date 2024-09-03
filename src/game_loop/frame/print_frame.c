@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:15:50 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 17:42:39 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:04:43 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	print_col(t_data *data, t_dda *wall_ray, t_ray *ray, int x)
 	while (i < col.y_end)
 	{
 		col.y_sprite = ((i - col.y_start) * sprite.y) / col.height;
-		if (sprite.cardinal == NORTH || sprite.cardinal == WEST)
+		if (sprite.cardinal == NORTH || sprite.cardinal == EAST)
 			col.color = *((int *)(sprite.addr + col.y_sprite
 						* sprite.len_line + (sprite.x - col.x_sprite - 1)
 						* (sprite.bit_per_pixel / 8)));

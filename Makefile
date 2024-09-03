@@ -1,4 +1,4 @@
-.DEFAULT_GOAL :=	m
+.DEFAULT_GOAL =	m
 
 NAME	=	cub3D
 
@@ -83,7 +83,7 @@ GOOD_MAPS	=	\
 				maps/good/wall_hole_test.cub\
 				maps/good/works.cub
 
-SUBJECT_MAP	=	maps/test.cub
+SUBJECT_MAP	=	maps/bad/strange.cub
 OBJ		=	$(patsubst src/%.c, obj/%.o, $(SRC))
 
 # Controls

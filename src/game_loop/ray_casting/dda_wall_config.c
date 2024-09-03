@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_wall_config.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:36:52 by avialle-          #+#    #+#             */
-/*   Updated: 2024/08/29 15:37:49 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:03:45 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static void	process_wall_cardinal(t_ray ray, t_cardinal *point, char last_side)
 	if (last_side == 'x')
 	{
 		if (ray.dir.x > 0)
-			*point = EAST;
-		else
 			*point = WEST;
+		else
+			*point = EAST;
 	}
 	else
 	{
