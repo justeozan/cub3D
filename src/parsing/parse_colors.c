@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sei <sei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:11:15 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/17 22:48:56 by sei              ###   ########.fr       */
+/*   Updated: 2024/09/03 14:36:59 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	parse_colors(t_data *data, char *line)
 	while (++i < 3)
 	{
 		if (!color[i])
-			ft_exit(ERR_COLOR_2);
+			ft_exit(ERR_COLOR);
 		rgb[i] = ft_atoi(color[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
 			ft_exit(ERR_COLOR);

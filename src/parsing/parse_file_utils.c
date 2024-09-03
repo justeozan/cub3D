@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 00:18:45 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/08/29 13:53:13 by avialle-         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:45:32 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	check_file_format(char **file)
 		else if (ft_strchr("01", file[i][j]))
 		{
 			if (value >= 7)
-				ft_exit(ERR_FILE_3);
+				ft_exit(ERR_FILE_1);
 			else if (value == 6)
 				handle_map_line(file, &i, &value);
 			else if (value < 6)

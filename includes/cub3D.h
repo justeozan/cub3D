@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/09/02 16:02:42 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:47:31 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@
 # define ERR_MAP_4		"Error\nThe map is not closed."
 # define ERR_MAP_5		"Error\nInvalid character in the map."
 # define ERR_MAP_6		"Error\nSeveral maps in one."
-# define ERR_MAP_7		"Error\nA 0 is not surrounded by walls."
+# define ERR_MAP_7		"Error\nA 0 or player is not surrounded by walls."
 # define ERR_MAP_8		"Error\nA bad character is in the wall."
 # define ERR_MAP_9		"Error\nMap is too big."
 

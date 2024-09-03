@@ -41,6 +41,7 @@ BAD_MAPS	=	\
 				maps/bad/file_letter_end.cub\
 				maps/bad/filetype_missing\
 				maps/bad/filetype_wrong.buc\
+				maps/bad/filetype_wrong2.cub1\
 				maps/bad/forbidden.cub\
 				maps/bad/map_first.cub\
 				maps/bad/map_middle.cub\
@@ -50,7 +51,6 @@ BAD_MAPS	=	\
 				maps/bad/map_too_small.cub\
 				maps/bad/player_multiple.cub\
 				maps/bad/player_none.cub\
-				maps/bad/subject_map.cub\
 				maps/bad/player_on_edge.cub\
 				maps/bad/textures_dir.cub\
 				maps/bad/textures_duplicates.cub\

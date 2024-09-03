@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 08:46:20 by sei               #+#    #+#             */
-/*   Updated: 2024/09/02 18:19:12 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:42:49 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static void	check_line(char *l, int width, int *nb_player, bool ext)
 				j++;
 			}
 			if (l[j] != '1')
-				ft_exit(ERR_MAP_4);
+				ft_exit(ERR_MAP);
 		}
 		else
-			ft_exit(ERR_MAP_5);
+			ft_exit(ERR_MAP);
 	}
 }
 
