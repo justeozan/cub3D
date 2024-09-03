@@ -6,7 +6,7 @@
 /*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/09/03 14:47:31 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:49:08 by ozasahin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -464,22 +464,3 @@ void	parse_sprites(t_data *data, char *line);
 void	parse(char	**av, t_data *data);
 
 #endif /* CUBE3D_H */
-
-/*
--> Before update close_program and close all mlx pointers.
- LEAK SUMMARY:
-definitely lost: 1,291 bytes in 28 blocks
-indirectly lost: 544 bytes in 4 blocks
-possibly lost: 0 bytes in 0 blocks
-still reachable: 92,461 bytes in 99 blocks
-suppressed: 0 bytes in 0 blocks
--> After.
- LEAK SUMMARY:
-LEAK SUMMARY:
-definitely lost: 643 bytes in 22 blocks
-indirectly lost: 0 bytes in 0 blocks
-possibly lost: 0 bytes in 0 blocks
-still reachable: 0 bytes in 0 blocks
-suppressed: 0 bytes in 0 blocks
-
-*/
