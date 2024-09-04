@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 00:10:47 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/09/02 18:39:38 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:21:04 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	check_args(int ac, char	**args)
 	if (!ft_strnstr2(args[1], ".cub", 4))
 		ft_exit(ERR_ARGS_1);
 	if (SCREEN_HEIGHT < 100 || SCREEN_WIDTH < 100
-		|| SCREEN_HEIGHT > 2160 || SCREEN_WIDTH > 3840
+		|| SCREEN_HEIGHT > 2000 || SCREEN_WIDTH > 2000
 		|| SCREEN_HEIGHT != SCREEN_WIDTH)
 		ft_exit(ERR_ARGS_2);
 }

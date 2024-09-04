@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ozasahin <ozasahin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avialle- <avialle-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 02:52:13 by ozasahin          #+#    #+#             */
-/*   Updated: 2024/09/03 14:49:08 by ozasahin         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:21:12 by avialle-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@
 5. ENUM
 6. STRUCTURES
 7. FUNCTIONS
-   6.1 CLOSE PROGRAM
-   6.2 DEBUG
-   6.3 GAME LOOP
-   6.4 INIT
-   6.5 KEY HANDLER
-   6.6 PARSING
+   7.1 CLOSE PROGRAM
+   7.2 DEBUG
+   7.3 GAME LOOP
+   7.4 INIT
+   7.5 KEY HANDLER
+   7.6 PARSING
 */
 
 /*===========================================*/
@@ -142,19 +142,13 @@
 
 # define PI	3.14159265358979323846
 
-// 3840
 # ifndef SCREEN_WIDTH
-#  define SCREEN_WIDTH	1400
+#  define SCREEN_WIDTH	2000
 # endif
 
-// 2160
 # ifndef SCREEN_HEIGHT
-#  define SCREEN_HEIGHT	1400
+#  define SCREEN_HEIGHT	2000
 # endif
-
-// # ifndef FOV
-// #  define FOV	60
-// # endif
 
 # ifndef PLANE_FOV
 #  define PLANE_FOV 0.649408
